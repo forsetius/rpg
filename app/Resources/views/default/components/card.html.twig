@@ -1,0 +1,72 @@
+{% macro card(id, config, content) %}
+{# Struktuta danych:
+config
+    parts: [head,img,main,list]
+    title: <head|img|main>
+    text: <head|img|main>
+    footer: <head|img|main>
+    link: [head,img,main]
+    class
+content
+    href
+    title
+    text
+    img
+    footer
+    list
+        item
+            icon
+            type
+            href
+            text
+            class
+#}
+<div id="{{ id }}" class="card{% if config.class is defined %} {{ config.class }}{% endif %}">
+    {% if "head" in config.parts %}
+    <div class="card-head row">
+        {% if "head" in config.link %}<a class="block" href="{{ content.href }}">{% endif %}
+            {% if config.title == "head" %}<h1>{{content.title}}</h1>{% endif %}
+            {% if config.text == "head" %}{{content.text|raw}}{% endif %}
+            {% if config.footer == "head" %}<span class="card-footer">{{content.footer|raw}}</span>{% endif %}
+        {% if "head" in config.link %}</a>{% endif %}
+    </div>
+    {% endif %}
+    {% if "img" in config.parts %}
+    <div class="card-img row" style="background-image: url({{ content.img }})">
+        {% if "img" in config.link %}<a class="block" href="{{ content.href }}">{% endif %}
+            {% if config.title == "img" %}<h1>{{content.title}}</h1>{% endif %}
+            {% if config.text == "img" %}{{content.text|raw}}{% endif %}
+            {% if config.footer == "img" %}<span class="card-footer">{{content.footer|raw}}</span>{% endif %}
+        {% if "img" in config.link %}</a>{% endif %}
+    </div>
+    {% endif %}
+    {% if "main" in config.parts %}
+    <div class="card-main row">
+        {% if "main" in config.link %}<a class="block" href="{{ content.href }}">{% endif %}
+            {% if config.title == "main" %}<h1>{{content.title}}</h1>{% endif %}
+            {% if config.text == "main" %}{{content.text|raw}}{% endif %}
+            {% if config.footer == "main" %}<span class="card-footer">{{content.footer|raw}}</span>{% endif %}
+        {% if "main" in config.link %}</a>{% endif %}
+    </div>
+    {% endif %}
+    {% if "list" in config.parts %}
+        {% for item in content.list %}
+        <div class="card-li row{% if item.class is defined %} {{ item.class }}"{% endif %}>
+            {% if item.icon is defined %}
+            <div class="col-xs-1 icon"><img src="{{item.icon}}" class="icon"></div>
+            <div class="col-xs-11 txt">
+            {% elseif item.type is defined%}
+            <div class="col-xs-3 type"><span>{{item.type}}</span></div>
+            <div class="col-xs-9 txt">
+            {% else %}
+            <div class="col-xs-12 txt">
+            {% endif %}
+                <span>{% if item.href is defined %}<a href="{{ item.href }}">{% endif %}
+                {{ item.text }}
+                {% if item.href is defined %}</a>{% endif %}</span>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endmacro %}

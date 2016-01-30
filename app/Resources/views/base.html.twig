@@ -1,13 +1,42 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+
+<html lang="PL">
+  <head>
+    <meta charset="utf-8" />
+    <!-- Change for better search engine indexing -->
+    <title>{{page.title}}</title>
+    <meta name="title" content="{{page.meta_title}}" />
+    <meta name="description" content="{{page.meta_desc}}" />
+    <meta name="keywords" content="{{page.meta_keywords}}" />
+    <meta name="robots" content="All" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Unica+One&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="/css/bootstrap-theme.css">
+    <link id="theme" rel="stylesheet" type="text/css" href="/css/styles.css" title="theme" />
+
+<!--
+    <script type="text/javascript" language="javascript" src="/js/scripts.js"></script>
+	<script type="text/javascript" language="javascript" src="/js/theme.js"></script>
+	<script type="text/javascript" language="javascript" src="/js/custom.js"></script> -->
+    <!-- Add your custom script here -->
+  </head>
+  <body>
+  	<header>
+        {% block topbar %} {% include "default/parts/topbar.twig" %} {% endblock %}
+  	</header>
+    <main>
+    {% block content %} {% endblock %}
+    </main>
+  	<footer>
+  		{% block footer %} {% include "default/parts/footer.twig" %} {% endblock %}
+  	</footer>
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script>window.jQuery || document.write('<script src="/js/jquery-2.1.4.min.js"><\/script>')</script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug
+    <script src="./../assets/js/ie10-viewport-bug-workaround.js"></script> -->
+  </body>
 </html>
