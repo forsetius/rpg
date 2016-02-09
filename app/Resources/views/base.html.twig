@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css" >
     <link rel="stylesheet" href="/css/bootstrap-theme.css">
     <link id="theme" rel="stylesheet" type="text/css" href="/css/styles.css" title="theme" />
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
 
 <!--
     <script type="text/javascript" language="javascript" src="/js/scripts.js"></script>
@@ -24,13 +25,13 @@
   </head>
   <body>
   	<header>
-        {% block topbar %} {% include "default/parts/topbar.twig" %} {% endblock %}
+        {% block topbar %} {% include "default/parts/topbar.html.twig" %} {% endblock %}
   	</header>
     <main>
     {% block content %} {% endblock %}
     </main>
   	<footer>
-  		{% block footer %} {% include "default/parts/footer.twig" %} {% endblock %}
+  		{% block footer %} {% include "default/parts/footer.html.twig" %} {% endblock %}
   	</footer>
 
     <!-- Placed at the end of the document so the pages load faster -->

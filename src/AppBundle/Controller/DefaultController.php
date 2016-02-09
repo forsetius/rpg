@@ -5,14 +5,10 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\Pages\Page;
 
 class DefaultController extends Controller
 {
-    
-    const IMAGES = 1;
-    const SUBPAGES = 2;
-    const ATTACHMENTS = 4;
-    const LINKS = 8;
     
     /**
      * @Route("/", name="homepage")
@@ -20,6 +16,14 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
+        $page = array(
+            'title'=>'Forseti: abstract worlds',
+            'lead'=>'RPG - Gry fabularne',
+            'content'=>'<p>Drogi Marszałku, Wysoka Izbo. PKB rośnie. Z drugiej strony, zmiana istniejących kryteriów pomaga w restrukturyzacji przedsiębiorstwa. Nie muszę państwa przekonywać, że inwestowanie w przyszłościowe rozwiązania spełnia ważne z dotychczasowymi zasadami modelu rozwoju. Tak samo istotne jest ważne zadanie w przyszłościowe rozwiązania zmusza nas do przeanalizowania odpowiednich warunków administracyjno-finansowych. Troska organizacji.</p>',
+            'meta_title'=>'Forseti: abstract worlds',
+            'meta_desc'=>'RPG - Gry fabularne',
+            'meta_keywords'=>'rpg, gry fabularne, mag: wstąpienie, eclipse phase',
+        );
         $vars = array(
             'mainSlides'=>array(
                 array('src'=>'/img/slide1.jpg','alt'=>'slide1','title'=>'Eclipse Phase','text'=>'Akcja Eclipse Phase rozgrywa się za jakieś 120 lat, po wojnie, która zgładziła ponad 95% ludzkości. Ziemia leży w ruinie, większość cudów cywilizacji została zniszczona, państwa upadły. Niedobitki ludzi rozproszyły się po całym Układzie Słonecznym, a nawet poza niego. '),
@@ -36,7 +40,7 @@ class DefaultController extends Controller
                     array('href'=>'#', 'text'=>'Encyklopedia', 'type'=>'dział', 'class'=>'colorful'),
                     array('href'=>'#', 'text'=>'Generator scenariuszy', 'type'=>'generator', 'class'=>'colorful'),
                 )),
-                array('name'=>'mage_ascension','title'=>'Mage: the Ascension','lead'=>'<p>Metafizyczna walka o rząd dusz i kształt rzeczywistości</p>', 'image_card'=>'/img/card-mta.jpg', 'links'=>array(
+                array('name'=>'mage_ascension','title'=>'Mag: Wstąpienie','lead'=>'<p>Metafizyczna walka o rząd dusz i kształt rzeczywistości</p>', 'image_card'=>'/img/card-mta.jpg', 'links'=>array(
                     array('href'=>'#', 'text'=>'Tradycje', 'type'=>'dział', 'class'=>'colorful'),
                     array('href'=>'#', 'text'=>'Wiedza', 'type'=>'dział', 'class'=>'colorful'),
                 )),
@@ -47,10 +51,14 @@ class DefaultController extends Controller
                 )),
             )
         );
+        $page = $this->getDoctrine()->getRepository('AppBundle:Page');
         
         return $this->render('default/index.html.twig', [
             '_locale' => $request->getLocale(),
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
+            'page' => $page,
+            'subs' => $vars['subs'],
+            'mainSlides' => $vars['mainSlides'],
         ]);
     }
 
@@ -59,7 +67,13 @@ class DefaultController extends Controller
      */
     public function showAction(Request $request, $slug, $locale)
     {
-
+        $page = $this->getDoctrine()->getRepository('AppBundle:Page')->findOneByName($slug);
+        $page->setLocale($locale);
+        
+        $imgs = ($page->deps & Page::IMAGES) ?
+        if ($page['deps'] & Page::IMAGES) {
+            $this->getDoctrine()->getRepository('AppBundle:Image')->findBy($criteria)
+        }
     }
     
     protected function getPage(Request $request, $vars=array()) {
@@ -77,7 +91,7 @@ class DefaultController extends Controller
         FROM pages_page
         WHERE name = ?
 SQL;
-        //$page = $app['db']->fetchAssoc($sql, array($name));
+        $page = $app['db']->fetchAssoc($sql, array($name));
     
         if (empty($page)) {
             // TODO wyjątek? 404?
@@ -94,7 +108,7 @@ SQL;
             $subs = $app['db']->fetchAssoc($sql, array($page['id']));
         }
     
-        $atts = array();
+        $atch = array();
         if($page['deps'] & DefaultController::ATTACHMENTS) {
             $sql = <<<SQL
             SELECT
@@ -110,7 +124,7 @@ SQL;
             ORDER BY
                 a.title$locale
 SQL;
-            $atts = $app['db']->fetchAssoc($sql, array($page['id']));
+            $atch = $app['db']->fetchAssoc($sql, array($page['id']));
         }
     
         $links = array();
@@ -122,7 +136,7 @@ SQL;
             'page' => $page,
             'imgs' => $imgs,
             'subs' => $subs,
-            'atts' => $atts,
+            'atch' => $atch,
             'links'=> $links
         ));
     }
