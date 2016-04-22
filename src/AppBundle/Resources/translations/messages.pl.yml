@@ -1,0 +1,67 @@
+easyAdmin.menu.div.pages: Strony
+easyAdmin.menu.div.dicts: Słowniki
+easyAdmin.menu.div.users: Użytkownicy
+
+easyAdmin.pages.name: Klucz
+easyAdmin.pages.title: Tytuł
+easyAdmin.pages.parent: Rodzic
+easyAdmin.pages.page_order: Kolejność
+easyAdmin.pages.breadcrumbs: Okruszki
+easyAdmin.pages.template: Szablon
+easyAdmin.pages.css_class: Klasa CSS
+easyAdmin.pages.meta_title: META title
+easyAdmin.pages.meta_desc: META description
+easyAdmin.pages.meta_keywords: META keywords
+
+easyAdmin.article.name.mp: Artykuł
+easyAdmin.article.name.mm: Artykuły
+easyAdmin.article.title.edit: Edycja Artykułu
+easyAdmin.article.title.new: Dodawanie nowego Artykułu
+easyAdmin.articles.lead: Wprowadzenie
+easyAdmin.articles.content: Treść
+
+easyAdmin.attachment.name.mp: Załącznik
+easyAdmin.attachment.name.mm: Załączniki
+easyAdmin.attachment.title.edit: Edycja Załącznika
+easyAdmin.attachment.title.new: Dodawanie nowego Załącznika
+
+easyAdmin.image.name.mp: Obraz
+easyAdmin.image.name.mm: Obrazy
+easyAdmin.image.title.edit: Edycja Obrazu
+easyAdmin.image.title.new: Dodawanie nowego Obrazu
+
+easyAdmin.filetype.name.mp: Typ pliku
+easyAdmin.filetype.name.mm: Typy plików
+easyAdmin.filetype.title.edit: Edycja Typu pliku
+easyAdmin.filetype.title.new: Dodawanie nowego Typu pliku
+
+easyAdmin.user.name.mp: Użytkownik
+easyAdmin.user.name.mm: Użytkownicy
+easyAdmin.user.title.edit: Edycja Użytkownika
+easyAdmin.user.title.new: Dodawanie nowego Użytkownika
+easyAdmin.users.username: Nazwa
+easyAdmin.users.email: Email
+easyAdmin.users.enabled: Włączony
+easyAdmin.users.locked: Zablokowane
+easyAdmin.users.expires_at: Wygasa
+easyAdmin.users.roles: Uprawnienia
+easyAdmin.users.role.superadmin: Główny admin
+easyAdmin.users.role.admin: Admin
+easyAdmin.users.role.user: Użytkownik
+
+easyAdmin.group.name.mp: Grupa
+easyAdmin.group.name.mm: Grupy
+easyAdmin.group.title.edit: Edycja Grupy
+easyAdmin.group.title.new: Dodawanie nowej Grupy
+easyAdmin.groups.name: Nazwa
+easyAdmin.groups.style: Styl
+easyAdmin.groups.roles: Uprawnienia
+
+user.anon: Niezalogowany
+app.label.red: Czerwony
+app.label.yellow: Żółty 
+app.label.info: Błękitny 
+app.label.green: Zielony 
+app.label.blue: Niebieski
+app.label.hope: Szary
+app.label.nolabel: Biały

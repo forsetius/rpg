@@ -9,15 +9,8 @@ use Gedmo\Translatable\Translatable;
  * @ORM\Entity
  * @ORM\Table(name="pages_attachment")
  */
-class Attachment implements Translatable 
+class Attachment extends Page implements Translatable
 {
-    /**
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-    
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      */
@@ -34,18 +27,6 @@ class Attachment implements Translatable
      * @ORM\Column(type="smallint")
      */
     protected $type;
-    
-    /**
-     * @Gedmo\Translatable
-     * @ORM\Column(type="string", length=255)
-     */
-    protected $title;
-    
-    /**
-     * @Gedmo\Translatable
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $description;
     
     /**
      * @Gedmo\Translatable
@@ -134,30 +115,6 @@ class Attachment implements Translatable
     public function getType()
     {
         return $this->type;
-    }
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Attachment
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
     }
 
     /**

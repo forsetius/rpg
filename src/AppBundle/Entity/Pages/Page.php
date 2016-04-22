@@ -4,14 +4,10 @@ namespace AppBundle\Entity\Pages;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Translatable\Translatable;
-use Doctrine\Common\Collections\ArrayCollection;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="pages_page")
- */
-class Page implements Translatable 
-{       
+/** @ORM\MappedSuperclass */
+abstract class Page implements Translatable
+{
     const SHOW_PAGE = 1;
     const SHOW_SECTION = 2;
     const SHOW_CHAPTER = 4;
@@ -31,18 +27,12 @@ class Page implements Translatable
      * @ORM\Column(type="string", length=50, unique=true)
      */
     protected $name;
-    
+  
     /**
      * @Gedmo\Translatable
      * @ORM\Column(type="string", length=255)
      */
     protected $title;
-    
-    /**
-     * @Gedmo\Translatable
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $lead;
     
     /**
      * @Gedmo\Translatable
@@ -56,32 +46,7 @@ class Page implements Translatable
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $parent;
-    
-    /**
-     * @ORM\OneToMany(targetEntity="Page", mappedBy="parent")
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    protected $children;
-    
-    /**
-     * @ORM\OneToOne(targetEntity="Page")
-     * @ORM\JoinColumn(name="previous_id", referencedColumnName="id")
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    protected $previous;
-    
-    /**
-     * @ORM\OneToOne(targetEntity="Page")
-     * @ORM\JoinColumn(name="next_id", referencedColumnName="id")
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    protected $next;
-    
-    /**
-     * @ORM\Column(type="smallint")
-     */
-    protected $level;
-    
+       
     /**
      * @ORM\Column(type="smallint")
      */
@@ -95,7 +60,7 @@ class Page implements Translatable
     /**
      * @ORM\Column(type="string", length=30)
      */
-    protected $template = 'article.twig';
+    protected $template;
     
     /**
      * @ORM\Column(type="string", length=30, nullable=true)
@@ -125,32 +90,6 @@ class Page implements Translatable
      */
     protected $shown = 0;
     
-    /**
-     * @ORM\ManyToMany(targetEntity="Attachment")
-     * @ORM\JoinTable(name="pages_attachments_join",
-     *      joinColumns={@ORM\JoinColumn(name="attachment_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="page_id", referencedColumnName="id")}
-     *      )
-     */
-    protected $attachments;
-    
-    /**
-     * @ORM\ManyToMany(targetEntity="Image")
-     * @ORM\JoinTable(name="pages_images_join",
-     *      joinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="page_id", referencedColumnName="id")}
-     *      )
-     */
-    protected $images;
-
-
-    public function __construct()
-    {
-        $this->attachments = new ArrayCollection();
-        $this->images = new ArrayCollection();
-        $this->children = new ArrayCollection();
-    }
-
     /**
      * Get id
      *
@@ -210,30 +149,6 @@ class Page implements Translatable
     }
 
     /**
-     * Set lead
-     *
-     * @param string $lead
-     *
-     * @return Page
-     */
-    public function setLead($lead)
-    {
-        $this->lead = $lead;
-
-        return $this;
-    }
-
-    /**
-     * Get lead
-     *
-     * @return string
-     */
-    public function getLead()
-    {
-        return $this->lead;
-    }
-
-    /**
      * Set content
      *
      * @param string $content
@@ -279,78 +194,6 @@ class Page implements Translatable
     public function getParent()
     {
         return $this->parent;
-    }
-
-    /**
-     * Set children
-     *
-     * @param integer $children
-     *
-     * @return Page
-     */
-    public function setChildren($children)
-    {
-        $this->children = $children;
-
-        return $this;
-    }
-
-    /**
-     * Get children
-     *
-     * @return integer
-     */
-    public function getChildren()
-    {
-        return $this->children;
-    }
-
-    /**
-     * Set previous
-     *
-     * @param integer $previous
-     *
-     * @return Page
-     */
-    public function setPrevious($previous)
-    {
-        $this->previous = $previous;
-
-        return $this;
-    }
-
-    /**
-     * Get previous
-     *
-     * @return integer
-     */
-    public function getPrevious()
-    {
-        return $this->previous;
-    }
-
-    /**
-     * Set next
-     *
-     * @param integer $next
-     *
-     * @return Page
-     */
-    public function setNext($next)
-    {
-        $this->next = $next;
-
-        return $this;
-    }
-
-    /**
-     * Get next
-     *
-     * @return integer
-     */
-    public function getNext()
-    {
-        return $this->next;
     }
 
     /**
@@ -567,73 +410,5 @@ class Page implements Translatable
     public function getShown()
     {
         return $this->shown;
-    }
-
-    /**
-     * Add attachment
-     *
-     * @param \AppBundle\Entity\Pages\Attachment $attachment
-     *
-     * @return Page
-     */
-    public function addAttachment(\AppBundle\Entity\Pages\Attachment $attachment)
-    {
-        $this->attachments[] = $attachment;
-
-        return $this;
-    }
-
-    /**
-     * Remove attachment
-     *
-     * @param \AppBundle\Entity\Pages\Attachment $attachment
-     */
-    public function removeAttachment(\AppBundle\Entity\Pages\Attachment $attachment)
-    {
-        $this->attachments->removeElement($attachment);
-    }
-
-    /**
-     * Get attachments
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAttachments()
-    {
-        return $this->attachments;
-    }
-
-    /**
-     * Add image
-     *
-     * @param \AppBundle\Entity\Pages\Image $image
-     *
-     * @return Page
-     */
-    public function addImage(\AppBundle\Entity\Pages\Image $image)
-    {
-        $this->images[] = $image;
-
-        return $this;
-    }
-
-    /**
-     * Remove image
-     *
-     * @param \AppBundle\Entity\Pages\Image $image
-     */
-    public function removeImage(\AppBundle\Entity\Pages\Image $image)
-    {
-        $this->images->removeElement($image);
-    }
-
-    /**
-     * Get images
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getImages()
-    {
-        return $this->images;
     }
 }

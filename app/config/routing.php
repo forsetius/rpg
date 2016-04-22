@@ -23,6 +23,7 @@ try {
 } catch (ParseException $e) {
     printf("Unable to parse the YAML string: %s", $e->getMessage());
 }
+echo '<pre>'.var_dump($routes).'</pre>';
 $collection = new RouteCollection();
 foreach ($routes as $name => $def) {
     $route = new Route($def['path']);

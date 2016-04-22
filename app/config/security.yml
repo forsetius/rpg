@@ -1,24 +1,40 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
 security:
-
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
+        fos_userbundle:
+            id: fos_user.user_manager
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
         main:
-            anonymous: ~
-            # activate different ways to authenticate
+            pattern:      .*
+            form-login:
+                provider:       fos_userbundle
+                csrf_token_generator:  security.csrf.token_manager 
+                login_path:     /login
+                use_forward:    false
+                check_path:     /login_check
+                failure_path:   null
+            logout:       true
+            anonymous:    true
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    access_control:
+        # URL of FOSUserBundle which need to be available to anonymous users
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/new$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/check-confirmation-email$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/confirm/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/confirmed$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/request-reset-password$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/send-resetting-email$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/check-resetting-email$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/reset-password/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        

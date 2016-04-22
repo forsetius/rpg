@@ -1,0 +1,74 @@
+easyAdmin.menu.div.pages: Pages
+easyAdmin.menu.div.dicts: Dictionaries
+easyAdmin.menu.div.users: Users
+
+easyAdmin.pages.name: Name
+easyAdmin.pages.title: Title
+easyAdmin.pages.parent: Parent
+easyAdmin.pages.page_order: Page order
+easyAdmin.pages.breadcrumbs: Breadcrumbs
+easyAdmin.pages.template: Template
+easyAdmin.pages.css_class: CSS class
+easyAdmin.pages.meta_title: META title
+easyAdmin.pages.meta_desc: META description
+easyAdmin.pages.meta_keywords: META keywords
+
+easyAdmin.article.name.mp: Article
+easyAdmin.article.name.mm: Article
+easyAdmin.article.title.edit: Edit the Article
+easyAdmin.article.title.new: Add new Article
+easyAdmin.articles.lead: Lead
+easyAdmin.articles.content: Content
+
+easyAdmin.attachment.name.mp: Attachment
+easyAdmin.attachment.name.mm: Attachments
+easyAdmin.attachment.title.edit: Edit the Attachment
+easyAdmin.attachment.title.new: Add new Attachment
+
+easyAdmin.image.name.mp: Image
+easyAdmin.image.name.mm: Images
+easyAdmin.image.title.edit: Edit the Image
+easyAdmin.image.title.new: Add new Image
+
+easyAdmin.filetype.name.mp: File type
+easyAdmin.filetype.name.mm: File types
+easyAdmin.filetype.title.edit: Edit the File type
+easyAdmin.filetype.title.new: Add new File type
+
+easyAdmin.user.name.mp: User
+easyAdmin.user.name.mm: Users
+easyAdmin.user.title.edit: Edit the User
+easyAdmin.user.title.new: Add new User
+easyAdmin.users.username: Username
+easyAdmin.users.email: Email
+easyAdmin.users.enabled: Enabled
+easyAdmin.users.locked: Locked
+easyAdmin.users.expires_at: Expires
+easyAdmin.users.roles: Roles
+easyAdmin.users.role.superadmin: Super admin
+easyAdmin.users.role.admin: Admin
+easyAdmin.users.role.user: User
+
+easyAdmin.group.name.mp: Group
+easyAdmin.group.name.mm: Groups
+easyAdmin.group.title.edit: Edit the Group
+easyAdmin.group.title.new: Add new Group
+easyAdmin.groups.name: Name
+easyAdmin.groups.style: Style
+easyAdmin.groups.roles: Roles
+
+easyAdmin.ppzone.name.mp: Parking Zone
+easyAdmin.ppzone.name.mm: Parking Zones
+easyAdmin.ppzone.title.edit: Edit the Parking Zone
+easyAdmin.ppzone.title.new: Add new Parking Zone
+easyAdmin.ppzones.name: Name
+easyAdmin.ppzones.color: Color
+
+user.anon: "Not logged in"
+app.label.red: Red
+app.label.yellow: Yellow 
+app.label.info: Teal 
+app.label.green: Green 
+app.label.blue: Blue
+app.label.hope: Grey
+app.label.nolabel: White

@@ -1,0 +1,18 @@
+{% set styles = field_options.styles|default(['default']) %}
+{% if view == 'show' %}
+    {% if value|length > 0 %}
+        <ul>
+            {% for element in value %}
+                <li>{{ styles[element]|trans }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="empty collection-empty">
+            <span class="label label-empty">{{ 'label.empty'|trans({}, 'EasyAdminBundle') }}</span>
+        </div>
+    {% endif %}
+{% else %}
+	{% for element in value %}
+        {{ styles[element]|trans }}{% if not loop.last %}, {% endif %}
+    {% endfor %}
+{% endif %}

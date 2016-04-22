@@ -28,6 +28,11 @@ class Filetype implements Translatable
      * @ORM\Column(type="string", length=30)
      */
     protected $icon;
+    
+    /**
+     * @ORM\Column(type="string", length=30)
+     */
+    protected $contentType;
 
     /**
      * Get id
@@ -85,5 +90,29 @@ class Filetype implements Translatable
     public function getIcon()
     {
         return $this->icon;
+    }
+
+    /**
+     * Set contentType
+     *
+     * @param string $contentType
+     *
+     * @return Filetype
+     */
+    public function setContentType($contentType)
+    {
+        $this->contentType = $contentType;
+
+        return $this;
+    }
+
+    /**
+     * Get contentType
+     *
+     * @return string
+     */
+    public function getContentType()
+    {
+        return $this->contentType;
     }
 }

@@ -1,0 +1,208 @@
+parameters:
+    roles.def:
+        ROLE_SUPERADMIN: 'easyAdmin.users.role.superadmin' 
+        ROLE_ADMIN: 'easyAdmin.users.role.admin' 
+        ROLE_USER: 'easyAdmin.users.role.user' 
+    roles.labels:
+        easyAdmin.users.role.superadmin: ROLE_SUPERADMIN
+        easyAdmin.users.role.admin: ROLE_ADMIN
+        easyAdmin.users.role.user: ROLE_USER
+
+easy_admin:
+    site_name: "Abstract worlds Admin"
+    list:
+        actions:
+            - { name: 'show', icon: 'search' }
+            - { name: 'edit', icon: 'pencil' }
+            - { name: 'delete', icon: 'trash' }
+    show:
+        actions:
+            - { name: 'edit', icon: 'pencil' }
+            - { name: 'delete', icon: 'trash' }
+    edit:
+        actions:
+            - { name: 'delete', icon: 'trash', label: '' }
+    design:
+        theme: default
+        color_scheme: dark
+        brand_color: '#faaf40'
+        form_theme: ~
+        assets:
+            css: []
+            js: []
+        menu: 
+            - 
+              label: easyAdmin.menu.div.pages 
+              children:
+                    - { entity: 'Article', icon: 'file-text-o', label: easyAdmin.article.name.mm }
+                    - { entity: 'Attachment', icon: 'paperclip', label: easyAdmin.attachment.name.mm }
+                    - { entity: 'Image', icon: 'picture-o', label: easyAdmin.image.name.mm }
+            - 
+              label: easyAdmin.menu.div.dicts 
+              children:
+                    - { entity: 'Filetype', icon: 'file-code-o', label: easyAdmin.filetype.name.mm }
+            - 
+              label: easyAdmin.menu.div.users
+              children:
+                    - { entity: 'User', icon: 'user', label: easyAdmin.user.name.mm }
+                    - { entity: 'Group', icon: 'group', label: easyAdmin.group.name.mm }
+        templates: {}    
+    entities:
+        Article:
+            class: AppBundle\Entity\Pages\Article
+            label: easyAdmin.article.name.mp
+            form: 
+                fields:
+                    - { property: 'name', label: 'easyAdmin.pages.name' }
+                    - { property: 'title', label: 'easyAdmin.pages.title' }
+                    - { property: 'lead', label: 'easyAdmin.articles.lead', type: 'ckeditor' }
+                    - { property: 'content', label: 'easyAdmin.articles.content', type: 'ckeditor' }
+                    - { property: 'parent', label: 'easyAdmin.pages.parent' }
+                    - { property: 'pageOrder', label: 'easyAdmin.pages.page_order' }
+                    - { property: 'breadcrumbs', label: 'easyAdmin.pages.breadcrumbs' }
+                    - { property: 'template', label: 'easyAdmin.pages.template' }
+                    - { property: 'cssClass', label: 'easyAdmin.pages.css_class' }
+                    - { property: 'metaTitle', label: 'easyAdmin.pages.meta_title' }
+                    - { property: 'metaDesc', label: 'easyAdmin.pages.meta_desc', type: 'ckeditor' }
+                    - { property: 'metaKeywords', label: 'easyAdmin.pages.meta_keywords', type: 'ckeditor' }
+            new:
+                title: easyAdmin.article.title.new
+            edit:
+                title: easyAdmin.article.title.edit    
+            list:
+                title: easyAdmin.article.name.mm
+                fields: 
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'name', label: 'easyAdmin.pages.name' }
+                    - { property: 'title', label: 'easyAdmin.pages.title' }
+                    - { property: 'lead', label: 'easyAdmin.articles.lead' }
+                    - { property: 'content', label: 'easyAdmin.articles.content' }
+                    - { property: 'parent', label: 'easyAdmin.pages.parent' }
+                    - { property: 'pageOrder', label: 'easyAdmin.pages.page_order' }
+                    - { property: 'breadcrumbs', label: 'easyAdmin.pages.breadcrumbs' }
+                    - { property: 'template', label: 'easyAdmin.pages.template' }
+                    - { property: 'cssClass', label: 'easyAdmin.pages.css_class' }
+                
+        Attachment:
+            class: AppBundle\Entity\Pages\Attachment
+            label: easyAdmin.attachment.name.mp
+            form: {}
+            new:
+                title: easyAdmin.attachment.title.new
+            edit:
+                title: easyAdmin.attachment.title.edit    
+            list:
+                title: easyAdmin.attachment.name.mm
+        
+        Image:
+            class: AppBundle\Entity\Pages\Image
+            label: easyAdmin.image.name.mp
+            form: {}
+            new:
+                title: easyAdmin.image.title.new
+            edit:
+                title: easyAdmin.image.title.edit    
+            list:
+                title: easyAdmin.image.name.mm
+                
+        Filetype:
+            class: AppBundle\Entity\Pages\Filetype
+            label: easyAdmin.filetype.name.mp
+            form: {}
+            new:
+                title: easyAdmin.filetype.title.new
+            edit:
+                title: easyAdmin.filetype.title.edit    
+            list:
+                title: easyAdmin.filetype.name.mm    
+        
+        User:
+            class: AppBundle\Entity\User\User
+            label: easyAdmin.user.name.mp
+            new:
+                title: easyAdmin.user.title.new
+            edit:
+                title: easyAdmin.user.title.edit    
+            list:
+                title: easyAdmin.user.name.mm
+                fields:
+                    - { property: 'username', label: 'easyAdmin.users.username' }
+                    - { property: 'email', label: 'easyAdmin.users.email' }
+                    - { property: 'groups', label: 'easyAdmin.group.name.mm' }
+                    - { property: 'locked', label: 'easyAdmin.users.locked' }
+                                  
+        Group:
+            class: AppBundle\Entity\User\Group
+            label: easyAdmin.group.name.mp
+            form:
+                fields:
+                    - { property: 'name', label: 'easyAdmin.groups.name', type: text }
+                    - 
+                      property: 'roles' 
+                      label: 'easyAdmin.groups.roles' 
+                      type: choice
+                      type_options: 
+                          expanded: true
+                          multiple: true
+                          choices: "%roles.labels%"
+                    - 
+                      property: 'style'
+                      label: 'easyAdmin.groups.style'
+                      type: choice
+                      type_options: 
+                          choices: 
+                              app.label.nolabel: nolabel
+                              app.label.red: danger
+                              app.label.yellow: warning 
+                              app.label.info: info 
+                              app.label.green: success 
+                              app.label.blue: primary
+                              app.label.hope: default
+            new:
+                title: easyAdmin.group.title.new
+            edit:
+                title: easyAdmin.group.title.edit  
+            show:
+                title: easyAdmin.group.name.mp
+                fields: 
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'name', label: 'easyAdmin.groups.name' }
+                    - 
+                      property: 'roles' 
+                      label: 'easyAdmin.users.roles' 
+                      template: '@App/easy_admin/field_roles.html.twig'
+                      styles: "%roles.def%"
+                    - 
+                      property: 'style'
+                      label: 'easyAdmin.groups.style' 
+                      template: '@App/easy_admin/field_label.html.twig'
+                      styles: 
+                          nolabel: { label: 'app.label.nolabel' } 
+                          danger: { label: 'app.label.red', class: 'danger' } 
+                          warning: { label: 'app.label.yellow', class: 'warning' }  
+                          info: { label: 'app.label.info', class: 'info' } 
+                          success: { label: 'app.label.green', class: 'success' }  
+                          primary: { label: 'app.label.blue', class: 'primary' } 
+                          default: { label: 'app.label.hope', class: 'default' } 
+            list:
+                title: easyAdmin.group.name.mm
+                fields: 
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'name', label: 'easyAdmin.groups.name' }
+                    - 
+                      property: 'roles' 
+                      label: 'easyAdmin.users.roles' 
+                      template: '@App/easy_admin/field_roles.html.twig'
+                      styles: "%roles.def%"
+                    - 
+                      property: 'style'
+                      label: 'easyAdmin.groups.style' 
+                      template: '@App/easy_admin/field_label.html.twig'
+                      styles: 
+                          nolabel: { label: 'app.label.nolabel' } 
+                          danger: { label: 'app.label.red', class: 'danger' } 
+                          warning: { label: 'app.label.yellow', class: 'warning' }  
+                          info: { label: 'app.label.info', class: 'info' } 
+                          success: { label: 'app.label.green', class: 'success' }  
+                          primary: { label: 'app.label.blue', class: 'primary' } 
+                          default: { label: 'app.label.hope', class: 'default' } 

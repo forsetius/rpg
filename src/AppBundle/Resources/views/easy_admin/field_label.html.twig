@@ -1,0 +1,6 @@
+{% set styles = field_options.styles|default(['default']) %}
+{% if value == 'nolabel' %}
+	{{ styles[value].label|trans }}
+{% else %}
+	<span class="label label-{{ styles[value].class }}">{{ styles[value].label|trans }}</span>
+{%  endif %}

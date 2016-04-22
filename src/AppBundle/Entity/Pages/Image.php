@@ -9,31 +9,12 @@ use Gedmo\Translatable\Translatable;
  * @ORM\Entity
  * @ORM\Table(name="pages_image")
  */
-class Image implements Translatable 
+class Image extends Page implements Translatable
 {
-     /**
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-    
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      */
     protected $filename;
-    
-    /**
-     * @Gedmo\Translatable
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $title;
-    
-    /**
-     * @Gedmo\Translatable
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $description;
     
     /**
      * @Gedmo\Translatable
@@ -75,54 +56,6 @@ class Image implements Translatable
     public function getFilename()
     {
         return $this->filename;
-    }
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Image
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Image
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
     }
 
     /**

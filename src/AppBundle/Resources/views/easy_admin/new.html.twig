@@ -1,0 +1,7 @@
+{% extends "EasyAdminBundle:default:new.html.twig" %}
+
+{% block content_title %}
+{% spaceless %}
+    {{ _entity_config.new.title is defined ? _entity_config.new.title|trans(_trans_parameters) : "easyAdmin.Group.title.new"|trans(_trans_parameters) }}
+{% endspaceless %}
+{% endblock %}
