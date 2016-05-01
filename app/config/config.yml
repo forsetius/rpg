@@ -19,7 +19,7 @@ framework:
         resource: "%kernel.root_dir%/config/routing.yml" # php"
         strict_requirements: ~
     form:            ~
-    csrf_protection: ~
+    csrf_protection: { enabled: true }
     validation:      { enable_annotations: true }
     #serializer:      { enable_annotations: true }
     templating:
@@ -40,6 +40,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form_themes:
+        - '@App/form/fields.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -82,6 +84,7 @@ stof_doctrine_extensions:
         default:
             sluggable:    true  
             translatable: true
+            timestampable: true
 
 # Swiftmailer Configuration
 swiftmailer:

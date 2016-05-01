@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Group extends BaseGroup
 {
+    const ENTITY_ACTIONS = ['list', 'show', 'add', 'edit', 'delete'];
     
     /**
      * @ORM\Id

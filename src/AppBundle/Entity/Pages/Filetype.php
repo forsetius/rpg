@@ -11,6 +11,8 @@ use Gedmo\Translatable\Translatable;
  */
 class Filetype implements Translatable
 {
+    const ENTITY_ACTIONS = ['list', 'show', 'add', 'edit', 'delete'];
+    
     /**
      * @ORM\Column(type="smallint")
      * @ORM\Id
@@ -33,6 +35,11 @@ class Filetype implements Translatable
      * @ORM\Column(type="string", length=30)
      */
     protected $contentType;
+    
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Get id

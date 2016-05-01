@@ -1,10 +1,40 @@
 parameters:
+    permission.set.own:
+            add: yes
+            edit: own
+            delete: own
+    permission.set.passive:
+            view: yes
+            list: yes
+            flag: yes
+    permissions:
+        # ROLE_?
+            # add|edit|show|list|delete|submit|publish|flag|comment : ~|own|no
+        ROLE_SUPER_ADMIN: [ User: all, Group: all ]
+        ROLE_ADMIN: [ Article: all, Attachment: all, Comment: all, Image: all, Filetype: all ]
+        ROLE_AUTHOR: 
+            Article: %permission.set.own%
+            Attachment: %permission.set.own%
+            Image: %permission.set.own%
+        ROLE_USER:
+            User: 
+                edit: own
+                softDelete: own
+            Article: { comment: yes }
+            Comment: %permission.set.own%
+        ANON:
+            Article: %permission.set.passive%
+            Comment: %permission.set.passive%
+            Attachment: %permission.set.passive%
+            Image: %permission.set.passive%
+            User: %permission.set.passive%
+            
     roles.def:
-        ROLE_SUPERADMIN: 'easyAdmin.users.role.superadmin' 
+        ROLE_SUPER_ADMIN: 'easyAdmin.users.role.superadmin' 
         ROLE_ADMIN: 'easyAdmin.users.role.admin' 
         ROLE_USER: 'easyAdmin.users.role.user' 
     roles.labels:
-        easyAdmin.users.role.superadmin: ROLE_SUPERADMIN
+        easyAdmin.users.role.superadmin: ROLE_SUPER_ADMIN
         easyAdmin.users.role.admin: ROLE_ADMIN
         easyAdmin.users.role.user: ROLE_USER
 
@@ -28,8 +58,8 @@ easy_admin:
         brand_color: '#faaf40'
         form_theme: ~
         assets:
-            css: []
-            js: []
+            css: ['bundles/osmadmin/css/custom.css', 'bundles/osmadmin/css/bootstrap-colorpicker.min.css']
+            js: ['bundles/osmadmin/js/bootstrap-colorpicker.min.js']
         menu: 
             - 
               label: easyAdmin.menu.div.pages 
@@ -46,7 +76,8 @@ easy_admin:
               children:
                     - { entity: 'User', icon: 'user', label: easyAdmin.user.name.mm }
                     - { entity: 'Group', icon: 'group', label: easyAdmin.group.name.mm }
-        templates: {}    
+        templates: 
+            layout: '@App/easy_admin/layout.html.twig'    
     entities:
         Article:
             class: AppBundle\Entity\Pages\Article
@@ -119,6 +150,11 @@ easy_admin:
         User:
             class: AppBundle\Entity\User\User
             label: easyAdmin.user.name.mp
+            form:
+                fields:
+                    - { property: 'username', label: 'easyAdmin.users.username', type: text }
+                    - { property: 'email', label: 'easyAdmin.users.email', type: email }
+                    - { property: 'locked', label: 'easyAdmin.users.locked', type: 'checkbox' }
             new:
                 title: easyAdmin.user.title.new
             edit:
@@ -206,3 +242,5 @@ easy_admin:
                           success: { label: 'app.label.green', class: 'success' }  
                           primary: { label: 'app.label.blue', class: 'primary' } 
                           default: { label: 'app.label.hope', class: 'default' } 
+
+                          

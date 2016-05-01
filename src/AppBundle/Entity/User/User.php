@@ -11,6 +11,14 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class User extends BaseUser
 {
+    const ENTITY_ACTIONS =  ['list', 'show', 'add', 'edit', 'adminEdit', 'softDelete', 'disable', 'flag', 'message'];
+    
+    public function __construct()
+    {
+        parent::__construct();
+        $this->roles = ['ROLE_USER'];
+    }
+    
     /**
      * @var int
      *
@@ -120,5 +128,4 @@ class User extends BaseUser
         return $this->id;
     }
 
-    
 }

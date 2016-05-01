@@ -1,5 +1,5 @@
 .role {text-transform: uppercase; font-size: 75%}
-.role-user_superadmin {color: red; font-weight:bold;}
+.role-user_super_admin {color: red; font-weight:bold;}
 .role-user_admin {color: blue; font-weight:bold;}
 .role-user_user {}
 

@@ -13,6 +13,8 @@ use \Doctrine\Common\Collections\ArrayCollection;
  */
 class Article extends Page implements Translatable
 {
+    const ENTITY_ACTIONS = ['list', 'show', 'add', 'edit', 'delete', 'flag', 'comment'];
+    
     /**
      * @Gedmo\Translatable
      * @ORM\Column(type="string", length=255, nullable=true)

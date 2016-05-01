@@ -11,6 +11,8 @@ use Gedmo\Translatable\Translatable;
  */
 class Image extends Page implements Translatable
 {
+    const ENTITY_ACTIONS = ['list', 'show', 'add', 'edit', 'delete', 'flag'];
+    
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      */
@@ -21,8 +23,11 @@ class Image extends Page implements Translatable
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $licence;
- 
     
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Get id

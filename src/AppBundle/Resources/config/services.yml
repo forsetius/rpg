@@ -2,3 +2,9 @@ services:
 #    osm_admin.example:
 #        class: Eg\OsmAdminBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
+
+    app.security.query.voter:
+        class:      AppBundle\Security\GetQueryAccessVoter
+        arguments:  [ "@request_stack" , "@service_container", "entity", "action" ]
+        tags:       [ { name: 'security.voter' } ]
+        public:     false
