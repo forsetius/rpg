@@ -89,6 +89,8 @@ abstract class Page implements Translatable
      * @ORM\Column(type="smallint")
      */
     protected $shown = 0;
+  
+    protected $author; //FIXME
     
     /**
      * Get id

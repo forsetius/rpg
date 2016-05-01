@@ -1,5 +1,5 @@
 <?php
-namespace AppBundle\Security;
+namespace Forseti\AdminBundle\Security;
 
 class AccessMap
 {

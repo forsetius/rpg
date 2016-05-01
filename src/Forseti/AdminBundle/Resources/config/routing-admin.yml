@@ -1,0 +1,3 @@
+admin:
+    resource: "@ForsetiAdminBundle/Controller/"
+    type:     annotation

@@ -1,0 +1,25 @@
+{
+	"name" : "Forseti/admin-bundle",
+	"type" : "symfony-bundle",
+	"description" : "User and Admin for Symfony applications",
+	"keywords" : [
+		"backend",
+		"admin",
+		"user"
+	],
+	"authors" : [{
+			"name" : "Marcin Forseti Paździora",
+			"email" : "forseti.pl@gmail.com",
+			"role" : "author",
+			"homepage" : "http://forseti.pl"
+		}
+	],
+	"require" : {
+		"php" : ">=5.6.0",
+		"friendsofsymfony/user-bundle" : "dev-master",
+		"symfony/translation" : "~3",
+		"stof/doctrine-extensions-bundle" : "~1.2",
+		"symfony/doctrine-bridge" : "~3.0",
+		"javiereguiluz/easyadmin-bundle" : "~1.12"
+	}
+}

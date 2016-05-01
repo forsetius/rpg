@@ -1,5 +1,5 @@
 <?php
-namespace AppBundle\Entity\User;
+namespace Forseti\AdminBundle\Entity;
 
 use FOS\UserBundle\Model\Group as BaseGroup;
 use Doctrine\ORM\Mapping as ORM;

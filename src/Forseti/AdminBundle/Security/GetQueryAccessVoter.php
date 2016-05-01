@@ -1,10 +1,9 @@
 <?php
-namespace AppBundle\Security;
+namespace Forseti\AdminBundle\Security;
 
 use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-use AppBundle\Security\AccessMap;
 use Symfony\Component\DependencyInjection\Container;
 
 /**
@@ -24,7 +23,8 @@ class GetQueryAccessVoter implements VoterInterface
         $this->requestStack = $request;
         $this->entityKey = $entity;
         $this->actionKey = $action;
-        $this->accessMap = new AccessMap($container->getParameter('permissions'), $container->getParameter('security.role_hierarchy'));
+        $this->accessMap = new AccessMap($container->getParameter('permissions'), $container->getParameter('role_hierarchy'));
+        
     }
 
     /**

@@ -10,3 +10,17 @@
     color: {{ colors.gray_light }};
     padding: 4px 8px;
 }
+
+.navbar-custom-menu .user-menu {
+	padding: 0; padding-right: 12px;
+}
+
+.navbar-custom-menu .user-menu A {
+	color: white; text-shadow: 0 0 1px #999;
+}
+
+.navbar-custom-menu .user-menu A:hover {
+	color: #666; text-shadow: 0 0 0;
+}
+
+.sol-selection-container {z-index: 5 !important;}

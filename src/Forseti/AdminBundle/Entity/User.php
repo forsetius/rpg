@@ -1,5 +1,5 @@
 <?php
-namespace AppBundle\Entity\User;
+namespace Forseti\AdminBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
@@ -17,6 +17,7 @@ class User extends BaseUser
     {
         parent::__construct();
         $this->roles = ['ROLE_USER'];
+        $this->credentialsExpired = true;
     }
     
     /**

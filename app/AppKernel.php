@@ -2,9 +2,6 @@
 
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Bridge\ProxyManager\LazyProxy\Instantiator\RuntimeInstantiator;
-use AppBundle\DependencyInjection\NestedParameterBag;
 
 class AppKernel extends Kernel
 {
@@ -22,8 +19,8 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new Forseti\AdminBundle\ForsetiAdminBundle(),
             new AppBundle\AppBundle(),
-            new Forseti\AdminBundle\AdminBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

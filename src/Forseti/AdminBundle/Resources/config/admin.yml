@@ -1,4 +1,7 @@
 parameters:
+    a.css: "bundles/forsetiadmin/css/"
+    a.img: "bundles/forsetiadmin/img/"
+    a.js: "bundles/forsetiadmin/js/"
     permission.set.own:
             add: yes
             edit: own
@@ -58,8 +61,8 @@ easy_admin:
         brand_color: '#faaf40'
         form_theme: ~
         assets:
-            css: ['bundles/osmadmin/css/custom.css', 'bundles/osmadmin/css/bootstrap-colorpicker.min.css']
-            js: ['bundles/osmadmin/js/bootstrap-colorpicker.min.js']
+            css: [%a.css%"own/custom.css", %a.css%"bootstrap-colorpicker.min.css"]
+            js: [%a.js%"bootstrap-colorpicker.min.js"]
         menu: 
             - 
               label: easyAdmin.menu.div.pages 
@@ -76,8 +79,11 @@ easy_admin:
               children:
                     - { entity: 'User', icon: 'user', label: easyAdmin.user.name.mm }
                     - { entity: 'Group', icon: 'group', label: easyAdmin.group.name.mm }
-        templates: 
-            layout: '@App/easy_admin/layout.html.twig'    
+        form_theme: '@ForsetiAdmin/form/bootstrap_3_horizontal_layout.html.twig'
+        templates:
+            layout: '@ForsetiAdmin/easy_admin/layout.html.twig'
+            menu: '@ForsetiAdmin/easy_admin/menu.html.twig'
+            list: '@ForsetiAdmin/easy_admin/list.html.twig' 
     entities:
         Article:
             class: AppBundle\Entity\Pages\Article
@@ -148,7 +154,7 @@ easy_admin:
                 title: easyAdmin.filetype.name.mm    
         
         User:
-            class: AppBundle\Entity\User\User
+            class: Forseti\AdminBundle\Entity\User
             label: easyAdmin.user.name.mp
             form:
                 fields:
@@ -168,7 +174,7 @@ easy_admin:
                     - { property: 'locked', label: 'easyAdmin.users.locked' }
                                   
         Group:
-            class: AppBundle\Entity\User\Group
+            class: Forseti\AdminBundle\Entity\Group
             label: easyAdmin.group.name.mp
             form:
                 fields:

@@ -1,4 +1,6 @@
 services:
-#    admin.example:
-#        class: Forseti\AdminBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+    admin.getquery_voter:
+        class:      Forseti\AdminBundle\Security\GetQueryAccessVoter
+        arguments:  [ "@request_stack" , "@service_container", "entity", "action" ]
+        tags:       [ { name: 'security.voter' } ]
+        public:     false

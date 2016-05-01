@@ -1,0 +1,10 @@
+imports:
+    - { resource: admin.yml }
+    - { resource: services.yml }
+        
+fos_user:
+    db_driver: orm
+    firewall_name:  main
+    user_class:    Forseti\AdminBundle\Entity\User
+    group:
+        group_class:   Forseti\AdminBundle\Entity\Group
