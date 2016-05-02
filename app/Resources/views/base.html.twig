@@ -14,6 +14,7 @@
     <link href='https://fonts.googleapis.com/css?family=Unica+One&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/css/bootstrap.min.css" >
     <link rel="stylesheet" href="/css/bootstrap-theme.css">
+    {% block stylesheets %}{% endblock %}
     <link id="theme" rel="stylesheet" type="text/css" href="/css/styles.css" title="theme" />
     <link rel="icon" type="image/x-icon" href="favicon.png" />
 
@@ -37,7 +38,6 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script>window.jQuery || document.write('<script src="/js/jquery-2.1.4.min.js"><\/script>')</script>
     <script src="/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug
-    <script src="./../assets/js/ie10-viewport-bug-workaround.js"></script> -->
+    {% block javascripts %}{% endblock %}
   </body>
 </html>

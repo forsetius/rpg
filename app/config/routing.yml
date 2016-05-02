@@ -10,6 +10,9 @@ admin:
     resource: "@ForsetiAdminBundle/Resources/config/routing-admin.yml"
     prefix: /admin
     
+user_login:
+    path:   /user/login
+    defaults:  { _controller: 'ForsetiAdminBundle:Security:login' }
 user:
     resource: "@ForsetiAdminBundle/Resources/config/routing-user.yml"
     prefix: /user

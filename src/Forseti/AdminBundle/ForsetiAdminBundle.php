@@ -2,8 +2,8 @@
 
 namespace Forseti\AdminBundle;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle;
 
-class ForsetiAdminBundle extends Bundle
+class ForsetiAdminBundle extends EasyAdminBundle
 {
 }

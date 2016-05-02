@@ -19,3 +19,6 @@ fos_user_change_password:
     
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+user_logout:
+    path: /logout

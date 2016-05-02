@@ -1,0 +1,70 @@
+easy_admin:
+    entities:
+        Article:
+            class: AppBundle\Entity\Pages\Article
+            label: easyAdmin.article.name.mp
+            form: 
+                fields:
+                    - { property: 'name', label: 'easyAdmin.pages.name' }
+                    - { property: 'title', label: 'easyAdmin.pages.title' }
+                    - { property: 'lead', label: 'easyAdmin.articles.lead', type: 'ckeditor' }
+                    - { property: 'content', label: 'easyAdmin.articles.content', type: 'ckeditor' }
+                    - { property: 'parent', label: 'easyAdmin.pages.parent' }
+                    - { property: 'pageOrder', label: 'easyAdmin.pages.page_order' }
+                    - { property: 'breadcrumbs', label: 'easyAdmin.pages.breadcrumbs' }
+                    - { property: 'template', label: 'easyAdmin.pages.template' }
+                    - { property: 'cssClass', label: 'easyAdmin.pages.css_class' }
+                    - { property: 'metaTitle', label: 'easyAdmin.pages.meta_title' }
+                    - { property: 'metaDesc', label: 'easyAdmin.pages.meta_desc', type: 'ckeditor' }
+                    - { property: 'metaKeywords', label: 'easyAdmin.pages.meta_keywords', type: 'ckeditor' }
+            new:
+                title: easyAdmin.article.title.new
+            edit:
+                title: easyAdmin.article.title.edit    
+            list:
+                title: easyAdmin.article.name.mm
+                fields: 
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'name', label: 'easyAdmin.pages.name' }
+                    - { property: 'title', label: 'easyAdmin.pages.title' }
+                    - { property: 'lead', label: 'easyAdmin.articles.lead' }
+                    - { property: 'content', label: 'easyAdmin.articles.content' }
+                    - { property: 'parent', label: 'easyAdmin.pages.parent' }
+                    - { property: 'pageOrder', label: 'easyAdmin.pages.page_order' }
+                    - { property: 'breadcrumbs', label: 'easyAdmin.pages.breadcrumbs' }
+                    - { property: 'template', label: 'easyAdmin.pages.template' }
+                    - { property: 'cssClass', label: 'easyAdmin.pages.css_class' }
+                
+        Attachment:
+            class: AppBundle\Entity\Pages\Attachment
+            label: easyAdmin.attachment.name.mp
+            form: {}
+            new:
+                title: easyAdmin.attachment.title.new
+            edit:
+                title: easyAdmin.attachment.title.edit    
+            list:
+                title: easyAdmin.attachment.name.mm
+        
+        Image:
+            class: AppBundle\Entity\Pages\Image
+            label: easyAdmin.image.name.mp
+            form: {}
+            new:
+                title: easyAdmin.image.title.new
+            edit:
+                title: easyAdmin.image.title.edit    
+            list:
+                title: easyAdmin.image.name.mm
+                
+        Filetype:
+            class: AppBundle\Entity\Pages\Filetype
+            label: easyAdmin.filetype.name.mp
+            form: {}
+            new:
+                title: easyAdmin.filetype.title.new
+            edit:
+                title: easyAdmin.filetype.title.edit    
+            list:
+                title: easyAdmin.filetype.name.mm    
+                              
