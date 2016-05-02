@@ -58,12 +58,12 @@ easy_admin:
                     - 
                       property: 'roles' 
                       label: 'easyAdmin.users.roles' 
-                      template: '@App/easy_admin/field_roles.html.twig'
+                      template: '@ForsetiAdmin/easy_admin/field_roles.html.twig'
                       styles: "%roles.def%"
                     - 
                       property: 'style'
                       label: 'easyAdmin.groups.style' 
-                      template: '@App/easy_admin/field_label.html.twig'
+                      template: '@ForsetiAdmin/easy_admin/field_label.html.twig'
                       styles: 
                           nolabel: { label: 'app.label.nolabel' } 
                           danger: { label: 'app.label.red', class: 'danger' } 
@@ -80,12 +80,12 @@ easy_admin:
                     - 
                       property: 'roles' 
                       label: 'easyAdmin.users.roles' 
-                      template: '@App/easy_admin/field_roles.html.twig'
+                      template: '@ForsetiAdmin/easy_admin/field_roles.html.twig'
                       styles: "%roles.def%"
                     - 
                       property: 'style'
                       label: 'easyAdmin.groups.style' 
-                      template: '@App/easy_admin/field_label.html.twig'
+                      template: '@ForsetiAdmin/easy_admin/field_label.html.twig'
                       styles: 
                           nolabel: { label: 'app.label.nolabel' } 
                           danger: { label: 'app.label.red', class: 'danger' } 

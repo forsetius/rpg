@@ -97,6 +97,6 @@ swiftmailer:
 assetic:
     debug: "%kernel.debug%"
     use_controller: "%kernel.debug%"
-    bundles: [ForsetiAdminBundle, AppBundle]
+    bundles: ~
     filters:
         cssrewrite: ~

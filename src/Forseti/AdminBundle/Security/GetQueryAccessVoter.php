@@ -35,7 +35,6 @@ class GetQueryAccessVoter implements VoterInterface
      */
     public function vote(TokenInterface $token, $object, array $attributes)
     {
-//         dump($this);dump($token);dump($object);dump($attributes);
         if ($this->request->attributes->get('_route') != 'admin')
             return VoterInterface::ACCESS_ABSTAIN;
         

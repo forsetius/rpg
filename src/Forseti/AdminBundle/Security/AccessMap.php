@@ -23,7 +23,7 @@ class AccessMap
         if ($this->hasKey([$entity['name'], $action], $this->map))
             return $this->map[$entity['name']][$action];
 
-        $roles = $this->expandRoles($roles);dump($roles);
+        $roles = $this->expandRoles($roles);
         foreach ($roles as $role) {
             if ($this->hasKey([$role, $entity['name']], $this->permissions)) {
                 if ($this->permissions[$role][$entity['name']] == 'all') {

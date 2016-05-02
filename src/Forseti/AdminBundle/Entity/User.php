@@ -11,7 +11,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class User extends BaseUser
 {
-    const ENTITY_ACTIONS =  ['list', 'show', 'add', 'edit', 'adminEdit', 'softDelete', 'disable', 'flag', 'message'];
+    const ENTITY_ACTIONS =  ['list', 'show', 'new', 'edit', 'adminEdit', 'softDelete', 'disable', 'flag', 'message'];
     
     public function __construct()
     {

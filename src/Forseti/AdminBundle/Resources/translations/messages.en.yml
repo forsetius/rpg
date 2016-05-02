@@ -47,6 +47,7 @@ easyAdmin.users.expires_at: Expires
 easyAdmin.users.roles: Roles
 easyAdmin.users.role.superadmin: Super admin
 easyAdmin.users.role.admin: Admin
+easyAdmin.users.role.author: Author
 easyAdmin.users.role.user: User
 
 easyAdmin.group.name.mp: Group
@@ -56,13 +57,6 @@ easyAdmin.group.title.new: Add new Group
 easyAdmin.groups.name: Name
 easyAdmin.groups.style: Style
 easyAdmin.groups.roles: Roles
-
-easyAdmin.ppzone.name.mp: Parking Zone
-easyAdmin.ppzone.name.mm: Parking Zones
-easyAdmin.ppzone.title.edit: Edit the Parking Zone
-easyAdmin.ppzone.title.new: Add new Parking Zone
-easyAdmin.ppzones.name: Name
-easyAdmin.ppzones.color: Color
 
 user.anon: "Not logged in"
 app.label.red: Red

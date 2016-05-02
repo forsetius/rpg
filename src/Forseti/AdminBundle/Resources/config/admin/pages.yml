@@ -9,6 +9,8 @@ easy_admin:
                     - { property: 'title', label: 'easyAdmin.pages.title' }
                     - { property: 'lead', label: 'easyAdmin.articles.lead', type: 'ckeditor' }
                     - { property: 'content', label: 'easyAdmin.articles.content', type: 'ckeditor' }
+                    - { property: 'images', label: 'easyAdmin.image.name.mm' }
+                    - { property: 'attachments', label: 'easyAdmin.attachment.name.mm' }
                     - { property: 'parent', label: 'easyAdmin.pages.parent' }
                     - { property: 'pageOrder', label: 'easyAdmin.pages.page_order' }
                     - { property: 'breadcrumbs', label: 'easyAdmin.pages.breadcrumbs' }
@@ -27,8 +29,8 @@ easy_admin:
                     - { property: 'id', label: 'ID' }
                     - { property: 'name', label: 'easyAdmin.pages.name' }
                     - { property: 'title', label: 'easyAdmin.pages.title' }
-                    - { property: 'lead', label: 'easyAdmin.articles.lead' }
-                    - { property: 'content', label: 'easyAdmin.articles.content' }
+#                    - { property: 'lead', label: 'easyAdmin.articles.lead' }
+#                    - { property: 'content', label: 'easyAdmin.articles.content' }
                     - { property: 'parent', label: 'easyAdmin.pages.parent' }
                     - { property: 'pageOrder', label: 'easyAdmin.pages.page_order' }
                     - { property: 'breadcrumbs', label: 'easyAdmin.pages.breadcrumbs' }

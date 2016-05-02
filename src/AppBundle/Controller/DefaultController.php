@@ -44,7 +44,6 @@ class DefaultController extends Controller
             )
         );
         $page = $this->getDoctrine()->getRepository('AppBundle:Pages\Article')->findOneByName('homepage');
-        \dump($page);
 //         $concrete = $this->getDoctrine()->getRepository('AppBundle:Pages\\'. $page->getConcreteType())->findOneByPage($page->getId());
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),

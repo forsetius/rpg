@@ -47,6 +47,7 @@ easyAdmin.users.expires_at: Wygasa
 easyAdmin.users.roles: Uprawnienia
 easyAdmin.users.role.superadmin: Główny admin
 easyAdmin.users.role.admin: Admin
+easyAdmin.users.role.author: Autor
 easyAdmin.users.role.user: Użytkownik
 
 easyAdmin.group.name.mp: Grupa

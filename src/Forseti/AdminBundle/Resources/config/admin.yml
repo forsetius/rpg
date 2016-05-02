@@ -19,10 +19,12 @@ parameters:
     roles.def:
         ROLE_SUPER_ADMIN: 'easyAdmin.users.role.superadmin' 
         ROLE_ADMIN: 'easyAdmin.users.role.admin' 
+        ROLE_AUTHOR: 'easyAdmin.users.role.author' 
         ROLE_USER: 'easyAdmin.users.role.user' 
     roles.labels:
         easyAdmin.users.role.superadmin: ROLE_SUPER_ADMIN
         easyAdmin.users.role.admin: ROLE_ADMIN
+        easyAdmin.users.role.author: ROLE_AUTHOR
         easyAdmin.users.role.user: ROLE_USER
 
 imports:
@@ -54,19 +56,19 @@ easy_admin:
         menu: 
             - 
               label: easyAdmin.menu.div.pages 
-              children:
-                    - { entity: 'Article', icon: 'file-text-o', label: easyAdmin.article.name.mm }
-                    - { entity: 'Attachment', icon: 'paperclip', label: easyAdmin.attachment.name.mm }
-                    - { entity: 'Image', icon: 'picture-o', label: easyAdmin.image.name.mm }
+#              children:
+            - { entity: 'Article', icon: 'file-text-o', label: easyAdmin.article.name.mm }
+            - { entity: 'Attachment', icon: 'paperclip', label: easyAdmin.attachment.name.mm }
+            - { entity: 'Image', icon: 'picture-o', label: easyAdmin.image.name.mm }
             - 
               label: easyAdmin.menu.div.dicts 
-              children:
-                    - { entity: 'Filetype', icon: 'file-code-o', label: easyAdmin.filetype.name.mm }
+#              children:
+            - { entity: 'Filetype', icon: 'file-code-o', label: easyAdmin.filetype.name.mm }
             - 
               label: easyAdmin.menu.div.users
-              children:
-                    - { entity: 'User', icon: 'user', label: easyAdmin.user.name.mm }
-                    - { entity: 'Group', icon: 'group', label: easyAdmin.group.name.mm }
+#              children:
+            - { entity: 'User', icon: 'user', label: easyAdmin.user.name.mm }
+            - { entity: 'Group', icon: 'group', label: easyAdmin.group.name.mm }
         form_theme: '@ForsetiAdmin/form/bootstrap_3_horizontal_layout.html.twig'
         templates:
             layout: '@ForsetiAdmin/easy_admin/layout.html.twig'

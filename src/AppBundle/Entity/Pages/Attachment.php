@@ -11,7 +11,7 @@ use Gedmo\Translatable\Translatable;
  */
 class Attachment extends Page implements Translatable
 {
-    const ENTITY_ACTIONS = ['list', 'show', 'add', 'edit', 'delete', 'flag'];
+    const ENTITY_ACTIONS = ['list', 'show', 'new', 'edit', 'delete', 'flag'];
     
     /**
      * @ORM\Column(type="string", length=255, unique=true)
