@@ -1,5 +1,5 @@
 <?php
-namespace Eg\OsmAdminBundle\Form\Type;
+namespace Forseti\AdminBundle\Form\Type;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 

@@ -41,7 +41,7 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     form_themes:
-        - '@App/form/fields.html.twig'
+        - '@ForsetiAdmin/form/fields.html.twig'
 
 # Doctrine Configuration
 doctrine:

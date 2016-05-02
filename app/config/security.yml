@@ -2,6 +2,8 @@
 # http://symfony.com/doc/current/book/security.html
 parameters:
     role_hierarchy:
+        ROLE_ANON:          ~
+        ROLE_USER:          ROLE_ANON
         ROLE_AUTHOR:        ROLE_USER
         ROLE_ADMIN:         ROLE_USER
         ROLE_SUPER_ADMIN:   ROLE_ADMIN
@@ -25,9 +27,9 @@ security:
             form-login:
                 provider:       fos_userbundle
                 csrf_token_generator:  security.csrf.token_manager 
-                login_path:     /login
+                login_path:     /user/login
                 use_forward:    false
-                check_path:     /login_check
+                check_path:     /user/login_check
                 failure_path:   null
             logout:       true
             anonymous:    true
@@ -36,8 +38,8 @@ security:
 
     access_control:
         # URL of FOSUserBundle which need to be available to anonymous users
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
 #        - { path: ^/user/new$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user/check-confirmation-email$, role: IS_AUTHENTICATED_ANONYMOUSLY }
 #        - { path: ^/user/confirm/, role: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -48,6 +50,6 @@ security:
         - { path: ^/user/reset-password/, role: IS_AUTHENTICATED_ANONYMOUSLY }
         
         # URL for EasyAdmin
-        - { path: ^/admin, roles: ['ROLE_ADMIN', 'ROLE_AUTHOR'] }
+#        - { path: ^/admin, roles: ['ROLE_ADMIN', 'ROLE_AUTHOR'] }
         
         

@@ -21,13 +21,10 @@ class AdminController extends BaseAdminController
      */
     public function indexAction(Request $request)
     {
-        $container = $this->container;
-        global $container;
+        if ($request->query->count() > 0) {
+            $entity = $request->query->get('entity');
+            $action = $request->query->get('action');
     
-        $entity = $request->query->get('entity');
-        $action = $request->query->get('action');
-    
-        if (! empty($entity)) {
             $this->denyAccessUnlessGranted($action, $entity);
             //             foreach (['Security'] as $concern)
                 //                 $this->${"do$entity$concern"}($request);

@@ -20,30 +20,33 @@ class AccessMap
     
     public function hasRights($roles, $entity, $action)
     {
-        if ($this->hasKey([$entity, $action], $this->map))
-            return $this->map[$entity][$action];
+        if ($this->hasKey([$entity['name'], $action], $this->map))
+            return $this->map[$entity['name']][$action];
 
-        $entityClass = "Eg\OsmAdminBundle\Entity\\$entity";
-        $roles = $this->expandRoles($roles);
+        $roles = $this->expandRoles($roles);dump($roles);
         foreach ($roles as $role) {
-            if ($this->permissions[$role][$entity] == 'all') {
-                $this->map[$entity] = \array_fill_keys($entityClass::ENTITY_ACTIONS, self::ACCESS_YES);
-                break;
-            } else {
-                $right = $this->hasKey([$role, $entity, $action], $this->permissions) ? $this->permissions[$role][$entity][$action] : '';
-                switch($right) {
-                    case 'yes':
-                        $this->map[$entity][$action] = self::ACCESS_YES; break 2;
-                    case 'own':
-                        $this->map[$entity][$action] = self::ACCESS_OWN; break;
-                    default:
-                        if ($this->map[$entity][$action] < $right) {
-                            $this->map[$entity][$action] = $right;
-                        }
+            if ($this->hasKey([$role, $entity['name']], $this->permissions)) {
+                if ($this->permissions[$role][$entity['name']] == 'all') {
+                    $this->map[$entity['name']] = \array_fill_keys($entity['class']::ENTITY_ACTIONS, self::ACCESS_YES);
+                    break;
+                } else {
+                    $right = \array_key_exists($action, $this->permissions) ? $this->permissions[$role][$entity['name']][$action] : self::ACCESS_NO;
+                    switch($right) {
+                        case 'yes':
+                            $this->map[$entity['name']][$action] = self::ACCESS_YES; break 2;
+                        case 'own':
+                            $this->map[$entity['name']][$action] = self::ACCESS_OWN; break;
+                        default:
+                            if ($this->map[$entity['name']][$action] < $right) {
+                                $this->map[$entity['name']][$action] = $right;
+                            }
+                    }
                 }
             }
         }
-        return $this->map[$entity][$action];
+        return ($this->hasKey([$entity['name'], $action], $this->map))
+                ? $this->map[$entity['name']][$action]
+                : self::ACCESS_NO;
     }
     
     /**
@@ -65,23 +68,23 @@ class AccessMap
     
     protected function expandRoles($roles)
     {
-        $result = [];
         foreach ($roles as $role) {
             $role = $role->getRole();
             if (\array_key_exists($role, $this->expandedRoles))
-                return $this->expandedRoles[$role];
+                continue;
             
-            $this->addParentRole($role, $result);
+            $this->addParentRole($role);
         }
-        return $this->expandedRoles[$role] = \array_keys($result);
+        
+        return \array_keys($this->expandedRoles);
     }
     
-    protected function addParentRole($role, &$result)
+    protected function addParentRole($role)
     {
-        $result[$role] = null;
+        $this->expandedRoles[$role] = null;
         if (\array_key_exists($role, $this->roleHierarchy)) {
             foreach ((array) $this->roleHierarchy[$role] as $r) {
-                $this->addParentRole($this->roleHierarchy[$r], $result);
+                $this->addParentRole($r);
             }
         }
     }

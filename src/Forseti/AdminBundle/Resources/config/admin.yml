@@ -6,31 +6,15 @@ parameters:
             add: yes
             edit: own
             delete: own
-    permission.set.passive:
-            view: yes
-            list: yes
-            flag: yes
     permissions:
         # ROLE_?
             # add|edit|show|list|delete|submit|publish|flag|comment : ~|own|no
-        ROLE_SUPER_ADMIN: [ User: all, Group: all ]
-        ROLE_ADMIN: [ Article: all, Attachment: all, Comment: all, Image: all, Filetype: all ]
+        ROLE_SUPER_ADMIN: { User: all, Group: all }
+        ROLE_ADMIN: { Article: all, Attachment: all, Comment: all, Image: all, Filetype: all }
         ROLE_AUTHOR: 
             Article: %permission.set.own%
             Attachment: %permission.set.own%
             Image: %permission.set.own%
-        ROLE_USER:
-            User: 
-                edit: own
-                softDelete: own
-            Article: { comment: yes }
-            Comment: %permission.set.own%
-        ANON:
-            Article: %permission.set.passive%
-            Comment: %permission.set.passive%
-            Attachment: %permission.set.passive%
-            Image: %permission.set.passive%
-            User: %permission.set.passive%
             
     roles.def:
         ROLE_SUPER_ADMIN: 'easyAdmin.users.role.superadmin' 

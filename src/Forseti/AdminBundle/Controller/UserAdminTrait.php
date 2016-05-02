@@ -10,7 +10,6 @@ trait UserAdminTrait {
     
     protected function createNewUserEntity()
     {
-        //echo '<pre>';echo \get_class($this->get('fos_user.user_manager'));echo '</pre>';
         return $this->get('fos_user.user_manager')->createUser()->setPlainPassword($this->config['entities']['User']['initialPassword']);
     }
 
