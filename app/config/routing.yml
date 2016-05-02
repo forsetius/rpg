@@ -12,3 +12,4 @@ admin:
     
 user:
     resource: "@ForsetiAdminBundle/Resources/config/routing-user.yml"
+    prefix: /user
