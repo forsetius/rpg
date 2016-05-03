@@ -12,14 +12,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class User extends BaseUser
 {
     const ENTITY_ACTIONS =  ['list', 'show', 'new', 'edit', 'adminEdit', 'softDelete', 'disable', 'flag', 'message'];
-    
-    public function __construct()
-    {
-        parent::__construct();
-        $this->roles = ['ROLE_USER'];
-        $this->credentialsExpired = true;
-    }
-    
+
+
     /**
      * @var int
      *
@@ -30,21 +24,15 @@ class User extends BaseUser
      */
     protected $id;
     
-    
-    public function getExpiresAt()
-    {
-        return $this->expiresAt;
-    }
-    
     /**
-     * Get credentials_expire_at
-     *
-     * @return \DateTime
+     * @ORM\ManyToMany(targetEntity="Forseti\AdminBundle\Entity\Group")
+     * @ORM\JoinTable(name="user_group_join",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
+     * )
      */
-    public function getCredentialsExpireAt()
-    {
-        return $this->credentialsExpireAt;
-    }
+    protected $groups;
+    
     /**
      * @var \DateTime
      *
@@ -63,6 +51,40 @@ class User extends BaseUser
      */
     protected $createdAt;
     
+    public function __construct()
+    {
+        parent::__construct();
+        $this->roles = ['ROLE_USER'];
+//         $this->credentialsExpired = true;
+        $this->enabled = true;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer $id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+    
+    
+    public function getExpiresAt()
+    {
+        return $this->expiresAt;
+    }
+    
+    /**
+     * Get credentials_expire_at
+     *
+     * @return \DateTime
+     */
+    public function getCredentialsExpireAt()
+    {
+        return $this->credentialsExpireAt;
+    }
+
     /**
      * Set updatedAt
      *
@@ -119,14 +141,4 @@ class User extends BaseUser
     
         return $this;
     }
-    /**
-     * Get id
-     *
-     * @return integer $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
 }

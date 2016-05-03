@@ -1,6 +1,27 @@
-{% set styles = field_options.styles|default(['default']) %}
-{% if value == 'nolabel' %}
-	{{ styles[value].label|trans }}
+{# a *-to-many collection of values #}
+{% if value is iterable %}
+    {% for item in value %}
+        {% if link_parameters is defined -%}
+            {% set primary_key_value = attribute(item, link_parameters.primary_key_name) %}
+            <a href="{{ path('easyadmin', link_parameters|merge({ id: primary_key_value, referer: '' })) }}">
+                {% if value == 'nolabel' %}
+                	{{ item.name|trans }}
+                {% else %}
+                	<span class="label label-{{ item.style }}">{{ item.name }}</span>
+                {%  endif %}
+            </a>
+        {%- else %}
+            {% if value == 'nolabel' %}
+            	{{ item.name|trans }}
+            {% else %}
+            	<span class="label label-{{ item.style }}">{{ item.name }}</span>
+            {%  endif %}
+        {% endif %}
+    {% endfor %}
+    
+{# a simple *-to-one value associated with an entity managed by this backend #}
+{% elseif link_parameters is defined %}
+    <a href="{{ path('easyadmin', link_parameters|merge({ referer: '' })) }}"><span class="label label-{{ value }}">{{ ["app.label.",value]|join|trim|trans }}</span></a>
 {% else %}
-	<span class="label label-{{ styles[value].class }}">{{ styles[value].label|trans }}</span>
-{%  endif %}
+    <span class="label label-{{ value }}">{{ ["app.label.",value]|join|trim|trans }}</span>
+{% endif %}

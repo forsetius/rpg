@@ -3,8 +3,8 @@
 {% block user_menu %}
     <span class="sr-only">{{ 'user.logged_in_as'|trans(domain = 'EasyAdminBundle') }}</span>
     {% if app.user %}
-        <a href="../user/logout"><i class="hidden-xs fa fa-user"></i>{{ app.user.username|default('user.unnamed'|trans(domain = 'EasyAdminBundle')) }}</a>
+        <a href="../user/logout" title="Logout"><i class="hidden-xs fa fa-user"></i> {{ app.user.username|default('user.unnamed'|trans(domain = 'EasyAdminBundle')) }}</a>
     {% else %}
-        <a href="../user/login"><i class="hidden-xs fa fa-user"></i>{{ 'user.anonymous'|trans(domain = 'EasyAdminBundle') }}</a>
+        <a href="../user/login" title="Login"><i class="hidden-xs fa fa-user"></i> {{ 'user.anonymous'|trans(domain = 'EasyAdminBundle') }}</a>
     {% endif %}
 {% endblock user_menu %}

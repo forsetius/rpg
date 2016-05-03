@@ -90,7 +90,7 @@ abstract class Page implements Translatable
      */
     protected $shown = 0;
   
-    protected $author; //FIXME
+    protected $addedBy; //FIXME
     
     /**
      * Get id
@@ -412,5 +412,10 @@ abstract class Page implements Translatable
     public function getShown()
     {
         return $this->shown;
+    }
+    
+    public function __toString()
+    {
+        return (string) $this->getName();
     }
 }

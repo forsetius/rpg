@@ -14,13 +14,13 @@
     <!-- Intro -->
     <div id="titleBar" class="row">
         <div class="col-sm-6"><h1>{{ page.title }}</h1></div>
-        <div class="col-sm-6"><h2>{{ concrete.lead }}</h2></div>
+        <div class="col-sm-6"><h2>{{ page.lead }}</h2></div>
     </div>
 
     <!-- Blurb -->
     <div id="introBar" class="row">
-        <div class="col-md-8" style="border-right: 1px solid #eee">{{ concrete.content|raw }}</div>
-        <div class="col-md-4">{# TODO nowości #}</div>
+        <div class="col-md-8" style="border-right: 1px solid #eee">{{ page.content|raw }}</div>
+        <div class="col-md-4">{# TODO dymek z bootstrap-milestones #}</div>
     </div>
 
     <!-- Sekcje -->

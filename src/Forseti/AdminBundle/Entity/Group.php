@@ -63,4 +63,9 @@ class Group extends BaseGroup
     {
         parent::__construct('');
     }
+    
+    public function __toString()
+    {
+        return (string) $this->getName();
+    }
 }
