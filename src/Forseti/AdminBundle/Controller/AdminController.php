@@ -21,17 +21,14 @@ class AdminController extends BaseAdminController
      */
     public function indexAction(Request $request)
     {
-//         dump($this->container->getParameter('easyadmin.config')['design']['menu']);die;
-         $this->get('twig')->addGlobal('_menu', $this->getMenuRights($this->container->getParameter('easyadmin.config')['design']['menu']));
-        
-        if ($request->query->count() > 0) {
-            $entity = $request->query->get('entity');
-            $action = $request->query->get('action');
+        foreach (['site_icon'] as $twigGlobal)
+            $this->container->get('twig')->addGlobal("_$twigGlobal", $this->container->getParameter($twigGlobal));
+
+        $r = $request->query;
+        $entity = (count($r)>0) ? $r->get('entity') : $this->container->getParameter('startingPage');
+        $action = (count($r)>0) ? $r->get('action') : 'list';
     
-            $this->denyAccessUnlessGranted($action, $entity);
-            //             foreach (['Security'] as $concern)
-                //                 $this->${"do$entity$concern"}($request);
-        }
+        $this->denyAccessUnlessGranted($action, $entity);
     
         return parent::indexAction($request);
     }
