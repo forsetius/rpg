@@ -64,12 +64,12 @@ easy_admin:
                       type_options: 
                           choices: 
                               app.label.nolabel: nolabel
-                              app.label.red: danger
-                              app.label.yellow: warning 
+                              app.label.danger: danger
+                              app.label.warning: warning 
                               app.label.info: info 
-                              app.label.green: success 
-                              app.label.blue: primary
-                              app.label.hope: default
+                              app.label.success: success 
+                              app.label.primary: primary
+                              app.label.default: default
             new:
                 title: easyAdmin.group.title.new
             edit:

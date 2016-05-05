@@ -2,7 +2,7 @@ parameters:
     a.css: "bundles/forsetiadmin/css/"
     a.img: "bundles/forsetiadmin/img/"
     a.js: "bundles/forsetiadmin/js/"
-    startingPage: ParkingZone
+    startingPage: Article
     site_icon: '/img/admin_logo.png'
     
     permission.set.own:
@@ -51,8 +51,7 @@ easy_admin:
     design:
         theme: default
         color_scheme: dark
-        brand_color: '#37386b'
-        form_theme: ~
+        brand_color: '#0A7840'
         assets:
             css: ['%a.css%custom.css', '%a.css%bootstrap-colorpicker.min.css', '%a.css%searchableOptionList.css', '%a.css%bootstrap-datetimepicker.min.css']
             js: ['%a.js%bootstrap-colorpicker.min.js', '%a.js%sol-2.0.0.js', '%a.js%moment-with-locales.min.js', '%a.js%bootstrap-datetimepicker.min.js']
@@ -73,7 +72,7 @@ easy_admin:
 #              children:
             - { entity: 'User', icon: 'user', label: easyAdmin.user.name.mm }
             - { entity: 'Group', icon: 'group', label: easyAdmin.group.name.mm }
-        form_theme: '@ForsetiAdmin/form/bootstrap_3_horizontal_layout.html.twig'
+        form_theme: '@ForsetiAdmin/form/bootstrap_3_layout.html.twig'
         templates:
             layout: '@ForsetiAdmin/easy_admin/layout.html.twig'
             menu: '@ForsetiAdmin/easy_admin/menu.html.twig'

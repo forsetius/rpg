@@ -58,11 +58,32 @@ easyAdmin.groups.name: Nazwa
 easyAdmin.groups.style: Styl
 easyAdmin.groups.roles: Uprawnienia
 
-user.anon: Niezalogowany
-app.label.red: Czerwony
-app.label.yellow: Żółty 
+toggle_navigation: Przełącz nawigację
+user.unnamed: Niezalogowany
+app.label.danger: Czerwony
+app.label.warning: Żółty 
 app.label.info: Błękitny 
-app.label.green: Zielony 
-app.label.blue: Niebieski
-app.label.hope: Szary
+app.label.success: Zielony 
+app.label.primary: Niebieski
+app.label.default: Szary
 app.label.nolabel: Biały
+
+easyAdmin.sol.text.noItemsAvailable: Brak pozycji do wyświetlenia
+easyAdmin.sol.text.selectAll: Zaznacz wszystko
+easyAdmin.sol.text.selectNone: Odznacz wszystko
+easyAdmin.sol.text.quickDelete: x
+easyAdmin.sol.text.searchplaceholder: Szukaj...
+easyAdmin.datetimepicker2.text.today: Dzisiaj
+easyAdmin.datetimepicker2.text.clear: Wyczyść
+easyAdmin.datetimepicker2.text.close: Zamknij
+easyAdmin.datetimepicker2.text.selectMonth: Wybierz
+easyAdmin.datetimepicker2.text.prevMonth: Poprzedni
+easyAdmin.datetimepicker2.text.nextMonth: Następny
+easyAdmin.datetimepicker2.text.selectYear: Wybierz
+easyAdmin.datetimepicker2.text.prevYear: Poprzedni
+easyAdmin.datetimepicker2.text.nextYear: Następny
+easyAdmin.datetimepicker2.text.selectDecade: Wybierz
+easyAdmin.datetimepicker2.text.prevDecade: Poprzednia
+easyAdmin.datetimepicker2.text.nextDecade: Następna
+easyAdmin.datetimepicker2.text.prevCentury: Poprzednie
+easyAdmin.datetimepicker2.text.nextCentury: Następne

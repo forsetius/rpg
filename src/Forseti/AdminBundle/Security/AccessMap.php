@@ -20,6 +20,7 @@ class AccessMap
     
     public function hasRights($roles, $entity, $action)
     {
+        \dump($entity);\dump($action);
         if ($this->hasKey([$entity['name'], $action], $this->map))
             return $this->map[$entity['name']][$action];
 

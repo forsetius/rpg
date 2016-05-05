@@ -36,11 +36,6 @@ class Filetype implements Translatable
      */
     protected $contentType;
     
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     /**
      * Get id
      *

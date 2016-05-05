@@ -24,11 +24,6 @@ class Image extends Page implements Translatable
      */
     protected $licence;
     
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     /**
      * Get id
      *
