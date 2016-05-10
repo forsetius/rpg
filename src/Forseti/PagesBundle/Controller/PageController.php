@@ -1,13 +1,11 @@
 <?php
-
-namespace AppBundle\Controller;
+namespace Forseti\PagesBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Entity\Pages\Page;
 
-class DefaultController extends Controller
+class PageController extends Controller
 {
     
     /**
@@ -15,7 +13,6 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
         $vars = array(
             'mainSlides'=>array(
                 array('src'=>'/img/slide1.jpg','alt'=>'slide1','title'=>'Eclipse Phase','text'=>'Akcja Eclipse Phase rozgrywa się za jakieś 120 lat, po wojnie, która zgładziła ponad 95% ludzkości. Ziemia leży w ruinie, większość cudów cywilizacji została zniszczona, państwa upadły. Niedobitki ludzi rozproszyły się po całym Układzie Słonecznym, a nawet poza niego. '),
@@ -43,12 +40,10 @@ class DefaultController extends Controller
                 )),
             )
         );
-        $page = $this->getDoctrine()->getRepository('AppBundle:Pages\Article')->findOneByName('homepage');
-//         $concrete = $this->getDoctrine()->getRepository('AppBundle:Pages\\'. $page->getConcreteType())->findOneByPage($page->getId());
-        return $this->render('default/index.html.twig', [
+        $page = $this->getDoctrine()->getRepository('Forseti\PagesBundle\Entity\Article')->findOneByName('homepage');
+        return $this->render($page->template .'.html.twig', [
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
             'page' => $page,
-//             'concrete'=>$concrete,
             'subs'=>$vars['subs'],
             'news' => [],
             'slides' => $vars['mainSlides'],
@@ -56,11 +51,11 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/{slug}/{locale}", name="show_page", )
+     * @Route("/{slug}/{locale}", name="show_page")
      */
     public function showAction(Request $request, $slug, $locale)
     {
-        $page = $this->getDoctrine()->getRepository('AppBundle:Pages\Page')->findOneByName($slug);
+        $page = $this->getDoctrine()->getRepository('Forseti\PagesBundle\Entity\Article')->findOneByName($slug);
         $page->setLocale($locale);
         
         return $this->render('default'. $page->template .'.html.twig', [$page]);

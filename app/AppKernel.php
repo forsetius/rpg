@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Forseti\AdminBundle\ForsetiAdminBundle(),
             new AppBundle\AppBundle(),
+            new Forseti\PagesBundle\ForsetiPagesBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

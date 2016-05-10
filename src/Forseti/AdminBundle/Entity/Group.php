@@ -3,10 +3,11 @@ namespace Forseti\AdminBundle\Entity;
 
 use FOS\UserBundle\Model\Group as BaseGroup;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="user_group")
+ * @ORM\Table(name="user_groups")
  */
 class Group extends BaseGroup
 {
@@ -20,20 +21,27 @@ class Group extends BaseGroup
     protected $id;
     
     /**
-     * Get id
-     *
-     * @return integer $id
+     * @ORM\ManyToMany(targetEntity="Forseti\AdminBundle\Entity\User", mappedBy="groups")
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    protected $users;
     
     /**
      *
      * @ORM\Column(name="style", type="string", length=255)
      */
     protected $style;
+    
+    public function __construct()
+    {
+        parent::__construct('');
+        $this->users = new ArrayCollection();
+        
+    }
+    
+    public function __toString()
+    {
+        return (string) $this->getName();
+    }
 
     /**
      * Set style
@@ -58,14 +66,38 @@ class Group extends BaseGroup
     {
         return $this->style;
     }
-    
-    public function __construct()
+
+    /**
+     * Add user
+     *
+     * @param \Forseti\AdminBundle\Entity\User $user
+     *
+     * @return Group
+     */
+    public function addUser(\Forseti\AdminBundle\Entity\User $user)
     {
-        parent::__construct('');
+        $this->users[] = $user;
+
+        return $this;
     }
-    
-    public function __toString()
+
+    /**
+     * Remove user
+     *
+     * @param \Forseti\AdminBundle\Entity\User $user
+     */
+    public function removeUser(\Forseti\AdminBundle\Entity\User $user)
     {
-        return (string) $this->getName();
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }

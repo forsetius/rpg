@@ -1,0 +1,8 @@
+{% set entity = app.request.attributes.get('easyadmin').entity.name %}
+{%  if _rights[entity].show > 0 %}
+    {% set srv = app.request.server %}
+    
+    <a href="{{ srv.get('PHP_SELF') }}?action=show&entity={{ entity }}&id={{ item.id }}">
+{{ value|easyadmin_truncate }}
+    </span></a>
+{% else %}{{ value|easyadmin_truncate }}{% endif %}

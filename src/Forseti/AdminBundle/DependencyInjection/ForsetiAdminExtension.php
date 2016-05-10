@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\DependencyInjection;
+namespace Forseti\AdminBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class AppExtension extends Extension
+class ForsetiAdminExtension extends Extension
 {
     /**
      * {@inheritdoc}
@@ -23,7 +23,6 @@ class AppExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-//         $loader->load('services.yml');
-//         $loader->load('parameters.yml');
+//         $loader->load('config.yml');
     }
 }

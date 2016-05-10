@@ -117,33 +117,33 @@
         },
         {
             "name": "doctrine/cache",
-            "version": "v1.5.4",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/cache.git",
-                "reference": "47cdc76ceb95cc591d9c79a36dc3794975b5d136"
+                "reference": "f8af318d14bdb0eff0336795b428b547bd39ccb6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/47cdc76ceb95cc591d9c79a36dc3794975b5d136",
-                "reference": "47cdc76ceb95cc591d9c79a36dc3794975b5d136",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/f8af318d14bdb0eff0336795b428b547bd39ccb6",
+                "reference": "f8af318d14bdb0eff0336795b428b547bd39ccb6",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.2"
+                "php": "~5.5|~7.0"
             },
             "conflict": {
                 "doctrine/common": ">2.2,<2.4"
             },
             "require-dev": {
-                "phpunit/phpunit": ">=3.7",
+                "phpunit/phpunit": "~4.8|~5.0",
                 "predis/predis": "~1.0",
                 "satooshi/php-coveralls": "~0.6"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5.x-dev"
+                    "dev-master": "1.6.x-dev"
                 }
             },
             "autoload": {
@@ -183,7 +183,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2015-12-19 05:03:47"
+            "time": "2015-12-31 16:37:02"
         },
         {
             "name": "doctrine/collections",
@@ -930,12 +930,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "def27463609e24af410b2606f0062de46fab5662"
+                "reference": "c85b5d9e48c0f2918ac6161e268d6f981a24c875"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/def27463609e24af410b2606f0062de46fab5662",
-                "reference": "def27463609e24af410b2606f0062de46fab5662",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/c85b5d9e48c0f2918ac6161e268d6f981a24c875",
+                "reference": "c85b5d9e48c0f2918ac6161e268d6f981a24c875",
                 "shasum": ""
             },
             "require": {
@@ -991,7 +991,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2016-04-28 10:51:07"
+            "time": "2016-05-10 08:29:38"
         },
         {
             "name": "gedmo/doctrine-extensions",
@@ -1129,16 +1129,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/javiereguiluz/EasyAdminBundle.git",
-                "reference": "e0b59658bc3d920a71f46cc9aa8d69ffdc196b65"
+                "reference": "85b63a2c8467a4eb367f8fd20eb3491719ab9620"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/javiereguiluz/EasyAdminBundle/zipball/e0b59658bc3d920a71f46cc9aa8d69ffdc196b65",
-                "reference": "e0b59658bc3d920a71f46cc9aa8d69ffdc196b65",
+                "url": "https://api.github.com/repos/javiereguiluz/EasyAdminBundle/zipball/85b63a2c8467a4eb367f8fd20eb3491719ab9620",
+                "reference": "85b63a2c8467a4eb367f8fd20eb3491719ab9620",
                 "shasum": ""
             },
             "require": {
-                "doctrine/cache": "1.5.x",
+                "doctrine/cache": "~1.5",
                 "doctrine/common": "^2.4.0",
                 "doctrine/doctrine-bundle": "~1.2",
                 "doctrine/orm": "~2.3",
@@ -1204,7 +1204,7 @@
                 "backend",
                 "generator"
             ],
-            "time": "2016-05-03 19:54:59"
+            "time": "2016-05-08 15:00:50"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -2309,16 +2309,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v3.0.5",
+            "version": "v3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "10c83b58fbb42be516377de54962a758695ad964"
+                "reference": "a821ed51b87f5ceda834140e5f0c06e9547a86d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/10c83b58fbb42be516377de54962a758695ad964",
-                "reference": "10c83b58fbb42be516377de54962a758695ad964",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/a821ed51b87f5ceda834140e5f0c06e9547a86d4",
+                "reference": "a821ed51b87f5ceda834140e5f0c06e9547a86d4",
                 "shasum": ""
             },
             "require": {
@@ -2435,7 +2435,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-05-03 05:58:56"
+            "time": "2016-05-09 22:13:31"
         },
         {
             "name": "twig/extensions",
@@ -2606,7 +2606,7 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v2.8.5",
+            "version": "v2.8.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",

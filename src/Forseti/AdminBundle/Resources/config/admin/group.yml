@@ -1,48 +1,5 @@
 easy_admin:
     entities:
-        User:
-            class: Forseti\AdminBundle\Entity\User
-            label: easyAdmin.user.name.mp
-            initialPassword: password
-            form:
-                fields:
-                    - { property: 'username', label: 'easyAdmin.users.username', type: text }
-                    - { property: 'email', label: 'easyAdmin.users.email', type: email }
-                    - 
-                      property: 'groups'
-                      label: 'easyAdmin.group.name.mm'
-                      type: entity
-                      type_options: 
-                          expanded: false
-                          multiple: true
-                          class: Forseti\AdminBundle\Entity\Group
-                    - { property: 'locked', label: 'easyAdmin.users.locked', type: 'checkbox' }
-            new:
-                title: easyAdmin.user.title.new
-            edit:
-                title: easyAdmin.user.title.edit   
-            show:
-                title: easyAdmin.user.name.mp
-                fields:
-                    - { property: 'username', label: 'easyAdmin.users.username' }
-                    - { property: 'email', label: 'easyAdmin.users.email' }
-                    - 
-                      property: 'groups'
-                      label: 'easyAdmin.group.name.mm' 
-                      template: '@ForsetiAdmin/easy_admin/field_label.html.twig'
-                    - { property: 'locked', label: 'easyAdmin.users.locked' }
-                    - { property: 'expires_at', label: 'easyAdmin.users.expires_at' }
-            list:
-                title: easyAdmin.user.name.mm
-                fields:
-                    - { property: 'username', label: 'easyAdmin.users.username' }
-                    - { property: 'email', label: 'easyAdmin.users.email', type: email }
-                    - 
-                      property: 'groups'
-                      label: 'easyAdmin.group.name.mm' 
-                      template: '@ForsetiAdmin/easy_admin/field_label.html.twig'
-                    - { property: 'locked', label: 'easyAdmin.users.locked', type: toggle }
-
         Group:
             class: Forseti\AdminBundle\Entity\Group
             label: easyAdmin.group.name.mp
@@ -117,6 +74,4 @@ easy_admin:
                           info: { label: 'app.label.info', class: 'info' } 
                           success: { label: 'app.label.green', class: 'success' }  
                           primary: { label: 'app.label.blue', class: 'primary' } 
-                          default: { label: 'app.label.hope', class: 'default' } 
-
-    
+                          default: { label: 'app.label.hope', class: 'default' }

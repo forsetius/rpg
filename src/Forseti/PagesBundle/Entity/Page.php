@@ -1,5 +1,5 @@
 <?php
-namespace AppBundle\Entity\Pages;
+namespace Forseti\PagesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -8,6 +8,8 @@ use Gedmo\Translatable\Translatable;
 /** @ORM\MappedSuperclass */
 abstract class Page implements Translatable
 {
+    const ENTITY_ACTIONS = ['list', 'show', 'new', 'edit', 'delete', 'flag'];
+    
     const SHOW_PAGE = 1;
     const SHOW_SECTION = 2;
     const SHOW_CHAPTER = 4;
@@ -22,7 +24,7 @@ abstract class Page implements Translatable
     
     /**
      * TODO custom transliterator
-     * TODO translated
+     * @Gedmo\Translatable
      * @Gedmo\Slug(fields={"title"})
      * @ORM\Column(type="string", length=50, unique=true)
      */
@@ -40,13 +42,6 @@ abstract class Page implements Translatable
      */
     protected $content;
     
-    /**
-     * @ORM\ManyToOne(targetEntity="Page", inversedBy="children")
-     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    protected $parent;
-       
     /**
      * @ORM\Column(type="smallint")
      */
@@ -90,7 +85,11 @@ abstract class Page implements Translatable
      */
     protected $shown = 0;
   
-    protected $addedBy; //FIXME
+    /**
+     *
+     * @var unknown
+     */
+    protected $author; //FIXME
     
     /**
      * Get id
@@ -172,54 +171,6 @@ abstract class Page implements Translatable
     public function getContent()
     {
         return $this->content;
-    }
-
-    /**
-     * Set parent
-     *
-     * @param integer $parent
-     *
-     * @return Page
-     */
-    public function setParent($parent)
-    {
-        $this->parent = $parent;
-
-        return $this;
-    }
-
-    /**
-     * Get parent
-     *
-     * @return integer
-     */
-    public function getParent()
-    {
-        return $this->parent;
-    }
-
-    /**
-     * Set level
-     *
-     * @param integer $level
-     *
-     * @return Page
-     */
-    public function setLevel($level)
-    {
-        $this->level = $level;
-
-        return $this;
-    }
-
-    /**
-     * Get level
-     *
-     * @return integer
-     */
-    public function getLevel()
-    {
-        return $this->level;
     }
 
     /**

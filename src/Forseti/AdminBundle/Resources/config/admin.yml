@@ -10,8 +10,6 @@ parameters:
             edit: own
             delete: own
     permissions:
-        # ROLE_?
-            # add|edit|show|list|delete|submit|publish|flag|comment : ~|own|no
         ROLE_SUPER_ADMIN: { User: all, Group: all }
         ROLE_ADMIN: { Article: all, Attachment: all, Comment: all, Image: all, Filetype: all }
         ROLE_AUTHOR: 
@@ -31,8 +29,8 @@ parameters:
         easyAdmin.users.role.user: ROLE_USER
 
 imports:
-    - { resource: admin/pages.yml }
-    - { resource: admin/users.yml }
+    - { resource: admin/group.yml }
+    - { resource: admin/user.yml }
     
 easy_admin:
     site_name: "<b>Abstract worlds</b> Admin"
@@ -58,18 +56,15 @@ easy_admin:
         menu: 
             - 
               label: easyAdmin.menu.div.pages 
-              children:
-                - { entity: 'Article', icon: 'file-text-o', label: easyAdmin.article.name.mm, default: true }
-                - { entity: 'Attachment', icon: 'paperclip', label: easyAdmin.attachment.name.mm }
-                - { entity: 'Image', icon: 'picture-o', label: easyAdmin.image.name.mm }
+            - { entity: 'Article', icon: 'file-text-o', label: easyAdmin.article.name.mm, default: true }
+            - { entity: 'Attachment', icon: 'paperclip', label: easyAdmin.attachment.name.mm }
+            - { entity: 'Image', icon: 'picture-o', label: easyAdmin.image.name.mm }
             - 
               label: easyAdmin.menu.div.dicts 
-#              children:
             - { entity: 'Filetype', icon: 'file-code-o', label: easyAdmin.filetype.name.mm }
-            - { label: link, url: 'http://forseti.pl' }
+            - { entity: 'Licence', icon: 'file-code-o', label: easyAdmin.licence.name.mm }
             - 
               label: easyAdmin.menu.div.users
-#              children:
             - { entity: 'User', icon: 'user', label: easyAdmin.user.name.mm }
             - { entity: 'Group', icon: 'group', label: easyAdmin.group.name.mm }
         form_theme: '@ForsetiAdmin/form/bootstrap_3_layout.html.twig'
@@ -77,4 +72,3 @@ easy_admin:
             layout: '@ForsetiAdmin/easy_admin/layout.html.twig'
             menu: '@ForsetiAdmin/easy_admin/menu.html.twig'
             list: '@ForsetiAdmin/easy_admin/list.html.twig' 
-            

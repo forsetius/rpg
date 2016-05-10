@@ -1,0 +1,4 @@
+{% set ic = value|split('|') %}
+{% if ic|length > 1 %}<span style="color: {{ ic[1] }};">{% endif %}
+<i class="fa fa-{{ ic[0] }} fa-2x"></i>
+    {% if ic|length > 1 %}</span>{% endif %}

@@ -4,10 +4,11 @@ namespace Forseti\AdminBundle\Controller;
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Forseti\AdminBundle\Security\AccessMap;
 
 class AdminController extends BaseAdminController
 {
-    use UserAdminTrait;
+    use Traits\UserAdminTrait;
 //    use GroupAdminTrait;
     
 
@@ -29,6 +30,7 @@ class AdminController extends BaseAdminController
         $action = (count($r)>0) ? $r->get('action') : 'list';
     
         $this->denyAccessUnlessGranted($action, $entity);
+        $this->container->get('twig')->addGlobal("_rights", AccessMap::getAccessMap());
     
         return parent::indexAction($request);
     }

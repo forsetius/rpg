@@ -1,6 +1,5 @@
 imports:
     - { resource: admin.yml }
-    - { resource: services.yml }
         
 fos_user:
     db_driver: orm
@@ -8,3 +7,11 @@ fos_user:
     user_class:    Forseti\AdminBundle\Entity\User
     group:
         group_class:   Forseti\AdminBundle\Entity\Group
+        
+services:
+    admin.getquery_voter:
+        class:      Forseti\AdminBundle\Security\GetQueryAccessVoter
+        arguments:  [ "@request_stack" , "@service_container" ]
+        tags:       [ { name: 'security.voter' } ]
+        public:     false
+        

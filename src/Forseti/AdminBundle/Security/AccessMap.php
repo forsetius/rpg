@@ -7,7 +7,7 @@ class AccessMap
     const ACCESS_OWN = 1;
     const ACCESS_YES = 255;
     
-    protected $map = [];
+    protected static $map = [];
     protected $permissions;
     protected $roleHierarchy;
     protected $expandedRoles = [];
@@ -20,34 +20,38 @@ class AccessMap
     
     public function hasRights($roles, $entity, $action)
     {
-        \dump($entity);\dump($action);
-        if ($this->hasKey([$entity['name'], $action], $this->map))
-            return $this->map[$entity['name']][$action];
+        if ($this->hasKey([$entity['name'], $action], self::$map))
+            return self::$map[$entity['name']][$action];
 
         $roles = $this->expandRoles($roles);
         foreach ($roles as $role) {
             if ($this->hasKey([$role, $entity['name']], $this->permissions)) {
                 if ($this->permissions[$role][$entity['name']] == 'all') {
-                    $this->map[$entity['name']] = \array_fill_keys($entity['class']::ENTITY_ACTIONS, self::ACCESS_YES);
+                    self::$map[$entity['name']] = \array_fill_keys($entity['class']::ENTITY_ACTIONS, self::ACCESS_YES);
                     break;
                 } else {
                     $right = \array_key_exists($action, $this->permissions) ? $this->permissions[$role][$entity['name']][$action] : self::ACCESS_NO;
                     switch($right) {
                         case 'yes':
-                            $this->map[$entity['name']][$action] = self::ACCESS_YES; break 2;
+                            self::$map[$entity['name']][$action] = self::ACCESS_YES; break 2;
                         case 'own':
-                            $this->map[$entity['name']][$action] = self::ACCESS_OWN; break;
+                            self::$map[$entity['name']][$action] = self::ACCESS_OWN; break;
                         default:
-                            if ($this->map[$entity['name']][$action] < $right) {
-                                $this->map[$entity['name']][$action] = $right;
+                            if (self::$map[$entity['name']][$action] < $right) {
+                                self::$map[$entity['name']][$action] = $right;
                             }
                     }
                 }
             }
         }
-        return ($this->hasKey([$entity['name'], $action], $this->map))
-                ? $this->map[$entity['name']][$action]
+        return ($this->hasKey([$entity['name'], $action], self::$map))
+                ? self::$map[$entity['name']][$action]
                 : self::ACCESS_NO;
+    }
+    
+    public static function getAccessMap()
+    {
+        return self::$map;
     }
     
     /**

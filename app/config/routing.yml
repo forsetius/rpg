@@ -1,3 +1,21 @@
+    
+user_login:
+    path:   /user/login
+    defaults:  { _controller: 'ForsetiAdminBundle:Security:login' }
+  
+admin:
+    resource: "@ForsetiAdminBundle/Resources/config/routing-admin.yml"
+    prefix: /admin
+    
+user:
+    resource: "@ForsetiAdminBundle/Resources/config/routing-user.yml"
+    prefix: /user
+    
+forseti_pages:
+    resource: "@ForsetiPagesBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 homepage:
     path:      /{_locale}
     defaults: 
@@ -5,15 +23,3 @@ homepage:
         _controller: "AppBundle:Default:index"
     requirements:
         _locale: pl|en 
-  
-admin:
-    resource: "@ForsetiAdminBundle/Resources/config/routing-admin.yml"
-    prefix: /admin
-    
-user_login:
-    path:   /user/login
-    defaults:  { _controller: 'ForsetiAdminBundle:Security:login' }
-    
-user:
-    resource: "@ForsetiAdminBundle/Resources/config/routing-user.yml"
-    prefix: /user

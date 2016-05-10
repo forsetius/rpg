@@ -1,5 +1,5 @@
 <?php
-namespace AppBundle\Entity\Pages;
+namespace Forseti\PagesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -7,7 +7,7 @@ use Gedmo\Translatable\Translatable;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="pages_filetype")
+ * @ORM\Table(name="pages_filetypes")
  */
 class Filetype implements Translatable
 {
@@ -32,9 +32,23 @@ class Filetype implements Translatable
     protected $icon;
     
     /**
+     * @ORM\Column(type="string", length=7)
+     */
+    protected $color;
+    
+    /**
      * @ORM\Column(type="string", length=30)
      */
     protected $contentType;
+    
+    /**
+     * Get icon|color
+     * @return string
+     */
+    public function getColoredIcon()
+    {
+        return $this->icon.'|'.$this->color;
+    }
     
     /**
      * Get id
@@ -116,5 +130,29 @@ class Filetype implements Translatable
     public function getContentType()
     {
         return $this->contentType;
+    }
+
+    /**
+     * Set color
+     *
+     * @param string $color
+     *
+     * @return Filetype
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * Get color
+     *
+     * @return string
+     */
+    public function getColor()
+    {
+        return $this->color;
     }
 }

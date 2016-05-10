@@ -4,10 +4,11 @@ namespace Forseti\AdminBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="user_user")
+ * @ORM\Table(name="user_users")
  */
 class User extends BaseUser
 {
@@ -25,11 +26,8 @@ class User extends BaseUser
     protected $id;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Forseti\AdminBundle\Entity\Group")
-     * @ORM\JoinTable(name="user_group_join",
-     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
-     * )
+     * @ORM\ManyToMany(targetEntity="Forseti\AdminBundle\Entity\Group", inversedBy="users")
+     * @ORM\JoinTable(name="user_group_join")
      */
     protected $groups;
     
@@ -57,6 +55,12 @@ class User extends BaseUser
         $this->roles = ['ROLE_USER'];
 //         $this->credentialsExpired = true;
         $this->enabled = true;
+        $this->groups = new ArrayCollection();
+    }
+    
+    public function __toString()
+    {
+        return (string) $this->getName();
     }
 
     /**

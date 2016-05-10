@@ -1,5 +1,5 @@
 <?php
-namespace Forseti\AdminBundle\Controller;
+namespace Forseti\AdminBundle\Controller\Traits;
 
 use Symfony\Component\HttpFoundation\Request;
 
