@@ -1,0 +1,14 @@
+easy_admin:
+    entities:
+        Licence:
+            class: Forseti\PagesBundle\Entity\Licence
+            label: easyAdmin.licence.name.mp
+            form: {}
+            new:
+                title: easyAdmin.licence.title.new
+            edit:
+                title: easyAdmin.licence.title.edit    
+            show:
+                title: easyAdmin.licence.name.mp 
+            list:
+                title: easyAdmin.licence.name.mm    

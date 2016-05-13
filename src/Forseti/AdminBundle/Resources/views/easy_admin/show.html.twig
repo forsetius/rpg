@@ -1,0 +1,40 @@
+{% extends "EasyAdminBundle:default:show.html.twig" %}
+
+{% block main %}
+    <div class="form-vertical">
+        {% for field, metadata in fields %}
+            <div class="form-group field-{{ metadata.type|default('default')|lower }} {{ metadata.css_class|default('') }}">
+                <label class="control-label">
+                    {{ (metadata.label ?: field|humanize)|trans(_trans_parameters) }}
+                </label>
+                <div>
+                    <div class="form-control">
+                        {{ easyadmin_render_field_for_show_view(_entity_config.name, entity, metadata) }}
+                    </div>
+
+                    {% if metadata.help|default('') != '' %}
+                        <span class="help-block"><i class="fa fa-info-circle"></i> {{ metadata.help|trans|raw }}</span>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class="form-group form-actions">
+            <div>
+            {% block item_actions %}
+            	{{ parent() }}
+            {% endblock item_actions %}
+            </div>
+        </div>
+    </div>
+
+    {% block delete_form %}
+        {{ include('@EasyAdmin/default/includes/_delete_form.html.twig', {
+            view: 'show',
+            referer: app.request.query.get('referer', ''),
+            delete_form: delete_form,
+            _trans_parameters: _trans_parameters,
+            _entity_config: _entity_config,
+        }, with_context = false) }}
+    {% endblock delete_form %}
+{% endblock %}

@@ -48,11 +48,6 @@ abstract class Page implements Translatable
     protected $pageOrder;
     
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    protected $breadcrumbs;
-    
-    /**
      * @ORM\Column(type="string", length=30)
      */
     protected $template;
@@ -197,29 +192,6 @@ abstract class Page implements Translatable
         return $this->pageOrder;
     }
 
-    /**
-     * Set breadcrumbs
-     *
-     * @param string $breadcrumbs
-     *
-     * @return Page
-     */
-    public function setBreadcrumbs($breadcrumbs)
-    {
-        $this->breadcrumbs = $breadcrumbs;
-
-        return $this;
-    }
-
-    /**
-     * Get breadcrumbs
-     *
-     * @return string
-     */
-    public function getBreadcrumbs()
-    {
-        return $this->breadcrumbs;
-    }
 
     /**
      * Set template

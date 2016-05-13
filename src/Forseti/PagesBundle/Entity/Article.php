@@ -44,6 +44,11 @@ class Article extends Page implements Translatable
     protected $children;
     
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $breadcrumbs;
+    
+    /**
      * Constructor
      */
     public function __construct()
@@ -193,5 +198,29 @@ class Article extends Page implements Translatable
     public function getImages()
     {
         return $this->images;
+    }
+    
+    /**
+     * Set breadcrumbs
+     *
+     * @param string $breadcrumbs
+     *
+     * @return Page
+     */
+    public function setBreadcrumbs($breadcrumbs)
+    {
+        $this->breadcrumbs = $breadcrumbs;
+    
+        return $this;
+    }
+    
+    /**
+     * Get breadcrumbs
+     *
+     * @return string
+     */
+    public function getBreadcrumbs()
+    {
+        return $this->breadcrumbs;
     }
 }

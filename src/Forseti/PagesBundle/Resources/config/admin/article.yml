@@ -1,0 +1,70 @@
+easy_admin:
+    entities:
+        Article:
+            class: Forseti\PagesBundle\Entity\Article
+            label: easyAdmin.article.name.mp
+            form: 
+                fields:
+                    - { property: 'name', label: 'easyAdmin.pages.name', css_class: 'col-sm-2' }
+                    - { property: 'title', label: 'easyAdmin.pages.title', css_class: 'col-sm-10' }
+                    - { property: 'lead', label: 'easyAdmin.articles.lead', type: 'ckeditor' }
+                    - { property: 'content', label: 'easyAdmin.articles.content', type: 'ckeditor' }
+                    - { property: 'images', label: 'easyAdmin.image.name.mm' }
+                    - { property: 'attachments', label: 'easyAdmin.attachment.name.mm' }
+                    - { property: 'parent', label: 'easyAdmin.pages.parent' }
+                    - { property: 'pageOrder', label: 'easyAdmin.pages.page_order', css_class: 'col-sm-6' }
+                    - { property: 'breadcrumbs', label: 'easyAdmin.pages.breadcrumbs', css_class: 'col-sm-6' }
+                    - { property: 'template', label: 'easyAdmin.pages.template', css_class: 'col-sm-6' }
+                    - { property: 'cssClass', label: 'easyAdmin.pages.css_class', css_class: 'col-sm-6' }
+                    - { property: 'metaTitle', label: 'easyAdmin.pages.meta_title' }
+                    - { property: 'metaDesc', label: 'easyAdmin.pages.meta_desc', type: 'ckeditor' }
+                    - { property: 'metaKeywords', label: 'easyAdmin.pages.meta_keywords', type: 'ckeditor' }
+            new:
+                title: easyAdmin.article.title.new
+            edit:
+                title: easyAdmin.article.title.edit    
+            show:
+                title: easyAdmin.article.name.mm
+                fields: 
+                    - { property: 'id', label: 'ID', css_class: 'col-sm-2' }
+                    - { property: 'name', label: 'easyAdmin.pages.name', css_class: 'col-sm-2' }
+                    - { property: 'title', label: 'easyAdmin.pages.title', css_class: 'col-sm-8' }
+                    - { property: 'lead', label: 'easyAdmin.articles.lead' }
+                    - { property: 'content', label: 'easyAdmin.articles.content' }
+                    - { property: 'images', label: 'easyAdmin.image.name.mm', css_class: 'col-sm-6' }
+                    - { property: 'attachments', label: 'easyAdmin.attachment.name.mm', css_class: 'col-sm-6' }
+                    - { property: 'parent', label: 'easyAdmin.pages.parent', css_class: 'col-sm-2' }
+                    - { property: 'pageOrder', label: 'easyAdmin.pages.page_order', css_class: 'col-sm-2' }
+                    - { property: 'template', label: 'easyAdmin.pages.template', css_class: 'col-sm-2' }
+                    - { property: 'cssClass', label: 'easyAdmin.pages.css_class', css_class: 'col-sm-2' }
+                    - { property: 'breadcrumbs', label: 'easyAdmin.pages.breadcrumbs', css_class: 'col-sm-4' }
+                    - { property: 'metaTitle', label: 'easyAdmin.pages.meta_title' }
+                    - { property: 'metaDesc', label: 'easyAdmin.pages.meta_desc', type: 'ckeditor' }
+                    - { property: 'metaKeywords', label: 'easyAdmin.pages.meta_keywords', type: 'ckeditor' }
+#                    - 
+#                      property: 'images'
+#                      label: 'easyAdmin.image.name.mm'
+#                      css_class: 'col-sm-6'
+#                      template: '@ForsetiAdmin/easy_admin/field_subview.html.twig'
+#                      subview:
+#                          entity: Image
+#                          template: '@ForsetiAdmin/easy_admin/field_subview_thumbs.html.twig'
+#                          actions: [ new, filter, deleteAll, show, edit, delete ]
+#                          fields: [ filename, title, size]
+#                          order: pageOrder
+                           
+            list:
+                title: easyAdmin.article.name.mm
+                fields: 
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'name', label: 'easyAdmin.pages.name', template: '@ForsetiAdmin/easy_admin/field_linked_string.html.twig' }
+                    - { property: 'title', label: 'easyAdmin.pages.title' }
+                    - { property: 'images', label: 'easyAdmin.image.name.mm' }
+                    - { property: 'attachments', label: 'easyAdmin.attachment.name.mm' }
+                    - { property: 'parent', label: 'easyAdmin.pages.parent' }
+                    - { property: 'pageOrder', label: 'easyAdmin.pages.page_order' }
+                    - { property: 'breadcrumbs', label: 'easyAdmin.pages.breadcrumbs' }
+                    - { property: 'template', label: 'easyAdmin.pages.template' }
+                    - { property: 'cssClass', label: 'easyAdmin.pages.css_class' }
+                
+                

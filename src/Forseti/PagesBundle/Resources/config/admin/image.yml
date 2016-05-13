@@ -1,0 +1,14 @@
+easy_admin:
+    entities:
+        Image:
+            class: Forseti\PagesBundle\Entity\Image
+            label: easyAdmin.image.name.mp
+            form: {}
+            new:
+                title: easyAdmin.image.title.new
+            edit:
+                title: easyAdmin.image.title.edit    
+            show:
+                title: easyAdmin.image.name.mp 
+            list:
+                title: easyAdmin.image.name.mm

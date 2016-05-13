@@ -71,4 +71,5 @@ easy_admin:
         templates:
             layout: '@ForsetiAdmin/easy_admin/layout.html.twig'
             menu: '@ForsetiAdmin/easy_admin/menu.html.twig'
-            list: '@ForsetiAdmin/easy_admin/list.html.twig' 
+            show: '@ForsetiAdmin/easy_admin/show.html.twig' 
+

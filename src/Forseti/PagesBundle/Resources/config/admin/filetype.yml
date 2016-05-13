@@ -1,0 +1,55 @@
+easy_admin:
+    entities:
+        Filetype:
+            class: Forseti\PagesBundle\Entity\Filetype
+            label: easyAdmin.filetype.name.mp
+            form: 
+                fields: 
+                    - 
+                      property: 'title'
+                      label: 'easyAdmin.page.name'
+                      
+                    - { property: icon, label: 'easyAdmin.filetype.icon', css_class: 'col-sm-3'}
+                    - 
+                      property: 'color'
+                      label: 'easyAdmin.filetype.color'
+                      type: 'Forseti\AdminBundle\Form\Type\ColorType'
+                      css_class: 'col-sm-3'
+                      
+                    - { property: 'contentType', label: 'easyAdmin.filetype.contenttype', css_class: 'col-sm-6' }
+            new:
+                title: easyAdmin.filetype.title.new
+            edit:
+                title: easyAdmin.filetype.title.edit    
+            show:
+                title: easyAdmin.filetype.name.mp
+                fields: 
+                    - { property: 'id', label: 'ID' }
+                    - 
+                      property: 'name'
+                      label: 'easyAdmin.pages.name'
+                      css_class: 'col-sm-3'
+                      
+                    - 
+                      property: 'coloredIcon'
+                      label: 'easyAdmin.filetypes.icon'
+                      template: '@ForsetiAdmin/easy_admin/field_fa.html.twig'
+                      css_class: 'col-sm-3'
+                      
+                    - { property: 'contentType', label: 'easyAdmin.filetype.contenttype', css_class: 'col-sm-6' }
+                    
+            list:
+                title: easyAdmin.filetype.name.mm    
+                fields: 
+                    - { property: 'id', label: 'ID' }
+                    - 
+                      property: 'name'
+                      label: 'easyAdmin.pages.name'
+                      template: '@ForsetiAdmin/easy_admin/field_linked_string.html.twig'
+                      
+                    - 
+                      property: 'coloredIcon'
+                      label: 'easyAdmin.filetypes.icon'
+                      template: '@ForsetiAdmin/easy_admin/field_fa.html.twig'
+                      
+                    - { property: 'contentType', label: 'easyAdmin.filetypes.contenttype' }

@@ -1,0 +1,14 @@
+easy_admin:
+    entities:
+        Attachment:
+            class: Forseti\PagesBundle\Entity\Attachment
+            label: easyAdmin.attachment.name.mp
+            form: {}
+            new:
+                title: easyAdmin.attachment.title.new
+            edit:
+                title: easyAdmin.attachment.title.edit   
+            show:
+                title: easyAdmin.attachment.name.mp              
+            list:
+                title: easyAdmin.attachment.name.mm

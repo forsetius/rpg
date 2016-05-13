@@ -24,3 +24,19 @@
 }
 
 .sol-selection-container {z-index: 5 !important;}
+
+.fa {text-align: center !important;}
+
+.has-inner-HTML {width:80%px; height:500px;}
+.has-inner-HTML object {width:100%; height:100%;}
+
+.form-vertical {margin-left: -15px; margin-right: -15px}
+.form-vertical .form-group	{padding-left: 15px; padding-right: 15px}
+.form-vertical .btn {margin-top: 10px;}
+.form-vertical .form-group .form-control {
+    border: 1px solid #ddd;
+    border-radius: 0;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+    color: #222222;
+    transition: none 0s ease 0s ;
+}

@@ -22,6 +22,7 @@ class GetQueryAccessVoter implements VoterInterface
         
         $this->request = $request->getCurrentRequest();
         $this->accessMap = new AccessMap($container->getParameter('permissions'), $container->getParameter('role_hierarchy'));
+//         \dump($request);
         $entity = $this->request->query->get('entity', $container->getParameter('startingPage'));
         $this->entity = ['name'=>$entity, 'class'=>$container->getParameter('easyadmin.config')['entities'][$entity]['class']];
     }

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "017603aff892c8a84d950723f77ff38d",
-    "content-hash": "433da44dd3f7b83798a146b57478dabd",
+    "hash": "18e574955ed0d764594517449c1c4def",
+    "content-hash": "f3607948b16f53e7e039a91a2be41a11",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1125,20 +1125,19 @@
         },
         {
             "name": "javiereguiluz/easyadmin-bundle",
-            "version": "dev-master",
+            "version": "v1.12.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/javiereguiluz/EasyAdminBundle.git",
-                "reference": "85b63a2c8467a4eb367f8fd20eb3491719ab9620"
+                "reference": "4ebb10ee3980c9fbfc00f6b4c399cd67efd18407"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/javiereguiluz/EasyAdminBundle/zipball/85b63a2c8467a4eb367f8fd20eb3491719ab9620",
-                "reference": "85b63a2c8467a4eb367f8fd20eb3491719ab9620",
+                "url": "https://api.github.com/repos/javiereguiluz/EasyAdminBundle/zipball/4ebb10ee3980c9fbfc00f6b4c399cd67efd18407",
+                "reference": "4ebb10ee3980c9fbfc00f6b4c399cd67efd18407",
                 "shasum": ""
             },
             "require": {
-                "doctrine/cache": "~1.5",
                 "doctrine/common": "^2.4.0",
                 "doctrine/doctrine-bundle": "~1.2",
                 "doctrine/orm": "~2.3",
@@ -1178,10 +1177,7 @@
             "autoload": {
                 "psr-4": {
                     "JavierEguiluz\\Bundle\\EasyAdminBundle\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1204,7 +1200,7 @@
                 "backend",
                 "generator"
             ],
-            "time": "2016-05-08 15:00:50"
+            "time": "2016-04-26 17:39:14"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -2606,16 +2602,16 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v2.8.6",
+            "version": "v3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "9d30940765450ccc58bc39f4bda30cc412101b4b"
+                "reference": "3231629ff97abccd60f93ff900accfb5b39c8200"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/9d30940765450ccc58bc39f4bda30cc412101b4b",
-                "reference": "9d30940765450ccc58bc39f4bda30cc412101b4b",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/3231629ff97abccd60f93ff900accfb5b39c8200",
+                "reference": "3231629ff97abccd60f93ff900accfb5b39c8200",
                 "shasum": ""
             },
             "require": {
@@ -2627,7 +2623,7 @@
             "type": "symfony-bridge",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.8-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
@@ -2657,13 +2653,12 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2016-04-05 16:36:54"
+            "time": "2016-04-12 18:09:53"
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "javiereguiluz/easyadmin-bundle": 20,
         "friendsofsymfony/user-bundle": 20
     },
     "prefer-stable": false,
