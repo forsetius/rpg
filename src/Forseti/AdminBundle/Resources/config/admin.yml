@@ -28,6 +28,28 @@ parameters:
         easyAdmin.users.role.author: ROLE_AUTHOR
         easyAdmin.users.role.user: ROLE_USER
 
+ivory_ck_editor:
+    input_sync: true
+    default_config: all
+    configs:
+        all:
+            toolbar:
+        simple_config:
+            toolbar:
+                - { name: 'basicstyles', items: [ 'Bold', 'Italic', 'Underline', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] }
+        advanced_config:
+            toolbar:
+                - { name: 'document', items: [ 'NewPage', 'Templates', 'Save', '-', 'Preview', 'Print' ] }
+                - { name: 'clipboard', items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] }
+                - { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] }
+                - { name: 'insert', items: [ 'Blockquote', 'Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar' ] }
+                - { name: 'editing', items: [ 'Find', 'Replace', 'Scayt' ] }
+                - '/'
+                - { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] }
+                - { name: 'basicstyles', items: [ 'Bold', 'Italic', 'Underline', 'Subscript', 'Superscript', '-', 'TextColor', 'BgColor', '-', 'RemoveFormat' ] }
+                - { name: 'extendedstyles', items: ['Color', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ] }
+                - { name: 'paragraph', items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent' ] }
+
 imports:
     - { resource: admin/group.yml }
     - { resource: admin/user.yml }
@@ -62,7 +84,7 @@ easy_admin:
             - 
               label: easyAdmin.menu.div.dicts 
             - { entity: 'Filetype', icon: 'file-code-o', label: easyAdmin.filetype.name.mm }
-            - { entity: 'Licence', icon: 'file-code-o', label: easyAdmin.licence.name.mm }
+            - { entity: 'Licence', icon: 'file-text-o', label: easyAdmin.licence.name.mm }
             - 
               label: easyAdmin.menu.div.users
             - { entity: 'User', icon: 'user', label: easyAdmin.user.name.mm }

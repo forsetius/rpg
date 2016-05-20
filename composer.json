@@ -28,15 +28,17 @@
 		"sensio/framework-extra-bundle" : "^3.0.2",
 		"incenteev/composer-parameter-handler" : "^2.0",
 		"stof/doctrine-extensions-bundle" : "~1.2",
-		"javiereguiluz/easyadmin-bundle" : "~1",
+		"javiereguiluz/easyadmin-bundle" : "dev-master",
 		"friendsofsymfony/user-bundle" : "dev-master",
 		"egeloen/ckeditor-bundle" : "~4",
-		"symfony/assetic-bundle" : "~2.8"
+		"symfony/assetic-bundle" : "~2.8",
+		"vich/uploader-bundle" : "~1"
 	},
 	"require-dev" : {
 		"sensio/generator-bundle" : "^3.0",
 		"symfony/phpunit-bridge" : "~3.0",
-		"symfony/debug" : "3.0.6"
+		"symfony/debug" : "3.0.6",
+		"doctrine/doctrine-fixtures-bundle" : "~2.3"
 	},
 	"scripts" : {
 		"post-install-cmd" : [

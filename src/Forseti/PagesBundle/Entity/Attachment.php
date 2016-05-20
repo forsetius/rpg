@@ -12,6 +12,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Attachment extends Page implements Translatable
 {
+    use Traits\Licenced;
+    
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      */
@@ -28,19 +30,7 @@ class Attachment extends Page implements Translatable
     protected $type;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Licence", inversedBy="attachments")
-     * @ORM\Column(nullable=true)
-     */
-    protected $licence;
-    
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $attribution;
-    
-    /**
-     * @ORM\ManyToMany(targetEntity="Article", inversedBy="attachments")
-     * @ORM\JoinTable(name="articles_attachments_join")
+     * @ORM\ManyToMany(targetEntity="Article", mappedBy="attachments")
      */
     protected $articles;
     
@@ -48,6 +38,7 @@ class Attachment extends Page implements Translatable
     public function __construct() {
         $this->articles = new ArrayCollection();
     }
+
 
     /**
      * Set filename
@@ -97,53 +88,6 @@ class Attachment extends Page implements Translatable
         return $this->size;
     }
 
-    /**
-     * Set licence
-     *
-     * @param string $licence
-     *
-     * @return Attachment
-     */
-    public function setLicence($licence)
-    {
-        $this->licence = $licence;
-
-        return $this;
-    }
-
-    /**
-     * Get licence
-     *
-     * @return string
-     */
-    public function getLicence()
-    {
-        return $this->licence;
-    }
-
-    /**
-     * Set attribution
-     *
-     * @param string $attribution
-     *
-     * @return Attachment
-     */
-    public function setAttribution($attribution)
-    {
-        $this->attribution = $attribution;
-
-        return $this;
-    }
-
-    /**
-     * Get attribution
-     *
-     * @return string
-     */
-    public function getAttribution()
-    {
-        return $this->attribution;
-    }
 
     /**
      * Set type

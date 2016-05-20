@@ -2,84 +2,85 @@
 namespace Forseti\PagesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Translatable\Translatable;
-use Doctrine\Common\Collections\ArrayCollection;
+use \Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="pages_images")
+ * @ORM\Table(name="pages_tags")
  */
-class Image extends Page implements Translatable
+class Tag extends Page implements Translatable
 {
-    use Traits\Licenced;
-    
+    const ENTITY_ACTIONS = ['list', 'show', 'new', 'edit', 'delete', 'softdelete', 'flag', 'comment'];
+
     /**
-     * @ORM\Column(type="simple_array")
+     * @ORM\Column(type="string", length=30, nullable=true)
      */
-    protected $filenames;
+    protected $faIcon;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Filetype")
+     * @ORM\Column(type="string", length=7, nullable=true)
      */
-    protected $type;
+    protected $color;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Article", mappedBy="images")
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="category")
      */
     protected $articles;
     
-    public function __construct() {
+    public function __construct()
+    {
         $this->articles = new ArrayCollection();
     }
-
- 
-
-    /**
-     * Set filenames
-     *
-     * @param array $filenames
-     *
-     * @return Image
-     */
-    public function setFilenames($filenames)
-    {
-        $this->filenames = $filenames;
-
-        return $this;
-    }
-
-    /**
-     * Get filenames
-     *
-     * @return array
-     */
-    public function getFilenames()
-    {
-        return $this->filenames;
-    }
     
+
     /**
-     * Set type
+     * Set faIcon
      *
-     * @param \Forseti\PagesBundle\Entity\Filetype $type
+     * @param string $faIcon
      *
-     * @return Image
+     * @return Tag
      */
-    public function setType(\Forseti\PagesBundle\Entity\Filetype $type = null)
+    public function setFaIcon($faIcon)
     {
-        $this->type = $type;
+        $this->faIcon = $faIcon;
 
         return $this;
     }
 
     /**
-     * Get type
+     * Get faIcon
      *
-     * @return \Forseti\PagesBundle\Entity\Filetype
+     * @return string
      */
-    public function getType()
+    public function getFaIcon()
     {
-        return $this->type;
+        return $this->faIcon;
+    }
+
+    /**
+     * Set color
+     *
+     * @param string $color
+     *
+     * @return Tag
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * Get color
+     *
+     * @return string
+     */
+    public function getColor()
+    {
+        return $this->color;
     }
 
     /**
@@ -87,7 +88,7 @@ class Image extends Page implements Translatable
      *
      * @param \Forseti\PagesBundle\Entity\Article $article
      *
-     * @return Image
+     * @return Tag
      */
     public function addArticle(\Forseti\PagesBundle\Entity\Article $article)
     {

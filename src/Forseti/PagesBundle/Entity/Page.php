@@ -9,11 +9,14 @@ use Gedmo\Translatable\Translatable;
 abstract class Page implements Translatable
 {
     const ENTITY_ACTIONS = ['list', 'show', 'new', 'edit', 'delete', 'flag'];
-    
-    const SHOW_PAGE = 1;
-    const SHOW_SECTION = 2;
-    const SHOW_CHAPTER = 4;
-    const SHOW_SITE = 128;
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getName();
+    }
     
     /**
      * @ORM\Column(type="integer")
@@ -24,7 +27,6 @@ abstract class Page implements Translatable
     
     /**
      * TODO custom transliterator
-     * @Gedmo\Translatable
      * @Gedmo\Slug(fields={"title"})
      * @ORM\Column(type="string", length=50, unique=true)
      */
@@ -48,7 +50,7 @@ abstract class Page implements Translatable
     protected $pageOrder;
     
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=20)
      */
     protected $template;
     
@@ -74,18 +76,7 @@ abstract class Page implements Translatable
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $metaKeywords;
-    
-    /**
-     * @ORM\Column(type="smallint")
-     */
-    protected $shown = 0;
   
-    /**
-     *
-     * @var unknown
-     */
-    protected $author; //FIXME
-    
     /**
      * Get id
      *
@@ -313,32 +304,4 @@ abstract class Page implements Translatable
         return $this->metaKeywords;
     }
 
-    /**
-     * Set shown
-     *
-     * @param integer $shown
-     *
-     * @return Page
-     */
-    public function setShown($shown)
-    {
-        $this->shown = $shown;
-
-        return $this;
-    }
-
-    /**
-     * Get shown
-     *
-     * @return integer
-     */
-    public function getShown()
-    {
-        return $this->shown;
-    }
-    
-    public function __toString()
-    {
-        return (string) $this->getName();
-    }
 }

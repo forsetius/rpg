@@ -4,6 +4,7 @@ namespace Forseti\PagesBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\NoResultException;
 
 class PageController extends Controller
 {
@@ -41,6 +42,9 @@ class PageController extends Controller
             )
         );
         $page = $this->getDoctrine()->getRepository('Forseti\PagesBundle\Entity\Article')->findOneByName('homepage');
+        if (is_null($page))
+            throw new NoResultException('Homepage\'s record not found in the pages_articles DB table');
+        
         return $this->render($page->template .'.html.twig', [
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
             'page' => $page,

@@ -16,37 +16,37 @@ class Article extends Page implements Translatable
     
     /**
      * @Gedmo\Translatable
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $lead;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Attachment", mappedBy="articles")
+     * @ORM\ManyToMany(targetEntity="Attachment", inversedBy="articles")
+     * @ORM\JoinTable(name="pages_articles_attachments_join")
      */
     protected $attachments;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Image", mappedBy="articles")
-     * @ORM\JoinTable(name="pages_images_join")
+     * @ORM\ManyToMany(targetEntity="Image", inversedBy="articles")
+     * @ORM\JoinTable(name="pages_articles_images_join")
      */
     protected $images;
     
     /**
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="children")
-     * @ORM\Column(nullable=true)
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="articles")
      */
-    protected $parent;
+    protected $category;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Article", inversedBy="parent")
-     * @ORM\Column(nullable=true)
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="articles")
+     * @ORM\JoinTable(name="pages_articles_tags_join")
      */
-    protected $children;
+    protected $tags;
     
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Forseti\AdminBundle\Entity\User")
      */
-    protected $breadcrumbs;
+    protected $author;
     
     /**
      * Constructor
@@ -55,10 +55,9 @@ class Article extends Page implements Translatable
     {
         $this->attachments = new ArrayCollection();
         $this->images = new ArrayCollection();
-        $this->children = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
-    
-
+  
 
     /**
      * Set lead
@@ -85,51 +84,51 @@ class Article extends Page implements Translatable
     }
 
     /**
-     * Set parent
+     * Set category
      *
-     * @param string $parent
+     * @param \Forseti\PagesBundle\Entity\Category $category
      *
      * @return Article
      */
-    public function setParent($parent)
+    public function setCategory(\Forseti\PagesBundle\Entity\Category $category = null)
     {
-        $this->parent = $parent;
+        $this->category = $category;
 
         return $this;
     }
 
     /**
-     * Get parent
+     * Get category
      *
-     * @return string
+     * @return \Forseti\PagesBundle\Entity\Category
      */
-    public function getParent()
+    public function getCategory()
     {
-        return $this->parent;
+        return $this->category;
     }
 
     /**
-     * Set children
+     * Set author
      *
-     * @param string $children
+     * @param \Forseti\AdminBundle\Entity\User $author
      *
      * @return Article
      */
-    public function setChildren($children)
+    public function setAuthor(\Forseti\AdminBundle\Entity\User $author = null)
     {
-        $this->children = $children;
+        $this->author = $author;
 
         return $this;
     }
 
     /**
-     * Get children
+     * Get author
      *
-     * @return string
+     * @return \Forseti\AdminBundle\Entity\User
      */
-    public function getChildren()
+    public function getAuthor()
     {
-        return $this->children;
+        return $this->author;
     }
 
     /**
@@ -199,28 +198,38 @@ class Article extends Page implements Translatable
     {
         return $this->images;
     }
-    
+
     /**
-     * Set breadcrumbs
+     * Add tag
      *
-     * @param string $breadcrumbs
+     * @param \Forseti\PagesBundle\Entity\Tag $tag
      *
-     * @return Page
+     * @return Article
      */
-    public function setBreadcrumbs($breadcrumbs)
+    public function addTag(\Forseti\PagesBundle\Entity\Tag $tag)
     {
-        $this->breadcrumbs = $breadcrumbs;
-    
+        $this->tags[] = $tag;
+
         return $this;
     }
-    
+
     /**
-     * Get breadcrumbs
+     * Remove tag
      *
-     * @return string
+     * @param \Forseti\PagesBundle\Entity\Tag $tag
      */
-    public function getBreadcrumbs()
+    public function removeTag(\Forseti\PagesBundle\Entity\Tag $tag)
     {
-        return $this->breadcrumbs;
+        $this->tags->removeElement($tag);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }
