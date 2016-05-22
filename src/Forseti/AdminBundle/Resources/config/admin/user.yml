@@ -1,3 +1,23 @@
+security:
+    role_hierarchy: &srh
+        ROLE_USER_SHOW: ~
+        ROLE_USER_LIST: ~
+        ROLE_USER_NEW: ~
+        ROLE_USER_EDIT_OWN: ~
+        ROLE_USER_EDIT: ROLE_USER_EDIT_OWN
+        ROLE_USER_SOFTDELETE_OWN: ~
+        ROLE_USER_SOFTDELETE: ROLE_USER_SOFTDELETE_OWN
+        ROLE_USER_DELETE: ~
+        ROLE_USER_FLAG: ~
+        ROLE_USER_ALL:
+            - ROLE_USER_SHOW
+            - ROLE_USER_LIST
+            - ROLE_USER_NEW
+            - ROLE_USER_EDIT
+            - ROLE_USER_DELETE
+            - ROLE_USER_SOFTDELETE
+            - ROLE_USER_FLAG
+
 easy_admin:
     entities:
         User:

@@ -1,3 +1,22 @@
+security:
+    role_hierarchy:
+        ROLE_ARTICLE_SHOW: ~
+        ROLE_ARTICLE_LIST: ~
+        ROLE_ARTICLE_NEW: ~
+        ROLE_ARTICLE_EDIT_OWN: ~
+        ROLE_ARTICLE_EDIT: ROLE_ARTICLE_EDIT_OWN
+        ROLE_ARTICLE_SOFTDELETE_OWN: ~
+        ROLE_ARTICLE_SOFTDELETE: ROLE_ARTICLE_SOFTDELETE_OWN
+        ROLE_ARTICLE_DELETE: ~
+        ROLE_ARTICLE_FLAG: ~
+        ROLE_ARTICLE_ALL:
+            - ROLE_ARTICLE_SHOW
+            - ROLE_ARTICLE_LIST
+            - ROLE_ARTICLE_NEW
+            - ROLE_ARTICLE_EDIT
+            - ROLE_ARTICLE_DELETE
+            - ROLE_ARTICLE_SOFTDELETE
+            - ROLE_ARTICLE_FLAG
 easy_admin:
     entities:
         Article:

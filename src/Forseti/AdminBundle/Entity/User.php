@@ -60,7 +60,7 @@ class User extends BaseUser
     
     public function __toString()
     {
-        return (string) $this->getName();
+        return (string) $this->getUsername();
     }
 
     /**

@@ -4,51 +4,6 @@ parameters:
     a.js: "bundles/forsetiadmin/js/"
     startingPage: Article
     site_icon: '/img/admin_logo.png'
-    
-    permission.set.own:
-            add: yes
-            edit: own
-            delete: own
-    permissions:
-        ROLE_SUPER_ADMIN: { User: all, Group: all }
-        ROLE_ADMIN: { Article: all, Attachment: all, Comment: all, Image: all, Filetype: all }
-        ROLE_AUTHOR: 
-            Article: %permission.set.own%
-            Attachment: %permission.set.own%
-            Image: %permission.set.own%
-            
-    roles.def:
-        ROLE_SUPER_ADMIN: 'easyAdmin.users.role.superadmin' 
-        ROLE_ADMIN: 'easyAdmin.users.role.admin' 
-        ROLE_AUTHOR: 'easyAdmin.users.role.author' 
-        ROLE_USER: 'easyAdmin.users.role.user' 
-    roles.labels:
-        easyAdmin.users.role.superadmin: ROLE_SUPER_ADMIN
-        easyAdmin.users.role.admin: ROLE_ADMIN
-        easyAdmin.users.role.author: ROLE_AUTHOR
-        easyAdmin.users.role.user: ROLE_USER
-
-ivory_ck_editor:
-    input_sync: true
-    default_config: all
-    configs:
-        all:
-            toolbar:
-        simple_config:
-            toolbar:
-                - { name: 'basicstyles', items: [ 'Bold', 'Italic', 'Underline', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] }
-        advanced_config:
-            toolbar:
-                - { name: 'document', items: [ 'NewPage', 'Templates', 'Save', '-', 'Preview', 'Print' ] }
-                - { name: 'clipboard', items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] }
-                - { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] }
-                - { name: 'insert', items: [ 'Blockquote', 'Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar' ] }
-                - { name: 'editing', items: [ 'Find', 'Replace', 'Scayt' ] }
-                - '/'
-                - { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] }
-                - { name: 'basicstyles', items: [ 'Bold', 'Italic', 'Underline', 'Subscript', 'Superscript', '-', 'TextColor', 'BgColor', '-', 'RemoveFormat' ] }
-                - { name: 'extendedstyles', items: ['Color', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ] }
-                - { name: 'paragraph', items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent' ] }
 
 imports:
     - { resource: admin/group.yml }
@@ -73,8 +28,8 @@ easy_admin:
         color_scheme: dark
         brand_color: '#0A7840'
         assets:
-            css: ['%a.css%custom.css', '%a.css%bootstrap-colorpicker.min.css', '%a.css%searchableOptionList.css', '%a.css%bootstrap-datetimepicker.min.css']
-            js: ['%a.js%bootstrap-colorpicker.min.js', '%a.js%sol-2.0.0.js', '%a.js%moment-with-locales.min.js', '%a.js%bootstrap-datetimepicker.min.js']
+            css: ['%a.css%custom.css', '%a.css%bootstrap-colorpicker.min.css', '%a.css%sol.css', '%a.css%bootstrap-datetimepicker.min.css']
+            js: ['%a.js%bootstrap-colorpicker.min.js', '%a.js%sol.js', '%a.js%moment-with-locales.min.js', '%a.js%bootstrap-datetimepicker.min.js']
         menu: 
             - 
               label: easyAdmin.menu.div.pages 

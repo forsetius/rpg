@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7f288604bcff9a7f2fcd48fa094be8b1",
-    "content-hash": "619d139e19598cebd759f5951357e226",
+    "hash": "8a24bb16e99e544b80c774867ee91935",
+    "content-hash": "316c5701a1e0d1f51236ce81d5d59a9e",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -812,6 +812,60 @@
                 "orm"
             ],
             "time": "2016-01-05 21:34:58"
+        },
+        {
+            "name": "easycorp/easy-security-bundle",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/EasyCorp/easy-security-bundle.git",
+                "reference": "d9494c36c75cd76df1ccb9ae42ca7f780e92a497"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/EasyCorp/easy-security-bundle/zipball/d9494c36c75cd76df1ccb9ae42ca7f780e92a497",
+                "reference": "d9494c36c75cd76df1ccb9ae42ca7f780e92a497",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "symfony/dependency-injection": "~2.3|~3.0",
+                "symfony/http-foundation": "~2.3|~3.0",
+                "symfony/http-kernel": "~2.3|~3.0",
+                "symfony/security": "~2.3|~3.0",
+                "symfony/security-bundle": "~2.3|~3.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "EasyCorp\\Bundle\\EasySecurityBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Javier Eguiluz",
+                    "email": "javiereguiluz@gmail.com"
+                },
+                {
+                    "name": "Project Contributors",
+                    "homepage": "https://github.com/EasyCorp/easy-security-bundle"
+                }
+            ],
+            "description": "Useful security-related shortcuts for Symfony applications",
+            "homepage": "https://github.com/EasyCorp/easy-security-bundle",
+            "keywords": [
+                "DX",
+                "security",
+                "symfony"
+            ],
+            "time": "2016-05-16 10:31:47"
         },
         {
             "name": "egeloen/ckeditor-bundle",

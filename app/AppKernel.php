@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
+            new EasyCorp\Bundle\EasySecurityBundle\EasySecurityBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Forseti\AdminBundle\ForsetiAdminBundle(),
             new AppBundle\AppBundle(),

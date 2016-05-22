@@ -1,3 +1,17 @@
+security:
+    role_hierarchy:
+        ROLE_GROUP_SHOW: ~
+        ROLE_GROUP_LIST: ~
+        ROLE_GROUP_NEW: ~
+        ROLE_GROUP_EDIT: ~
+        ROLE_GROUP_DELETE: ~
+        ROLE_GROUP_ALL:
+            - ROLE_GROUP_SHOW
+            - ROLE_GROUP_LIST
+            - ROLE_GROUP_NEW
+            - ROLE_GROUP_EDIT
+            - ROLE_GROUP_DELETE
+
 easy_admin:
     entities:
         Group:
@@ -6,72 +20,69 @@ easy_admin:
             form:
                 fields:
                     - { property: 'name', label: 'easyAdmin.groups.name', type: text }
-                    - 
-                      property: 'roles' 
-                      label: 'easyAdmin.groups.roles' 
+                    -
+                      property: 'roles'
+                      label: 'easyAdmin.groups.roles'
                       type: choice
-                      type_options: 
-                          expanded: true
+                      type_options:
+                          expanded: false
                           multiple: true
-                          choices: "%roles.labels%"
-                    - 
+                    -
                       property: 'style'
                       label: 'easyAdmin.groups.style'
                       type: choice
-                      type_options: 
-                          choices: 
+                      type_options:
+                          choices:
                               app.label.nolabel: nolabel
                               app.label.danger: danger
-                              app.label.warning: warning 
-                              app.label.info: info 
-                              app.label.success: success 
+                              app.label.warning: warning
+                              app.label.info: info
+                              app.label.success: success
                               app.label.primary: primary
                               app.label.default: default
             new:
                 title: easyAdmin.group.title.new
             edit:
-                title: easyAdmin.group.title.edit  
+                title: easyAdmin.group.title.edit
             show:
                 title: easyAdmin.group.name.mp
-                fields: 
+                fields:
                     - { property: 'id', label: 'ID' }
                     - { property: 'name', label: 'easyAdmin.groups.name' }
-                    - 
-                      property: 'roles' 
-                      label: 'easyAdmin.users.roles' 
+                    -
+                      property: 'roles'
+                      label: 'easyAdmin.users.roles'
                       template: '@ForsetiAdmin/easy_admin/field_roles.html.twig'
-                      styles: "%roles.def%"
-                    - 
+                    -
                       property: 'style'
-                      label: 'easyAdmin.groups.style' 
+                      label: 'easyAdmin.groups.style'
                       template: '@ForsetiAdmin/easy_admin/field_label.html.twig'
-                      styles: 
-                          nolabel: { label: 'app.label.nolabel' } 
-                          danger: { label: 'app.label.red', class: 'danger' } 
-                          warning: { label: 'app.label.yellow', class: 'warning' }  
-                          info: { label: 'app.label.info', class: 'info' } 
-                          success: { label: 'app.label.green', class: 'success' }  
-                          primary: { label: 'app.label.blue', class: 'primary' } 
-                          default: { label: 'app.label.hope', class: 'default' } 
+                      styles:
+                          nolabel: { label: 'app.label.nolabel' }
+                          danger: { label: 'app.label.red', class: 'danger' }
+                          warning: { label: 'app.label.yellow', class: 'warning' }
+                          info: { label: 'app.label.info', class: 'info' }
+                          success: { label: 'app.label.green', class: 'success' }
+                          primary: { label: 'app.label.blue', class: 'primary' }
+                          default: { label: 'app.label.hope', class: 'default' }
             list:
                 title: easyAdmin.group.name.mm
-                fields: 
+                fields:
                     - { property: 'id', label: 'ID' }
                     - { property: 'name', label: 'easyAdmin.groups.name' }
-                    - 
-                      property: 'roles' 
-                      label: 'easyAdmin.users.roles' 
+                    -
+                      property: 'roles'
+                      label: 'easyAdmin.users.roles'
                       template: '@ForsetiAdmin/easy_admin/field_roles.html.twig'
-                      styles: "%roles.def%"
-                    - 
+                    -
                       property: 'style'
-                      label: 'easyAdmin.groups.style' 
+                      label: 'easyAdmin.groups.style'
                       template: '@ForsetiAdmin/easy_admin/field_label.html.twig'
-                      styles: 
-                          nolabel: { label: 'app.label.nolabel' } 
-                          danger: { label: 'app.label.red', class: 'danger' } 
-                          warning: { label: 'app.label.yellow', class: 'warning' }  
-                          info: { label: 'app.label.info', class: 'info' } 
-                          success: { label: 'app.label.green', class: 'success' }  
-                          primary: { label: 'app.label.blue', class: 'primary' } 
+                      styles:
+                          nolabel: { label: 'app.label.nolabel' }
+                          danger: { label: 'app.label.red', class: 'danger' }
+                          warning: { label: 'app.label.yellow', class: 'warning' }
+                          info: { label: 'app.label.info', class: 'info' }
+                          success: { label: 'app.label.green', class: 'success' }
+                          primary: { label: 'app.label.blue', class: 'primary' }
                           default: { label: 'app.label.hope', class: 'default' }

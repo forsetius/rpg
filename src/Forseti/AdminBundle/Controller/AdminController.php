@@ -4,13 +4,11 @@ namespace Forseti\AdminBundle\Controller;
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Forseti\AdminBundle\Security\AccessMap;
 
 class AdminController extends BaseAdminController
 {
     use Traits\UserAdminTrait;
-//    use GroupAdminTrait;
-    
+    use Traits\GroupAdminTrait;
 
     /**
      * @Route("/", name="admin")
@@ -28,15 +26,16 @@ class AdminController extends BaseAdminController
         $r = $request->query;
         $entity = (count($r)>0) ? $r->get('entity') : $this->container->getParameter('startingPage');
         $action = (count($r)>0) ? $r->get('action') : 'list';
-    
-        $this->denyAccessUnlessGranted($action, $entity);
-        $this->container->get('twig')->addGlobal("_rights", AccessMap::getAccessMap());
-    
+
+        if (! $this->get('security')->hasRole(strtoupper("ROLE_{$entity}_$action")) )
+            throw $this->createAccessDeniedException();
+
         return parent::indexAction($request);
     }
     
     protected function getMenuRights($menu)
     {
+        // TODO
         $result = [];
         foreach ($menu as $menuItem) {
             if (\array_key_exists('children', $menuItem)) {

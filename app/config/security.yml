@@ -7,6 +7,7 @@ parameters:
         ROLE_AUTHOR:        ROLE_USER
         ROLE_ADMIN:         ROLE_USER
         ROLE_SUPER_ADMIN:   ROLE_ADMIN
+
 security:
     access_decision_manager:
         strategy: unanimous
