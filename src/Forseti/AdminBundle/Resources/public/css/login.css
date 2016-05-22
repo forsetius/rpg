@@ -1,0 +1,47 @@
+html {
+    height: 100%;
+}
+body {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffd573+0,e64f4f+100 */
+/*background: #ffd573;  Old browsers 
+background: -moz-linear-gradient(-45deg,  #ffd573 0%, #e64f4f 100%);  FF3.6+ 
+background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#ffd573), color-stop(100%,#e64f4f));  Chrome,Safari4+ 
+background: -webkit-linear-gradient(-45deg,  #ffd573 0%,#e64f4f 100%);  Chrome10+,Safari5.1+ 
+background: -o-linear-gradient(-45deg,  #ffd573 0%,#e64f4f 100%);  Opera 11.10+ 
+background: -ms-linear-gradient(-45deg,  #ffd573 0%,#e64f4f 100%);  IE10+ 
+background: linear-gradient(135deg,  #ffd573 0%,#e64f4f 100%);  W3C 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd573', endColorstr='#e64f4f',GradientType=1 );  IE6-9 fallback on horizontal gradient */
+background: #efefef !important
+}
+
+.wrapper {	
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.form-signin {
+ width: 360px;
+margin: 7% auto;
+  padding: 15px 35px 45px;
+  background-color: #fff;
+
+  /*border: 1px solid rgba(0,0,0,0.1);*/  
+}
+.form-control {
+      border-radius: 0px !important;
+box-shadow: none !important;
+border-color: #D2D6DE;
+}
+
+.btn.btn-bialystok {
+    background-color: #FFCB00;
+    color: #fff !important;
+    margin-top: 10px
+}
+.btn.btn-bialystok:hover {
+    background-color: #FFD530;
+}
+.login #login .form-control:focus {
+    border-color: #d3222a !important;
+box-shadow: none;
+}

@@ -16,12 +16,11 @@ trait GroupAdminTrait {
                 $str = array_pad(explode('_',  strtolower($val), 3), 3, '');
                 $separator = ($str[2] != '') ? ':' : '';
                 $label = ucfirst($str[1]) . $separator . ucfirst(str_replace('_', ' ',$str[2]));
-                if ($str[2] =='all') $preferred[] = $label;
             }
             $choices[] = $label;
         }
         $formBuilder = parent::createEntityFormBuilder($entity, $view);
-        $formBuilder->add('roles', ChoiceType::class, ['choices'=>array_combine($choices, $vals), 'preferred_choices'=>$preferred, 'multiple'=>true, 'expanded'=>false]);
+        $formBuilder->add('roles', ChoiceType::class, ['choices'=>array_combine($choices, $vals), 'multiple'=>true, 'expanded'=>false]);
         return $formBuilder;
     }
 

@@ -15,7 +15,7 @@
 /vendor/
 /web/bundles/
 /src/*Bundle/Resources/public/*
-/src/Forseti/*Bundle/Resources/public/*
+/src/Forseti/*Bundle/Resources/public/img/*
 /composer.lock
 /bin/
 /.settings/
