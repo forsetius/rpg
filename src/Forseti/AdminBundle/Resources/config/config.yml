@@ -8,12 +8,16 @@ fos_user:
     group:
         group_class:   Forseti\AdminBundle\Entity\Group
         
+services:       
+    eg_admin.form.type.datePicker:
+        class:      Eg\AdminBundle\Form\Type\DatePickerType
+        tags:       [ { name: 'form.type', alias: 'datePicker' } ]
+        public:     true
+        
 ivory_ck_editor:
     input_sync: true
-    default_config: all
+    default_config: advanced_config
     configs:
-        all:
-            toolbar:
         simple_config:
             toolbar:
                 - { name: 'basicstyles', items: [ 'Bold', 'Italic', 'Underline', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] }

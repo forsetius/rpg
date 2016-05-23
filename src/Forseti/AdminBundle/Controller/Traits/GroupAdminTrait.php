@@ -1,6 +1,5 @@
 <?php
 namespace Forseti\AdminBundle\Controller\Traits;
-
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 trait GroupAdminTrait {
