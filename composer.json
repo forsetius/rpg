@@ -25,7 +25,7 @@
 		"symfony/swiftmailer-bundle" : "^2.3",
 		"symfony/monolog-bundle" : "^2.8",
 		"sensio/distribution-bundle" : "^5.0",
-		"sensio/framework-extra-bundle" : "^3.0.2",
+		"sensio/framework-extra-bundle" : "~3.0",
 		"incenteev/composer-parameter-handler" : "^2.0",
 		"stof/doctrine-extensions-bundle" : "~1.2",
 		"javiereguiluz/easyadmin-bundle" : "dev-master",
@@ -34,6 +34,7 @@
 		"symfony/assetic-bundle" : "~2.8",
 		"vich/uploader-bundle" : "~1",
 		"easycorp/easy-security-bundle" : "~1"
+		"doctrine/doctrine-fixtures-bundle" : "~2.3"
 	},
 	"require-dev" : {
 		"sensio/generator-bundle" : "^3.0",

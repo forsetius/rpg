@@ -1,5 +1,5 @@
 <?php
-namespace Eg\AdminBundle\Form\Type;
+namespace Forseti\AdminBundle\Form\Type;
 
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\OptionsResolver\OptionsResolver;

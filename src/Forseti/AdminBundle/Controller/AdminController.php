@@ -2,7 +2,7 @@
 namespace Forseti\AdminBundle\Controller;
 
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
 class AdminController extends BaseAdminController

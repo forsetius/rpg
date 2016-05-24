@@ -8,7 +8,7 @@
     {% if value|length > 0 %}
         <ul>
             {% for element in value %}
-                <li>{{ element }}</li>
+                <li>{{ m.label4role(element) }}</li>
             {% endfor %}
         </ul>
     {% else %}

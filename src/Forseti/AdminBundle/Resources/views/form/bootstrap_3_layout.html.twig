@@ -81,51 +81,17 @@
 {%- endblock percent_widget %}
 
 {% block datetime_widget -%}
-<div class='input-group date' id='{{ id }}'>
-	<span class="input-group-addon">
-        <span class="fa fa-calendar"></span>
-    </span>
-    <input type='text' class="form-control" />
-</div>
-<script type="text/javascript">
-    $(function () {
-        $('#{{ id }}').datetimepicker({
-            locale: 'pl',
-            sideBySide: false,
-            collapse: true,
-            useCurrent: true,
-            showTodayButton: true,
-            showClear: true,
-            tooltips: {
-                today: '{{ "easyAdmin.datetimepicker2.text.today"|trans }}',
-                clear: '{{ "easyAdmin.datetimepicker2.text.clear"|trans }}',
-                close: '{{ "easyAdmin.datetimepicker2.text.close"|trans }}',
-                selectMonth: '{{ "easyAdmin.datetimepicker2.text.selectMonth"|trans }}',
-                prevMonth: '{{ "easyAdmin.datetimepicker2.text.prevMonth"|trans }}',
-                nextMonth: '{{ "easyAdmin.datetimepicker2.text.nextMonth"|trans }}',
-                selectYear: '{{ "easyAdmin.datetimepicker2.text.selectYear"|trans }}',
-                prevYear: '{{ "easyAdmin.datetimepicker2.text.prevYear"|trans }}',
-                nextYear: '{{ "easyAdmin.datetimepicker2.text.nextYear"|trans }}',
-                selectDecade: '{{ "easyAdmin.datetimepicker2.text.selectDecade"|trans }}',
-                prevDecade: '{{ "easyAdmin.datetimepicker2.text.prevDecade"|trans }}',
-                nextDecade: '{{ "easyAdmin.datetimepicker2.text.nextDecade"|trans }}',
-                prevCentury: '{{ "easyAdmin.datetimepicker2.text.prevCentury"|trans }}',
-                nextCentury: '{{ "easyAdmin.datetimepicker2.text.nextCentury"|trans }}'
-            },
-            icons: {
-                time: 'fa fa-clock-o',
-                date: 'fa fa-calendar',
-                up: 'fa fa-chevron-up',
-                down: 'fa fa-chevron-down',
-                previous: 'fa fa-chevron-left',
-                next: 'fa fa-chevron-right',
-                today: 'fa fa-calendar-check-o',
-                clear: 'fa fa-eraser',
-                close: 'fa fa-times'
-            }
-        });
-    });
-</script>
+    {% if widget == 'single_text' %}
+        {{- block('form_widget_simple') -}}
+    {% else -%}
+        {% set attr = attr|merge({class: (attr.class|default('') ~ ' form-inline')|trim}) -%}
+        <div {{ block('widget_container_attributes') }}>
+            {{- form_errors(form.date) -}}
+            {{- form_errors(form.time) -}}
+            {{- form_widget(form.date, { datetime: true } ) -}}
+            {{- form_widget(form.time, { datetime: true } ) -}}
+        </div>
+    {%- endif %}
 {%- endblock datetime_widget %}
 
 {% block date_widget -%}
