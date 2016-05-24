@@ -1,6 +1,9 @@
 imports:
     - { resource: admin.yml }
-        
+
+parameters:
+    easyadmin.config.manager.class: Forseti\AdminBundle\DependencyInjection\ConfigManager
+
 fos_user:
     db_driver: orm
     firewall_name:  main

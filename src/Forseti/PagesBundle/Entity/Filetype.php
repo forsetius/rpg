@@ -34,12 +34,20 @@ class Filetype implements Translatable
     /**
      * @ORM\Column(type="string", length=7)
      */
-    protected $color;
+    protected $color = '#000000';
     
     /**
      * @ORM\Column(type="string", length=30)
      */
     protected $contentType;
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }
     
     /**
      * Get icon|color
@@ -49,7 +57,8 @@ class Filetype implements Translatable
     {
         return $this->icon.'|'.$this->color;
     }
-    
+ 
+
     /**
      * Get id
      *
@@ -109,30 +118,6 @@ class Filetype implements Translatable
     }
 
     /**
-     * Set contentType
-     *
-     * @param string $contentType
-     *
-     * @return Filetype
-     */
-    public function setContentType($contentType)
-    {
-        $this->contentType = $contentType;
-
-        return $this;
-    }
-
-    /**
-     * Get contentType
-     *
-     * @return string
-     */
-    public function getContentType()
-    {
-        return $this->contentType;
-    }
-
-    /**
      * Set color
      *
      * @param string $color
@@ -154,5 +139,29 @@ class Filetype implements Translatable
     public function getColor()
     {
         return $this->color;
+    }
+
+    /**
+     * Set contentType
+     *
+     * @param string $contentType
+     *
+     * @return Filetype
+     */
+    public function setContentType($contentType)
+    {
+        $this->contentType = $contentType;
+
+        return $this;
+    }
+
+    /**
+     * Get contentType
+     *
+     * @return string
+     */
+    public function getContentType()
+    {
+        return $this->contentType;
     }
 }

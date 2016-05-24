@@ -3,6 +3,7 @@ namespace Forseti\PagesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Translatable\Translatable;
 use \Doctrine\Common\Collections\ArrayCollection;
 
@@ -12,8 +13,10 @@ use \Doctrine\Common\Collections\ArrayCollection;
  */
 class Tag extends Page implements Translatable
 {
-    const ENTITY_ACTIONS = ['list', 'show', 'new', 'edit', 'delete', 'softdelete', 'flag', 'comment'];
+    const ENTITY_ACTIONS = ['list', 'show', 'new', 'edit', 'delete', 'softdelete', 'flag'];
 
+    use SoftDeleteableEntity;
+    
     /**
      * @ORM\Column(type="string", length=30, nullable=true)
      */

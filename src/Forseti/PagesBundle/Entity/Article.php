@@ -2,7 +2,9 @@
 namespace Forseti\PagesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Forseti\PagesBundle\Entity\Traits\Author;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Translatable\Translatable;
 use \Doctrine\Common\Collections\ArrayCollection;
 
@@ -13,7 +15,10 @@ use \Doctrine\Common\Collections\ArrayCollection;
 class Article extends Page implements Translatable
 {
     const ENTITY_ACTIONS = ['list', 'show', 'new', 'edit', 'delete', 'softdelete', 'flag', 'comment'];
-    
+
+    use Author;
+    use SoftDeleteableEntity;
+
     /**
      * @Gedmo\Translatable
      * @ORM\Column(type="text", nullable=true)
@@ -42,11 +47,11 @@ class Article extends Page implements Translatable
      * @ORM\JoinTable(name="pages_articles_tags_join")
      */
     protected $tags;
-    
+
     /**
-     * @ORM\ManyToOne(targetEntity="Forseti\AdminBundle\Entity\User")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="article")
      */
-    protected $author;
+    protected $comments;
     
     /**
      * Constructor
@@ -56,9 +61,9 @@ class Article extends Page implements Translatable
         $this->attachments = new ArrayCollection();
         $this->images = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
   
-
     /**
      * Set lead
      *
@@ -81,54 +86,6 @@ class Article extends Page implements Translatable
     public function getLead()
     {
         return $this->lead;
-    }
-
-    /**
-     * Set category
-     *
-     * @param \Forseti\PagesBundle\Entity\Category $category
-     *
-     * @return Article
-     */
-    public function setCategory(\Forseti\PagesBundle\Entity\Category $category = null)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return \Forseti\PagesBundle\Entity\Category
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * Set author
-     *
-     * @param \Forseti\AdminBundle\Entity\User $author
-     *
-     * @return Article
-     */
-    public function setAuthor(\Forseti\AdminBundle\Entity\User $author = null)
-    {
-        $this->author = $author;
-
-        return $this;
-    }
-
-    /**
-     * Get author
-     *
-     * @return \Forseti\AdminBundle\Entity\User
-     */
-    public function getAuthor()
-    {
-        return $this->author;
     }
 
     /**
@@ -200,6 +157,30 @@ class Article extends Page implements Translatable
     }
 
     /**
+     * Set category
+     *
+     * @param \Forseti\PagesBundle\Entity\Category $category
+     *
+     * @return Article
+     */
+    public function setCategory(\Forseti\PagesBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Forseti\PagesBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
      * Add tag
      *
      * @param \Forseti\PagesBundle\Entity\Tag $tag
@@ -231,5 +212,39 @@ class Article extends Page implements Translatable
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \Forseti\PagesBundle\Entity\Comment $comment
+     *
+     * @return Article
+     */
+    public function addComment(\Forseti\PagesBundle\Entity\Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \Forseti\PagesBundle\Entity\Comment $comment
+     */
+    public function removeComment(\Forseti\PagesBundle\Entity\Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

@@ -20,32 +20,35 @@ class AdminController extends BaseAdminController
      */
     public function indexAction(Request $request)
     {
+        $this->request = $request;
+        $r = $this->request->query;
+        if (count($r)==0) {
+            $this->request->query->set('entity', $this->container->getParameter('startingPage'));
+            $this->request->query->set('action', 'list');
+        }
+
+        if (! $this->hasNeededRole() )
+            throw $this->createAccessDeniedException();
+
         foreach (['site_icon'] as $twigGlobal)
             $this->container->get('twig')->addGlobal("_$twigGlobal", $this->container->getParameter($twigGlobal));
-
-        $r = $request->query;
-        $entity = (count($r)>0) ? $r->get('entity') : $this->container->getParameter('startingPage');
-        $action = (count($r)>0) ? $r->get('action') : 'list';
-
-        if (! $this->get('security')->hasRole(strtoupper("ROLE_{$entity}_$action")) )
-            throw $this->createAccessDeniedException();
 
         return parent::indexAction($request);
     }
     
-    protected function getMenuRights($menu)
+    protected function getMenuForUser($menu)
     {
         // TODO
         $result = [];
         foreach ($menu as $menuItem) {
             if (\array_key_exists('children', $menuItem)) {
-                $items = $this->getMenuRights($menuItem['children']);
+                $items = $this->getMenuForUser($menuItem['children']);
                 if (\count($items) > 0) {
                     $menuItem['children'] = $items;
                     $result[] = $menuItem;
                 }
             } else if (\array_key_exists('entity', $menuItem)) {
-                if ($this->isGranted('list', $menuItem['entity']))
+                if ($this->hasNeededRole($menuItem, 'list'))
                     $result[] = $menuItem;
             } else if (\array_key_exists('url', $menuItem)) {
                 $result[] = $menuItem;
@@ -61,5 +64,12 @@ class AdminController extends BaseAdminController
         
         
         return (\array_key_exists('divider', \array_pop($result))) ? \array_splice($result, -1) : $result;
+    }
+
+    public function hasNeededRole($entity = null, $action = null)
+    {
+        if ($entity === null) $entity = $this->request->query->get('entity');
+        if ($action === null) $action = $this->request->query->get('action');
+        return $this->get('security')->hasRole(strtoupper("ROLE_{$entity}_{$action}"));
     }
 }

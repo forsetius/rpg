@@ -2,6 +2,7 @@
 namespace Forseti\PagesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Forseti\PagesBundle\Entity\Traits\Licenced;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Translatable\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -12,7 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Attachment extends Page implements Translatable
 {
-    use Traits\Licenced;
+    use Licenced;
     
     /**
      * @ORM\Column(type="string", length=255, unique=true)

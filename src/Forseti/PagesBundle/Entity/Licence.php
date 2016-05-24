@@ -12,7 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Licence implements Translatable
 {
-    const ENTITY_ACTIONS = ['list', 'show', 'new', 'edit', 'delete', 'softdelete'];
+    const ENTITY_ACTIONS = ['list', 'show', 'new', 'edit', 'delete'];
     
     /**
      * @ORM\Column(type="smallint")
@@ -45,8 +45,16 @@ class Licence implements Translatable
     public function __construct() {
         $this->attachments = new ArrayCollection();
         $this->images = new ArrayCollection();
-        
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }
+
 
     /**
      * Get id

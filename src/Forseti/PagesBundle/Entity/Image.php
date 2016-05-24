@@ -2,6 +2,7 @@
 namespace Forseti\PagesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Forseti\PagesBundle\Entity\Traits\Licenced;
 use Gedmo\Translatable\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -11,13 +12,18 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Image extends Page implements Translatable
 {
-    use Traits\Licenced;
+    use Licenced;
     
     /**
-     * @ORM\Column(type="simple_array")
+     * @ORM\Column(type="string", length=255)
      */
-    protected $filenames;
-    
+    protected $filenameMain;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $filenameThumb;
+
     /**
      * @ORM\ManyToOne(targetEntity="Filetype")
      */
@@ -32,32 +38,55 @@ class Image extends Page implements Translatable
         $this->articles = new ArrayCollection();
     }
 
- 
 
     /**
-     * Set filenames
+     * Set filenameMain
      *
-     * @param array $filenames
+     * @param string $filenameMain
      *
      * @return Image
      */
-    public function setFilenames($filenames)
+    public function setFilenameMain($filenameMain)
     {
-        $this->filenames = $filenames;
+        $this->filenameMain = $filenameMain;
 
         return $this;
     }
 
     /**
-     * Get filenames
+     * Get filenameMain
      *
-     * @return array
+     * @return string
      */
-    public function getFilenames()
+    public function getFilenameMain()
     {
-        return $this->filenames;
+        return $this->filenameMain;
     }
-    
+
+    /**
+     * Set filenameThumb
+     *
+     * @param string $filenameThumb
+     *
+     * @return Image
+     */
+    public function setFilenameThumb($filenameThumb)
+    {
+        $this->filenameThumb = $filenameThumb;
+
+        return $this;
+    }
+
+    /**
+     * Get filenameThumb
+     *
+     * @return string
+     */
+    public function getFilenameThumb()
+    {
+        return $this->filenameThumb;
+    }
+
     /**
      * Set type
      *
