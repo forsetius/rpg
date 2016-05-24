@@ -1,6 +1,9 @@
 imports:
     - { resource: admin/article.yml }
     - { resource: admin/attachment.yml }
+    - { resource: admin/category.yml }
+    - { resource: admin/comment.yml }
     - { resource: admin/filetype.yml }
     - { resource: admin/image.yml }
     - { resource: admin/licence.yml }
+    - { resource: admin/tag.yml }

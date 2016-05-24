@@ -1,0 +1,34 @@
+security:
+    role_hierarchy:
+        ROLE_CATEGORY_SHOW: ~
+        ROLE_CATEGORY_LIST: ~
+        ROLE_CATEGORY_NEW: ~
+        ROLE_CATEGORY_EDIT_OWN: ~
+        ROLE_CATEGORY_EDIT: ROLE_CATEGORY_EDIT_OWN
+        ROLE_CATEGORY_SOFTDELETE_OWN: ~
+        ROLE_CATEGORY_SOFTDELETE: ROLE_CATEGORY_SOFTDELETE_OWN
+        ROLE_CATEGORY_DELETE: ~
+        ROLE_CATEGORY_FLAG: ~
+        ROLE_CATEGORY_ALL:
+            - ROLE_CATEGORY_SHOW
+            - ROLE_CATEGORY_LIST
+            - ROLE_CATEGORY_NEW
+            - ROLE_CATEGORY_EDIT
+            - ROLE_CATEGORY_DELETE
+            - ROLE_CATEGORY_SOFTDELETE
+            - ROLE_CATEGORY_FLAG
+
+easy_admin:
+    entities:
+        Category:
+            class: Forseti\PagesBundle\Entity\Category
+            label: easyAdmin.category.name.mp
+            form: {}
+            new:
+                title: easyAdmin.category.title.new
+            edit:
+                title: easyAdmin.category.title.edit    
+            show:
+                title: easyAdmin.category.name.mp 
+            list:
+                title: easyAdmin.category.name.mm    

@@ -14,7 +14,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Attachment extends Page implements Translatable
 {
     use Licenced;
-    
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $description;
+
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      */
@@ -146,5 +151,29 @@ class Attachment extends Page implements Translatable
     public function getArticles()
     {
         return $this->articles;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Attachment
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

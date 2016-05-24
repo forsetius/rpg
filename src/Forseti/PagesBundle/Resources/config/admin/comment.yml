@@ -1,0 +1,34 @@
+security:
+    role_hierarchy:
+        ROLE_COMMENT_SHOW: ~
+        ROLE_COMMENT_LIST: ~
+        ROLE_COMMENT_NEW: ~
+        ROLE_COMMENT_EDIT_OWN: ~
+        ROLE_COMMENT_EDIT: ROLE_COMMENT_EDIT_OWN
+        ROLE_COMMENT_SOFTDELETE_OWN: ~
+        ROLE_COMMENT_SOFTDELETE: ROLE_COMMENT_SOFTDELETE_OWN
+        ROLE_COMMENT_DELETE: ~
+        ROLE_COMMENT_FLAG: ~
+        ROLE_COMMENT_ALL:
+            - ROLE_COMMENT_SHOW
+            - ROLE_COMMENT_LIST
+            - ROLE_COMMENT_NEW
+            - ROLE_COMMENT_EDIT
+            - ROLE_COMMENT_DELETE
+            - ROLE_COMMENT_SOFTDELETE
+            - ROLE_COMMENT_FLAG
+            
+easy_admin:
+    entities:
+        Comment:
+            class: Forseti\PagesBundle\Entity\Comment
+            label: easyAdmin.comment.name.mp
+            form: {}
+            new:
+                title: easyAdmin.comment.title.new
+            edit:
+                title: easyAdmin.comment.title.edit    
+            show:
+                title: easyAdmin.comment.name.mp 
+            list:
+                title: easyAdmin.comment.name.mm    

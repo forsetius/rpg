@@ -1,3 +1,23 @@
+security:
+    role_hierarchy:
+        ROLE_LICENCE_SHOW: ~
+        ROLE_LICENCE_LIST: ~
+        ROLE_LICENCE_NEW: ~
+        ROLE_LICENCE_EDIT_OWN: ~
+        ROLE_LICENCE_EDIT: ROLE_LICENCE_EDIT_OWN
+        ROLE_LICENCE_SOFTDELETE_OWN: ~
+        ROLE_LICENCE_SOFTDELETE: ROLE_LICENCE_SOFTDELETE_OWN
+        ROLE_LICENCE_DELETE: ~
+        ROLE_LICENCE_FLAG: ~
+        ROLE_LICENCE_ALL:
+            - ROLE_LICENCE_SHOW
+            - ROLE_LICENCE_LIST
+            - ROLE_LICENCE_NEW
+            - ROLE_LICENCE_EDIT
+            - ROLE_LICENCE_DELETE
+            - ROLE_LICENCE_SOFTDELETE
+            - ROLE_LICENCE_FLAG
+
 easy_admin:
     entities:
         Licence:

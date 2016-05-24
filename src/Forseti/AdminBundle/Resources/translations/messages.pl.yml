@@ -6,12 +6,12 @@ easyAdmin.pages.name: Klucz
 easyAdmin.pages.title: Tytuł
 easyAdmin.pages.parent: Rodzic
 easyAdmin.pages.page_order: Kolejność
-easyAdmin.pages.breadcrumbs: Okruszki
 easyAdmin.pages.template: Szablon
 easyAdmin.pages.css_class: Klasa CSS
 easyAdmin.pages.meta_title: META title
 easyAdmin.pages.meta_desc: META description
 easyAdmin.pages.meta_keywords: META keywords
+easyAdmin.pages.author: Autor
 
 easyAdmin.article.name.mp: Artykuł
 easyAdmin.article.name.mm: Artykuły
@@ -24,6 +24,28 @@ easyAdmin.attachment.name.mp: Załącznik
 easyAdmin.attachment.name.mm: Załączniki
 easyAdmin.attachment.title.edit: Edycja Załącznika
 easyAdmin.attachment.title.new: Dodawanie nowego Załącznika
+easyAdmin.attachment.filename: Nazwa pliku
+easyAdmin.attachment.size: Rozmiar
+easyAdmin.attachment.type: Typ pliku
+easyAdmin.attachment.attribution: Autorstwo
+
+easyAdmin.category.name.mp: Kategoria
+easyAdmin.category.name.mm: Kategorie
+easyAdmin.category.title.edit: Edycja Kategorii
+easyAdmin.category.title.new: Dodawanie nowej Kategorii
+easyAdmin.category.breadcrumbs: Okruszki
+easyAdmin.category.parent: Rodzic
+easyAdmin.category.children: Podrzędne
+
+easyAdmin.tag.name.mp: Etykieta
+easyAdmin.tag.name.mm: Etykiety
+easyAdmin.tag.title.edit: Edycja Etykiety
+easyAdmin.tag.title.new: Dodawanie nowej Etykiety
+
+easyAdmin.comment.name.mp: Komentarz
+easyAdmin.comment.name.mm: Komentarze
+easyAdmin.comment.title.edit: Edycja Komentarza
+easyAdmin.comment.title.new: Dodawanie nowego Komentarza
 
 easyAdmin.image.name.mp: Obraz
 easyAdmin.image.name.mm: Obrazy
@@ -34,6 +56,11 @@ easyAdmin.filetype.name.mp: Typ pliku
 easyAdmin.filetype.name.mm: Typy plików
 easyAdmin.filetype.title.edit: Edycja Typu pliku
 easyAdmin.filetype.title.new: Dodawanie nowego Typu pliku
+
+easyAdmin.licence.name.mp: Licencja
+easyAdmin.licence.name.mm: Licencje
+easyAdmin.licence.title.edit: Edycja Licencji
+easyAdmin.licence.title.new: Dodawanie nowej Licencji
 
 easyAdmin.user.name.mp: Użytkownik
 easyAdmin.user.name.mm: Użytkownicy

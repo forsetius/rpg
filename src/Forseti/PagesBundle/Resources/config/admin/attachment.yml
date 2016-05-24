@@ -1,14 +1,61 @@
+security:
+    role_hierarchy:
+        ROLE_ATTACHMENT_SHOW: ~
+        ROLE_ATTACHMENT_LIST: ~
+        ROLE_ATTACHMENT_NEW: ~
+        ROLE_ATTACHMENT_EDIT_OWN: ~
+        ROLE_ATTACHMENT_EDIT: ROLE_ATTACHMENT_EDIT_OWN
+        ROLE_ATTACHMENT_SOFTDELETE_OWN: ~
+        ROLE_ATTACHMENT_SOFTDELETE: ROLE_ATTACHMENT_SOFTDELETE_OWN
+        ROLE_ATTACHMENT_DELETE: ~
+        ROLE_ATTACHMENT_FLAG: ~
+        ROLE_ATTACHMENT_ALL:
+            - ROLE_ATTACHMENT_SHOW
+            - ROLE_ATTACHMENT_LIST
+            - ROLE_ATTACHMENT_NEW
+            - ROLE_ATTACHMENT_EDIT
+            - ROLE_ATTACHMENT_DELETE
+            - ROLE_ATTACHMENT_SOFTDELETE
+            - ROLE_ATTACHMENT_FLAG
+
 easy_admin:
     entities:
         Attachment:
             class: Forseti\PagesBundle\Entity\Attachment
             label: easyAdmin.attachment.name.mp
-            form: {}
+            form:
+                fields:
+                    - { property: 'name', label: 'easyAdmin.pages.name', css_class: 'col-sm-6' }
+                    - { property: 'filename', label: 'easyAdmin.attachment.filename', css_class: 'col-sm-6' }
+                    - { property: 'description', label: 'easyAdmin.attachment.description', css_class: 'col-sm-12' }
+                    - { property: 'size', label: 'easyAdmin.attachment.size', css_class: 'col-sm-6' }
+                    - { property: 'type', label: 'easyAdmin.attachment.type', css_class: 'col-sm-6' }
+                    - { property: 'licence', label: 'easyAdmin.licence.name.mp', css_class: 'col-sm-6' }
+                    - { property: 'attribution', label: 'easyAdmin.attachment.attribution', css_class: 'col-sm-6' }
             new:
                 title: easyAdmin.attachment.title.new
             edit:
                 title: easyAdmin.attachment.title.edit   
             show:
-                title: easyAdmin.attachment.name.mp              
+                title: easyAdmin.attachment.name.mp
+                fields:
+                    - { property: 'name', label: 'easyAdmin.pages.name', template: '@ForsetiAdmin/easy_admin/field_linked_string.html.twig', css_class: 'col-sm-6' }
+                    - { property: 'filename', label: 'easyAdmin.attachment.filename', css_class: 'col-sm-6' }
+                    - { property: 'description', label: 'easyAdmin.attachment.description', css_class: 'col-sm-12' }
+                    - { property: 'size', label: 'easyAdmin.attachment.size', css_class: 'col-sm-6' }
+                    - { property: 'type', label: 'easyAdmin.attachment.type', css_class: 'col-sm-6' }
+                    - { property: 'licence', label: 'easyAdmin.licence.name.mp', css_class: 'col-sm-6' }
+                    - { property: 'attribution', label: 'easyAdmin.attachment.attribution', css_class: 'col-sm-6' }
+                    - { property: 'articles', label: 'easyAdmin.attachment.articles' }
             list:
                 title: easyAdmin.attachment.name.mm
+                fields:
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'name', label: 'easyAdmin.pages.name', template: '@ForsetiAdmin/easy_admin/field_linked_string.html.twig' }
+                    - { property: 'filename', label: 'easyAdmin.attachment.filename' }
+                    - { property: 'size', label: 'easyAdmin.attachment.size' }
+                    - { property: 'type', label: 'easyAdmin.attachment.type' }
+                    - { property: 'articles', label: 'easyAdmin.article.name.mm' }
+                    - { property: 'licence', label: 'easyAdmin.licence.name.mp' }
+                    - { property: 'attribution', label: 'easyAdmin.attachment.attribution' }
+

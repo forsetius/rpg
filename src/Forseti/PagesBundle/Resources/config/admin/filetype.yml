@@ -1,3 +1,23 @@
+security:
+    role_hierarchy:
+        ROLE_FILETYPE_SHOW: ~
+        ROLE_FILETYPE_LIST: ~
+        ROLE_FILETYPE_NEW: ~
+        ROLE_FILETYPE_EDIT_OWN: ~
+        ROLE_FILETYPE_EDIT: ROLE_FILETYPE_EDIT_OWN
+        ROLE_FILETYPE_SOFTDELETE_OWN: ~
+        ROLE_FILETYPE_SOFTDELETE: ROLE_FILETYPE_SOFTDELETE_OWN
+        ROLE_FILETYPE_DELETE: ~
+        ROLE_FILETYPE_FLAG: ~
+        ROLE_FILETYPE_ALL:
+            - ROLE_FILETYPE_SHOW
+            - ROLE_FILETYPE_LIST
+            - ROLE_FILETYPE_NEW
+            - ROLE_FILETYPE_EDIT
+            - ROLE_FILETYPE_DELETE
+            - ROLE_FILETYPE_SOFTDELETE
+            - ROLE_FILETYPE_FLAG
+
 easy_admin:
     entities:
         Filetype:

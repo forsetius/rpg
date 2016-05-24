@@ -21,7 +21,7 @@ trait Licenced
      *
      * @param string $licence
      *
-     * @return Attachment
+     * @return mixed
      */
     public function setLicence($licence)
     {
@@ -45,7 +45,7 @@ trait Licenced
      *
      * @param string $attribution
      *
-     * @return Attachment
+     * @return mixed
      */
     public function setAttribution($attribution)
     {

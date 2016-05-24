@@ -5,6 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Forseti\PagesBundle\Entity\Traits\Author;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Gedmo\Translatable\Translatable;
 use \Doctrine\Common\Collections\ArrayCollection;
 
@@ -18,6 +19,7 @@ class Article extends Page implements Translatable
 
     use Author;
     use SoftDeleteableEntity;
+    use TimestampableEntity;
 
     /**
      * @Gedmo\Translatable
