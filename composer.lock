@@ -1297,12 +1297,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/javiereguiluz/EasyAdminBundle.git",
-                "reference": "6bbed80ed63f79aaaacee67975304e561642ad66"
+                "reference": "9b43b189f001de79ca081257c36d3580e09a51b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/javiereguiluz/EasyAdminBundle/zipball/6bbed80ed63f79aaaacee67975304e561642ad66",
-                "reference": "6bbed80ed63f79aaaacee67975304e561642ad66",
+                "url": "https://api.github.com/repos/javiereguiluz/EasyAdminBundle/zipball/9b43b189f001de79ca081257c36d3580e09a51b1",
+                "reference": "9b43b189f001de79ca081257c36d3580e09a51b1",
                 "shasum": ""
             },
             "require": {
@@ -1372,7 +1372,7 @@
                 "backend",
                 "generator"
             ],
-            "time": "2016-05-17 18:36:14"
+            "time": "2016-05-25 19:24:17"
         },
         {
             "name": "jdorn/sql-formatter",

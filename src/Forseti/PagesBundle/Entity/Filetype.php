@@ -42,6 +42,11 @@ class Filetype implements Translatable
     protected $contentType;
 
     /**
+     * @ORM\Column(type="simple_array")
+     */
+    protected $extensions;
+
+    /**
      * @return string
      */
     public function __toString()
@@ -163,5 +168,29 @@ class Filetype implements Translatable
     public function getContentType()
     {
         return $this->contentType;
+    }
+
+    /**
+     * Set extensions
+     *
+     * @param array $extensions
+     *
+     * @return Filetype
+     */
+    public function setExtensions($extensions)
+    {
+        $this->extensions = $extensions;
+
+        return $this;
+    }
+
+    /**
+     * Get extensions
+     *
+     * @return array
+     */
+    public function getExtensions()
+    {
+        return $this->extensions;
     }
 }

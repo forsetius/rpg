@@ -3,20 +3,22 @@ security:
         ROLE_IMAGE_SHOW: ~
         ROLE_IMAGE_LIST: ~
         ROLE_IMAGE_NEW: ~
-        ROLE_IMAGE_EDIT_OWN: ~
-        ROLE_IMAGE_EDIT: ROLE_IMAGE_EDIT_OWN
-        ROLE_IMAGE_SOFTDELETE_OWN: ~
-        ROLE_IMAGE_SOFTDELETE: ROLE_IMAGE_SOFTDELETE_OWN
+        ROLE_IMAGE_EDIT: ~
+        ROLE_IMAGE_SOFTDELETE: ~
         ROLE_IMAGE_DELETE: ~
         ROLE_IMAGE_FLAG: ~
-        ROLE_IMAGE_ALL:
+        ROLE_IMAGE_OWN: ~
+        ROLE_IMAGE_SEE:
             - ROLE_IMAGE_SHOW
+            - ROLE_IMAGE_LIST
+            - ROLE_IMAGE_FLAG
+        ROLE_IMAGE_ALL:
+            - ROLE_IMAGE_SEE
             - ROLE_IMAGE_LIST
             - ROLE_IMAGE_NEW
             - ROLE_IMAGE_EDIT
             - ROLE_IMAGE_DELETE
             - ROLE_IMAGE_SOFTDELETE
-            - ROLE_IMAGE_FLAG
 
 easy_admin:
     entities:

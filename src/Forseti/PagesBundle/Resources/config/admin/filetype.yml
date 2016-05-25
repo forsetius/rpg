@@ -3,20 +3,22 @@ security:
         ROLE_FILETYPE_SHOW: ~
         ROLE_FILETYPE_LIST: ~
         ROLE_FILETYPE_NEW: ~
-        ROLE_FILETYPE_EDIT_OWN: ~
-        ROLE_FILETYPE_EDIT: ROLE_FILETYPE_EDIT_OWN
-        ROLE_FILETYPE_SOFTDELETE_OWN: ~
-        ROLE_FILETYPE_SOFTDELETE: ROLE_FILETYPE_SOFTDELETE_OWN
+        ROLE_FILETYPE_EDIT: ~
+        ROLE_FILETYPE_SOFTDELETE: ~
         ROLE_FILETYPE_DELETE: ~
         ROLE_FILETYPE_FLAG: ~
-        ROLE_FILETYPE_ALL:
+        ROLE_FILETYPE_OWN: ~
+        ROLE_FILETYPE_SEE:
             - ROLE_FILETYPE_SHOW
+            - ROLE_FILETYPE_LIST
+            - ROLE_FILETYPE_FLAG
+        ROLE_FILETYPE_ALL:
+            - ROLE_FILETYPE_SEE
             - ROLE_FILETYPE_LIST
             - ROLE_FILETYPE_NEW
             - ROLE_FILETYPE_EDIT
             - ROLE_FILETYPE_DELETE
             - ROLE_FILETYPE_SOFTDELETE
-            - ROLE_FILETYPE_FLAG
 
 easy_admin:
     entities:
@@ -35,7 +37,7 @@ easy_admin:
                       label: 'easyAdmin.filetype.color'
                       type: 'Forseti\AdminBundle\Form\Type\ColorType'
                       css_class: 'col-sm-3'
-                      
+                    - { property: 'extensions', label: 'easyAdmin.filetypes.extensions'}
                     - { property: 'contentType', label: 'easyAdmin.filetype.contenttype', css_class: 'col-sm-6' }
             new:
                 title: easyAdmin.filetype.title.new
@@ -55,7 +57,7 @@ easy_admin:
                       label: 'easyAdmin.filetypes.icon'
                       template: '@ForsetiAdmin/easy_admin/field_fa.html.twig'
                       css_class: 'col-sm-3'
-                      
+                    - { property: 'extensions', label: 'easyAdmin.filetypes.extensions'}
                     - { property: 'contentType', label: 'easyAdmin.filetype.contenttype', css_class: 'col-sm-6' }
                     
             list:
@@ -71,5 +73,5 @@ easy_admin:
                       property: 'coloredIcon'
                       label: 'easyAdmin.filetypes.icon'
                       template: '@ForsetiAdmin/easy_admin/field_fa.html.twig'
-                      
+                    - { property: 'extensions', label: 'easyAdmin.filetypes.extensions'}
                     - { property: 'contentType', label: 'easyAdmin.filetypes.contenttype' }

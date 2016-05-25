@@ -42,7 +42,7 @@ easy_admin:
             - 
               label: easyAdmin.menu.div.dicts 
             - { entity: 'Filetype', icon: 'file-code-o', label: easyAdmin.filetype.name.mm }
-            - { entity: 'Licence', icon: 'file-text-o', label: easyAdmin.licence.name.mm }
+            - { entity: 'Licence', icon: 'certificate', label: easyAdmin.licence.name.mm }
             - 
               label: easyAdmin.menu.div.users
             - { entity: 'User', icon: 'user', label: easyAdmin.user.name.mm }

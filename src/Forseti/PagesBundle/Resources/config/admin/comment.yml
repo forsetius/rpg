@@ -3,21 +3,23 @@ security:
         ROLE_COMMENT_SHOW: ~
         ROLE_COMMENT_LIST: ~
         ROLE_COMMENT_NEW: ~
-        ROLE_COMMENT_EDIT_OWN: ~
-        ROLE_COMMENT_EDIT: ROLE_COMMENT_EDIT_OWN
-        ROLE_COMMENT_SOFTDELETE_OWN: ~
-        ROLE_COMMENT_SOFTDELETE: ROLE_COMMENT_SOFTDELETE_OWN
+        ROLE_COMMENT_EDIT: ~
+        ROLE_COMMENT_SOFTDELETE: ~
         ROLE_COMMENT_DELETE: ~
         ROLE_COMMENT_FLAG: ~
-        ROLE_COMMENT_ALL:
+        ROLE_COMMENT_OWN: ~
+        ROLE_COMMENT_SEE:
             - ROLE_COMMENT_SHOW
+            - ROLE_COMMENT_LIST
+            - ROLE_COMMENT_FLAG
+        ROLE_COMMENT_ALL:
+            - ROLE_COMMENT_SEE
             - ROLE_COMMENT_LIST
             - ROLE_COMMENT_NEW
             - ROLE_COMMENT_EDIT
             - ROLE_COMMENT_DELETE
             - ROLE_COMMENT_SOFTDELETE
-            - ROLE_COMMENT_FLAG
-            
+
 easy_admin:
     entities:
         Comment:

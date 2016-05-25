@@ -13,7 +13,7 @@ class ConfigManager extends BaseCM
 
     public function isActionEnabled($entityName, $view, $action)
     {
-        if (! AdminController::serviceContainer->get('security')->hasRole(strtoupper("ROLE_{$entityName}_{$action}"))) return false;
+//        if (! AdminController::serviceContainer->get('security')->hasRole(strtoupper("ROLE_{$entityName}_{$action}"))) return false;
         return parent::isActionEnabled($entityName, $view, $action);
     }
 }

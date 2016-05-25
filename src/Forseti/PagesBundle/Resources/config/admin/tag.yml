@@ -3,20 +3,19 @@ security:
         ROLE_TAG_SHOW: ~
         ROLE_TAG_LIST: ~
         ROLE_TAG_NEW: ~
-        ROLE_TAG_EDIT_OWN: ~
-        ROLE_TAG_EDIT: ROLE_TAG_EDIT_OWN
-        ROLE_TAG_SOFTDELETE_OWN: ~
-        ROLE_TAG_SOFTDELETE: ROLE_TAG_SOFTDELETE_OWN
+        ROLE_TAG_EDIT: ~
+        ROLE_TAG_SOFTDELETE: ~
         ROLE_TAG_DELETE: ~
-        ROLE_TAG_FLAG: ~
-        ROLE_TAG_ALL:
+        ROLE_TAG_SEE:
             - ROLE_TAG_SHOW
+            - ROLE_TAG_LIST
+        ROLE_TAG_ALL:
+            - ROLE_TAG_SEE
             - ROLE_TAG_LIST
             - ROLE_TAG_NEW
             - ROLE_TAG_EDIT
             - ROLE_TAG_DELETE
             - ROLE_TAG_SOFTDELETE
-            - ROLE_TAG_FLAG
 
 easy_admin:
     entities:
