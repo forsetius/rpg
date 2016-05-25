@@ -1,5 +1,6 @@
 imports:
     - { resource: admin.yml }
+    - { resource: services.xml }
 
 parameters:
     easyadmin.config.manager.class: Forseti\AdminBundle\DependencyInjection\ConfigManager
