@@ -12,6 +12,13 @@ class AdminController extends BaseAdminController
     use Traits\UserAdminTrait;
     use Traits\GroupAdminTrait;
 
+    protected static $serviceContainer;
+    
+    public static function getContainer()
+    {
+        return static:: $container;
+    }
+    
     /**
      * @Route("/", name="admin")
      * @Route("/", name="easyadmin")
@@ -36,6 +43,12 @@ class AdminController extends BaseAdminController
             $this->container->get('twig')->addGlobal("_$twigGlobal", $this->container->getParameter($twigGlobal));
 
         return parent::indexAction($request);
+    }
+    
+    public function setContainer(ContainerInterface $container = null)
+    {
+        parent::setContainer($container);
+        self::$serviceContainer = $this->container;
     }
     
     protected function getMenuForUser($menu)
