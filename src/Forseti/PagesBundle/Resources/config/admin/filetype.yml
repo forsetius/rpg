@@ -6,8 +6,6 @@ security:
         ROLE_FILETYPE_EDIT: ~
         ROLE_FILETYPE_SOFTDELETE: ~
         ROLE_FILETYPE_DELETE: ~
-        ROLE_FILETYPE_FLAG: ~
-        ROLE_FILETYPE_OWN: ~
         ROLE_FILETYPE_SEE:
             - ROLE_FILETYPE_SHOW
             - ROLE_FILETYPE_LIST
