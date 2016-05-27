@@ -11,7 +11,7 @@ parameters:
     locale.available: pl|en
     locale.default: pl
     locale.fallback: en
-    easyadmin.config.manager.class: Forseti\AdminBundle\DependencyInjection\ConfigManager
+    easyadmin.config.manager.class: Forseti\AdminBundle\Configuration\ConfigManager
 
 
 framework:

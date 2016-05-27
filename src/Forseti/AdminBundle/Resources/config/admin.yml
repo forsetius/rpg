@@ -40,7 +40,7 @@ easy_admin:
             - { entity: 'Category', icon: 'folder', label: easyAdmin.category.name.mm }
             - { entity: 'Tag', icon: 'tags', label: easyAdmin.tag.name.mm }
             - 
-              label: easyAdmin.menu.div.dicts 
+              label: easyAdmin.menu.div.dicts
             - { entity: 'Filetype', icon: 'file-code-o', label: easyAdmin.filetype.name.mm }
             - { entity: 'Licence', icon: 'certificate', label: easyAdmin.licence.name.mm }
             - 

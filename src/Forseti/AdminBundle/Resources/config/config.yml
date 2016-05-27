@@ -1,9 +1,8 @@
 imports:
     - { resource: admin.yml }
-    - { resource: services.xml }
 
 parameters:
-    easyadmin.config.manager.class: Forseti\AdminBundle\DependencyInjection\ConfigManager
+    easyadmin.config.manager.class: Forseti\AdminBundle\Configuration\ConfigManager
 
 fos_user:
     db_driver: orm
@@ -13,10 +12,14 @@ fos_user:
         group_class:   Forseti\AdminBundle\Entity\Group
         
 services:       
-    eg_admin.form.type.datePicker:
-        class:      Eg\AdminBundle\Form\Type\DatePickerType
-        tags:       [ { name: 'form.type', alias: 'datePicker' } ]
+    forsadmin.form.type.datepicker:
+        class:      Forseti\AdminBundle\Form\Type\DatePickerType
+        tags:       [ { name: 'form.type', alias: 'datepicker' } ]
         public:     true
+
+    easyadmin.config.manager:
+        class: Forseti\AdminBundle\Configuration\ConfigManager
+        arguments: ['@service_container']
         
 ivory_ck_editor:
     input_sync: true

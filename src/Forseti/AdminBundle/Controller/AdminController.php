@@ -2,6 +2,7 @@
 namespace Forseti\AdminBundle\Controller;
 
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,13 +12,6 @@ class AdminController extends BaseAdminController
 {
     use Traits\UserAdminTrait;
     use Traits\GroupAdminTrait;
-
-    protected static $serviceContainer;
-    
-    public static function getContainer()
-    {
-        return static:: $container;
-    }
     
     /**
      * @Route("/", name="admin")
@@ -43,42 +37,6 @@ class AdminController extends BaseAdminController
             $this->container->get('twig')->addGlobal("_$twigGlobal", $this->container->getParameter($twigGlobal));
 
         return parent::indexAction($request);
-    }
-    
-    public function setContainer(ContainerInterface $container = null)
-    {
-        parent::setContainer($container);
-        self::$serviceContainer = $this->container;
-    }
-    
-    protected function getMenuForUser($menu)
-    {
-        // TODO
-        $result = [];
-        foreach ($menu as $menuItem) {
-            if (\array_key_exists('children', $menuItem)) {
-                $items = $this->getMenuForUser($menuItem['children']);
-                if (\count($items) > 0) {
-                    $menuItem['children'] = $items;
-                    $result[] = $menuItem;
-                }
-            } else if (\array_key_exists('entity', $menuItem)) {
-                if ($this->hasNeededRole($menuItem, 'list'))
-                    $result[] = $menuItem;
-            } else if (\array_key_exists('url', $menuItem)) {
-                $result[] = $menuItem;
-            } else {
-                $menuItem['divider'] = null;
-                if (\array_key_exists('divider', \array_pop($result))) {
-                    \array_splice($result, -1, 1, $menuItem);
-                } else {
-                    $result[] = $menuItem;
-                }
-            }
-        }
-        
-        
-        return (\array_key_exists('divider', \array_pop($result))) ? \array_splice($result, -1) : $result;
     }
 
     public function hasNeededRole($entity = null, $action = null)
