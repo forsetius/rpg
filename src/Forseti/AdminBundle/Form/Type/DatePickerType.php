@@ -6,7 +6,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DatePickerType extends DateType
 {
-    private static $widgets = array(
+    protected static $widgets = array(
         'text' => 'Symfony\Component\Form\Extension\Core\Type\TextType',
     );
     
@@ -20,7 +20,7 @@ class DatePickerType extends DateType
     
     public function getBlockPrefix()
     {
-        return 'datePicker';
+        return 'datepicker';
     }
     
     public function getName()
