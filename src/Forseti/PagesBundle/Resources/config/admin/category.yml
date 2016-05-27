@@ -1,21 +1,19 @@
 security:
     role_hierarchy:
         ROLE_CATEGORY_SHOW: ~
-        ROLE_CATEGORY_LIST: ~
+        ROLE_CATEGORY_LIST: ROLE_CATEGORY_SEARCH
         ROLE_CATEGORY_NEW: ~
         ROLE_CATEGORY_EDIT: ~
         ROLE_CATEGORY_SOFTDELETE: ~
-        ROLE_CATEGORY_DELETE: ~
+        ROLE_CATEGORY_DELETE: ROLE_CATEGORY_SOFTDELETE
         ROLE_CATEGORY_SEE:
             - ROLE_CATEGORY_SHOW
             - ROLE_CATEGORY_LIST
         ROLE_CATEGORY_ALL:
             - ROLE_CATEGORY_SEE
-            - ROLE_CATEGORY_LIST
             - ROLE_CATEGORY_NEW
             - ROLE_CATEGORY_EDIT
             - ROLE_CATEGORY_DELETE
-            - ROLE_CATEGORY_SOFTDELETE
 
 easy_admin:
     entities:

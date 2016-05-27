@@ -1,24 +1,22 @@
 security:
     role_hierarchy:
         ROLE_COMMENT_SHOW: ~
-        ROLE_COMMENT_LIST: ~
+        ROLE_COMMENT_LIST: ROLE_COMMENT_SEARCH
         ROLE_COMMENT_NEW: ~
         ROLE_COMMENT_EDIT: ~
         ROLE_COMMENT_SOFTDELETE: ~
-        ROLE_COMMENT_DELETE: ~
+        ROLE_COMMENT_DELETE: ROLE_COMMENT_SOFTDELETE
         ROLE_COMMENT_FLAG: ~
-        ROLE_COMMENT_OWN: [ ROLE_ARTICLE_SEE, ROLE_ARTICLE_NEW ]
+        ROLE_COMMENT_OWN: [ ROLE_COMMENT_SEE, ROLE_COMMENT_NEW ]
         ROLE_COMMENT_SEE:
             - ROLE_COMMENT_SHOW
             - ROLE_COMMENT_LIST
             - ROLE_COMMENT_FLAG
         ROLE_COMMENT_ALL:
             - ROLE_COMMENT_SEE
-            - ROLE_COMMENT_LIST
             - ROLE_COMMENT_NEW
             - ROLE_COMMENT_EDIT
             - ROLE_COMMENT_DELETE
-            - ROLE_COMMENT_SOFTDELETE
 
 easy_admin:
     entities:

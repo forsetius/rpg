@@ -1,21 +1,19 @@
 security:
     role_hierarchy:
         ROLE_TAG_SHOW: ~
-        ROLE_TAG_LIST: ~
+        ROLE_TAG_LIST: ROLE_TAG_SEARCH
         ROLE_TAG_NEW: ~
         ROLE_TAG_EDIT: ~
         ROLE_TAG_SOFTDELETE: ~
-        ROLE_TAG_DELETE: ~
+        ROLE_TAG_DELETE: ROLE_TAG_SOFTDELETE
         ROLE_TAG_SEE:
             - ROLE_TAG_SHOW
             - ROLE_TAG_LIST
         ROLE_TAG_ALL:
             - ROLE_TAG_SEE
-            - ROLE_TAG_LIST
             - ROLE_TAG_NEW
             - ROLE_TAG_EDIT
             - ROLE_TAG_DELETE
-            - ROLE_TAG_SOFTDELETE
 
 easy_admin:
     entities:

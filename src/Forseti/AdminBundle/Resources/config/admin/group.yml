@@ -1,7 +1,7 @@
 security:
     role_hierarchy:
         ROLE_GROUP_SHOW: ~
-        ROLE_GROUP_LIST: ~
+        ROLE_GROUP_LIST: ROLE_GROUP_SEARCH
         ROLE_GROUP_NEW: ~
         ROLE_GROUP_EDIT: ~
         ROLE_GROUP_DELETE: ~
