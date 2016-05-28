@@ -49,3 +49,10 @@
     column-rule: 1px solid #ccc;
     padding: 15px;
 }
+
+.selectivity-input {
+    height: auto;
+    padding: 0;
+    display: block !important;
+    width: auto !important;
+}

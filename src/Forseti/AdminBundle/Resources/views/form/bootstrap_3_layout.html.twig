@@ -60,6 +60,20 @@
     {{- parent() -}}
 {%- endblock %}
 
+{%- block integer_widget -%}
+    {%- set type = type|default('text') -%}
+    {{ block('form_widget_simple') }}
+    <script type="text/javascript">
+        $(function() {
+            $('#{{ id }}').TouchSpin({
+                initval: 0, decimals: 0, 
+                {% if field_options.min is defined %}min: {{ field_options.min }},{% endif %}
+                {% if field_options.max is defined %}max: {{ field_options.max }}{% endif %}
+            });
+        });
+    </script>
+{%- endblock integer_widget -%}
+
 {% block money_widget -%}
     <div class="input-group">
         {% set prepend = '{{' == money_pattern[0:2] %}
@@ -71,6 +85,14 @@
             <span class="input-group-addon">{{ money_pattern|replace({ '{{ widget }}':''}) }}</span>
         {% endif %}
     </div>
+    <script type="text/javascript">
+        $(function() {
+            $('#{{ id }}').TouchSpin({
+                {% if field_options.min is defined %}min: {{ field_options.min }},{% endif %}
+                {% if field_options.max is defined %}max: {{ field_options.max }}{% endif %}
+            });
+        });
+    </script>
 {%- endblock money_widget %}
 
 {% block percent_widget -%}
@@ -78,6 +100,14 @@
         {{- block('form_widget_simple') -}}
         <span class="input-group-addon">%</span>
     </div>
+    <script type="text/javascript">
+        $(function() {
+            $('#{{ id }}').TouchSpin({
+                {% if field_options.min is defined %}min: {{ field_options.min }},{% endif %}
+                {% if field_options.max is defined %}max: {{ field_options.max }}{% endif %}
+            });
+        });
+    </script>
 {%- endblock percent_widget %}
 
 {% block datetime_widget -%}
@@ -131,21 +161,15 @@
 {% block choice_widget_collapsed -%}
     {% set attr = attr|merge({class: (attr.class|default('') ~ ' form-control')|trim}) %}
     {{- parent() -}}
-    {% if multiple %}
+    {#{% if multiple %}#}
     <script type="text/javascript">
 $(function() {
-    $('#{{ id }}').searchableOptionList({
-        showSelectAll: true,
-        texts: {
-            noItemsAvailable: '{{ "easyAdmin.sol.text.noItemsAvailable"|trans }}',
-            selectAll: '{{ "easyAdmin.sol.text.selectAll"|trans }}',
-            selectNone: '{{ "easyAdmin.sol.text.selectNone"|trans }}',
-            searchplaceholder: '{{ "easyAdmin.sol.text.searchplaceholder"|trans }}'
-        }
+    $('#{{ id }}').selectivity({
+
     });
-});    
+});
 </script>
-    {% endif %}
+    {#{% endif %}#}
 {%- endblock %}
 
 {% block choice_widget_expanded -%}
