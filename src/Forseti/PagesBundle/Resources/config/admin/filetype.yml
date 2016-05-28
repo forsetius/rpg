@@ -24,17 +24,18 @@ easy_admin:
             form: 
                 fields: 
                     - 
-                      property: 'title'
-                      label: 'easyAdmin.page.name'
-                      
-                    - { property: icon, label: 'easyAdmin.filetype.icon', css_class: 'col-sm-3'}
+                      property: 'name'
+                      label: 'easyAdmin.pages.name'
+                      css_class: 'col-sm-6'
+
+                    - { property: icon, label: 'easyAdmin.filetypes.icon', css_class: 'col-sm-3'}
                     - 
                       property: 'color'
-                      label: 'easyAdmin.filetype.color'
+                      label: 'easyAdmin.filetypes.color'
                       type: 'Forseti\AdminBundle\Form\Type\ColorType'
                       css_class: 'col-sm-3'
-                    - { property: 'extensions', label: 'easyAdmin.filetypes.extensions'}
-                    - { property: 'contentType', label: 'easyAdmin.filetype.contenttype', css_class: 'col-sm-6' }
+                    - { property: 'extensions', label: 'easyAdmin.filetypes.extensions', css_class: 'col-sm-6' }
+                    - { property: 'contentType', label: 'easyAdmin.filetypes.contenttype', css_class: 'col-sm-6' }
             new:
                 title: easyAdmin.filetype.title.new
             edit:

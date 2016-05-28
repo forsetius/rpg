@@ -23,10 +23,16 @@ class Licence implements Translatable
     
     /**
      * @Gedmo\Translatable
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=50, unique=true)
      */
     protected $name;
-    
+
+    /**
+     * @Gedmo\Translatable
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $longname;
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -180,5 +186,29 @@ class Licence implements Translatable
     public function getAttachments()
     {
         return $this->attachments;
+    }
+
+    /**
+     * Set longname
+     *
+     * @param string $longname
+     *
+     * @return Licence
+     */
+    public function setLongname($longname)
+    {
+        $this->longname = $longname;
+
+        return $this;
+    }
+
+    /**
+     * Get longname
+     *
+     * @return string
+     */
+    public function getLongname()
+    {
+        return $this->longname;
     }
 }

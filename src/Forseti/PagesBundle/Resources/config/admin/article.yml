@@ -122,10 +122,10 @@ easy_admin:
                     - { property: 'name', label: 'easyAdmin.pages.name', template: '@ForsetiAdmin/easy_admin/field_linked_string.html.twig' }
                     - { property: 'title', label: 'easyAdmin.pages.title' }
                     - { property: 'category', label: 'easyAdmin.category.name.mp' }
-                    - { property: 'tags', label: 'easyAdmin.tag.name.mm' }
-                    - { property: 'images', label: 'easyAdmin.image.name.mm' }
-                    - { property: 'attachments', label: 'easyAdmin.attachment.name.mm' }
-                    - { property: 'comments', label: 'easyAdmin.comment.name.mm' }
+                    - { property: 'tags', label: 'easyAdmin.tag.name.icon' }
+                    - { property: 'images', label: 'easyAdmin.image.name.icon' }
+                    - { property: 'attachments', label: 'easyAdmin.attachment.name.icon' }
+                    - { property: 'comments', label: 'easyAdmin.comment.name.icon' }
                     - { property: 'author', label: 'easyAdmin.pages.author' }
                     - { property: 'pageOrder', label: 'easyAdmin.pages.page_order' }
                     - { property: 'template', label: 'easyAdmin.pages.template' }

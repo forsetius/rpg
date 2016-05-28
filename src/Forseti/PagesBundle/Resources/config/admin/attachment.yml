@@ -27,7 +27,7 @@ easy_admin:
                 fields:
                     - { property: 'name', label: 'easyAdmin.pages.name', css_class: 'col-sm-6' }
                     - { property: 'filename', label: 'easyAdmin.attachment.filename', css_class: 'col-sm-6' }
-                    - { property: 'description', label: 'easyAdmin.attachment.description', css_class: 'col-sm-12' }
+                    - { property: 'description', label: 'easyAdmin.attachment.description', css_class: 'col-sm-12', type: ckeditor }
                     - { property: 'size', label: 'easyAdmin.attachment.size', css_class: 'col-sm-6' }
                     - { property: 'type', label: 'easyAdmin.attachment.type', css_class: 'col-sm-6' }
                     - { property: 'licence', label: 'easyAdmin.licence.name.mp', css_class: 'col-sm-6' }

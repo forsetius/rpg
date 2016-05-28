@@ -22,12 +22,14 @@ easyAdmin.articles.content: Treść
 
 easyAdmin.attachment.name.mp: Załącznik
 easyAdmin.attachment.name.mm: Załączniki
+easyAdmin.attachment.name.icon: <b class="fa fa-lg fa-paperclip"></b>
 easyAdmin.attachment.title.edit: Edycja Załącznika
 easyAdmin.attachment.title.new: Dodawanie nowego Załącznika
 easyAdmin.attachment.filename: Nazwa pliku
 easyAdmin.attachment.size: Rozmiar
 easyAdmin.attachment.type: Typ pliku
 easyAdmin.attachment.attribution: Autorstwo
+easyAdmin.attachment.description: Opis
 
 easyAdmin.category.name.mp: Kategoria
 easyAdmin.category.name.mm: Kategorie
@@ -39,29 +41,38 @@ easyAdmin.category.children: Podrzędne
 
 easyAdmin.tag.name.mp: Etykieta
 easyAdmin.tag.name.mm: Etykiety
+easyAdmin.tag.name.icon: <b class="fa fa-lg fa-tags"></b>
 easyAdmin.tag.title.edit: Edycja Etykiety
 easyAdmin.tag.title.new: Dodawanie nowej Etykiety
 
 easyAdmin.comment.name.mp: Komentarz
 easyAdmin.comment.name.mm: Komentarze
+easyAdmin.comment.name.icon: <b class="fa fa-lg fa-comments-o"></b>
 easyAdmin.comment.title.edit: Edycja Komentarza
 easyAdmin.comment.title.new: Dodawanie nowego Komentarza
 
 easyAdmin.image.name.mp: Obraz
 easyAdmin.image.name.mm: Obrazy
+easyAdmin.image.name.icon: <b class="fa fa-lg fa-image"></b>
 easyAdmin.image.title.edit: Edycja Obrazu
 easyAdmin.image.title.new: Dodawanie nowego Obrazu
 
 easyAdmin.filetype.name.mp: Typ pliku
 easyAdmin.filetype.name.mm: Typy plików
+easyAdmin.filetype.name.icon: <b class="fa fa-lg fa-image"></b>
 easyAdmin.filetype.title.edit: Edycja Typu pliku
 easyAdmin.filetype.title.new: Dodawanie nowego Typu pliku
-
+easyAdmin.filetypes.icon: Ikona
+easyAdmin.filetypes.color: Kolor ikony
+easyAdmin.filetypes.extensions: Rozszerzenia
+easyAdmin.filetypes.contenttype: ContentType
 
 easyAdmin.licence.name.mp: Licencja
 easyAdmin.licence.name.mm: Licencje
 easyAdmin.licence.title.edit: Edycja Licencji
 easyAdmin.licence.title.new: Dodawanie nowej Licencji
+easyAdmin.licences.url: Link
+easyAdmin.licences.name: Pełna nazwa
 
 easyAdmin.user.name.mp: Użytkownik
 easyAdmin.user.name.mm: Użytkownicy

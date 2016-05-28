@@ -20,12 +20,37 @@ easy_admin:
         Licence:
             class: Forseti\PagesBundle\Entity\Licence
             label: easyAdmin.licence.name.mp
-            form: {}
+            form:
+                fields:
+                    -
+                      property: 'name'
+                      label: 'easyAdmin.pages.name'
+                    - { property: 'longname', label: 'easyAdmin.licences.name'}
+                    - { property: 'url', label: 'easyAdmin.licences.url'}
             new:
                 title: easyAdmin.licence.title.new
             edit:
                 title: easyAdmin.licence.title.edit    
             show:
-                title: easyAdmin.licence.name.mp 
+                title: easyAdmin.licence.name.mp
+                fields:
+                    - { property: 'id', label: 'ID' }
+                    -
+                      property: 'name'
+                      label: 'easyAdmin.pages.name'
+                    - { property: 'longname', label: 'easyAdmin.licences.name'}
+                    - { property: 'url', label: 'easyAdmin.licences.url'}
+                    - { property: 'images', label: 'easyAdmin.image.name.mm' }
+                    - { property: 'attachments', label: 'easyAdmin.attachment.name.mm' }
             list:
-                title: easyAdmin.licence.name.mm    
+                title: easyAdmin.licence.name.mm
+                fields:
+                    - { property: 'id', label: 'ID' }
+                    -
+                      property: 'name'
+                      label: 'easyAdmin.pages.name'
+                      template: '@ForsetiAdmin/easy_admin/field_linked_string.html.twig'
+                    - { property: 'longname', label: 'easyAdmin.licences.name'}
+                    - { property: 'url', label: 'easyAdmin.licences.url'}
+                    - { property: 'images', label: 'easyAdmin.image.name.icon' }
+                    - { property: 'attachments', label: 'easyAdmin.attachment.name.icon' }
