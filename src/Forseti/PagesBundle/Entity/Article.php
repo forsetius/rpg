@@ -44,16 +44,16 @@ class Article extends Page implements Translatable
      */
     protected $category;
     
-    /**
-     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="articles")
-     * @ORM\JoinTable(name="pages_articles_tags_join")
-     */
-    protected $tags;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="article")
-     */
-    protected $comments;
+//    /**
+//     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="articles")
+//     * @ORM\JoinTable(name="pages_articles_tags_join")
+//     */
+//    protected $tags;
+//
+//    /**
+//     * @ORM\OneToMany(targetEntity="Comment", mappedBy="article")
+//     */
+//    protected $comments;
     
     /**
      * Constructor
@@ -62,8 +62,8 @@ class Article extends Page implements Translatable
     {
         $this->attachments = new ArrayCollection();
         $this->images = new ArrayCollection();
-        $this->tags = new ArrayCollection();
-        $this->comments = new ArrayCollection();
+//        $this->tags = new ArrayCollection();
+//        $this->comments = new ArrayCollection();
     }
   
     /**
@@ -181,72 +181,5 @@ class Article extends Page implements Translatable
     {
         return $this->category;
     }
-
-    /**
-     * Add tag
-     *
-     * @param \Forseti\PagesBundle\Entity\Tag $tag
-     *
-     * @return Article
-     */
-    public function addTag(\Forseti\PagesBundle\Entity\Tag $tag)
-    {
-        $this->tags[] = $tag;
-
-        return $this;
-    }
-
-    /**
-     * Remove tag
-     *
-     * @param \Forseti\PagesBundle\Entity\Tag $tag
-     */
-    public function removeTag(\Forseti\PagesBundle\Entity\Tag $tag)
-    {
-        $this->tags->removeElement($tag);
-    }
-
-    /**
-     * Get tags
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTags()
-    {
-        return $this->tags;
-    }
-
-    /**
-     * Add comment
-     *
-     * @param \Forseti\PagesBundle\Entity\Comment $comment
-     *
-     * @return Article
-     */
-    public function addComment(\Forseti\PagesBundle\Entity\Comment $comment)
-    {
-        $this->comments[] = $comment;
-
-        return $this;
-    }
-
-    /**
-     * Remove comment
-     *
-     * @param \Forseti\PagesBundle\Entity\Comment $comment
-     */
-    public function removeComment(\Forseti\PagesBundle\Entity\Comment $comment)
-    {
-        $this->comments->removeElement($comment);
-    }
-
-    /**
-     * Get comments
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getComments()
-    {
-        return $this->comments;
-    }
+    
 }

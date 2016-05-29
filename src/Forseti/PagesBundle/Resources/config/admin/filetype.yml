@@ -60,7 +60,7 @@ easy_admin:
             list:
                 title: easyAdmin.filetype.name.mm    
                 fields: 
-                    - { property: 'id', label: 'ID' }
+                    - { property: 'id', label: 'ID'  }
                     - 
                       property: 'name'
                       label: 'easyAdmin.pages.name'

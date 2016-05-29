@@ -2,19 +2,26 @@ easyAdmin.menu.div.pages: Strony
 easyAdmin.menu.div.dicts: Słowniki
 easyAdmin.menu.div.users: Użytkownicy
 
+ID: ID
+
 easyAdmin.pages.name: Klucz
 easyAdmin.pages.title: Tytuł
 easyAdmin.pages.parent: Rodzic
 easyAdmin.pages.page_order: Kolejność
+easyAdmin.pages.page_order.icon: <b class="fa fa-lg fa-sort-numeric-asc"></b>
 easyAdmin.pages.template: Szablon
 easyAdmin.pages.css_class: Klasa CSS
 easyAdmin.pages.meta_title: META title
 easyAdmin.pages.meta_desc: META description
 easyAdmin.pages.meta_keywords: META keywords
 easyAdmin.pages.author: Autor
+easyAdmin.pages.createdAt: Utworzono
+easyAdmin.pages.modifiedAt: Zmodyfikowano
+easyAdmin.pages.deletedAt: Usunięto
 
 easyAdmin.article.name.mp: Artykuł
 easyAdmin.article.name.mm: Artykuły
+easyAdmin.article.name.icon: <b class="fa fa-lg fa-file-text-o"></b>
 easyAdmin.article.title.edit: Edycja Artykułu
 easyAdmin.article.title.new: Dodawanie nowego Artykułu
 easyAdmin.articles.lead: Wprowadzenie
@@ -33,6 +40,7 @@ easyAdmin.attachment.description: Opis
 
 easyAdmin.category.name.mp: Kategoria
 easyAdmin.category.name.mm: Kategorie
+easyAdmin.category.name.icon: <b class="fa fa-lg fa-folder-o"></b>
 easyAdmin.category.title.edit: Edycja Kategorii
 easyAdmin.category.title.new: Dodawanie nowej Kategorii
 easyAdmin.category.breadcrumbs: Okruszki

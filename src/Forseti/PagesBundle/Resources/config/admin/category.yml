@@ -20,12 +20,58 @@ easy_admin:
         Category:
             class: Forseti\PagesBundle\Entity\Category
             label: easyAdmin.category.name.mp
-            form: {}
+            form:
+                fields:
+                    - { property: 'name', label: 'easyAdmin.pages.name', type: text, css_class: 'col-sm-2' }
+                    - { property: 'title', label: 'easyAdmin.pages.title', type: text, css_class: 'col-sm-10' }
+                    - { property: 'content', label: 'easyAdmin.articles.content', type: 'ckeditor' }
+                    - { property: 'frontimage', label: 'easyAdmin.pages.title' }
+                    - { property: 'children', label: 'easyAdmin.category.name.icon' }
+                    - { property: 'articles', label: 'easyAdmin.article.name.icon' }
+                    - { property: 'metaTitle', label: 'easyAdmin.pages.meta_title', type: text }
+                    - { property: 'metaKeywords', label: 'easyAdmin.pages.meta_keywords', type: text }
+                    - { property: 'metaDesc', label: 'easyAdmin.pages.meta_desc', type: 'ckeditor' }
+                    - { property: 'pageOrder', label: 'easyAdmin.pages.page_order', type: integer, css_class: 'col-sm-2' }
+                    - { property: 'template', label: 'easyAdmin.pages.template', type: text, css_class: 'col-sm-2' }
+                    - { property: 'cssClass', label: 'easyAdmin.pages.css_class', type: text, css_class: 'col-sm-2' }
             new:
                 title: easyAdmin.category.title.new
             edit:
                 title: easyAdmin.category.title.edit    
             show:
-                title: easyAdmin.category.name.mp 
+                title: easyAdmin.category.name.mp
+                fields:
+                    - { property: 'id', label: 'ID', css_class: 'col-sm-2' }
+                    - { property: 'name', label: 'easyAdmin.pages.name', css_class: 'col-sm-2' }
+                    - { property: 'title', label: 'easyAdmin.pages.title', css_class: 'col-sm-8' }
+                    - { property: 'frontimage', label: 'easyAdmin.pages.title' }
+                    - { property: 'content', label: 'easyAdmin.articles.content', type: raw }
+                    - { property: 'children', label: 'easyAdmin.category.name.mm', css_class: 'col-sm-6' }
+                    - { property: 'articles', label: 'easyAdmin.article.name.mm', css_class: 'col-sm-6' }
+                    - { property: 'metaTitle', label: 'easyAdmin.pages.meta_title' }
+                    - { property: 'metaKeywords', label: 'easyAdmin.pages.meta_keywords' }
+                    - { property: 'metaDesc', label: 'easyAdmin.pages.meta_desc', type: ckeditor }
+                    - { property: 'pageOrder', label: 'easyAdmin.pages.page_order', css_class: 'col-sm-2' }
+                    - { property: 'template', label: 'easyAdmin.pages.template', css_class: 'col-sm-2' }
+                    - { property: 'cssClass', label: 'easyAdmin.pages.css_class', css_class: 'col-sm-2' }
+                    - { property: 'deletedAt', label: 'easyAdmin.pages.deletedAt', css_class: 'col-sm-2' }
+
+                    # FIXME should be filled automatically
+                    - { property: 'breadcrumbs', label: 'easyAdmin.pages.title' }
+                    - { property: 'parent', label: 'easyAdmin.pages.title' }
             list:
-                title: easyAdmin.category.name.mm    
+                title: easyAdmin.category.name.mm
+                fields:
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'name', label: 'easyAdmin.pages.name', template: '@ForsetiAdmin/easy_admin/field_linked_string.html.twig' }
+                    - { property: 'title', label: 'easyAdmin.pages.title' }
+                    - { property: 'frontimage', label: 'easyAdmin.pages.title' }
+                    - { property: 'children', label: 'easyAdmin.category.name.icon' }
+                    - { property: 'articles', label: 'easyAdmin.article.name.icon' }
+                    - { property: 'pageOrder', label: 'easyAdmin.pages.page_order.icon' }
+                    - { property: 'isdeleted', label: 'easyAdmin.pages.deletedAt' }
+                    - { property: 'template', label: 'easyAdmin.pages.template' }
+                    - { property: 'cssClass', label: 'easyAdmin.pages.css_class' }
+                    # FIXME should be filled automatically
+                    - { property: 'breadcrumbs', label: 'easyAdmin.pages.title' }
+                    - { property: 'parent', label: 'easyAdmin.pages.title' }

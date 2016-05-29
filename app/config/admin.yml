@@ -1,0 +1,22 @@
+imports:
+    - { resource: '@ForsetiPagesBundle/Resources/config/admin.yml' }
+
+easy_admin:
+    design:
+        menu:
+            -
+              label: easyAdmin.menu.div.pages
+            - { entity: 'Article', icon: 'file-text-o', label: easyAdmin.article.name.mm, default: true }
+            - { entity: 'Attachment', icon: 'paperclip', label: easyAdmin.attachment.name.mm }
+            - { entity: 'Image', icon: 'picture-o', label: easyAdmin.image.name.mm }
+    #            - { entity: 'Comment', icon: 'comments-o', label: easyAdmin.comment.name.mm }
+            - { entity: 'Category', icon: 'folder', label: easyAdmin.category.name.mm }
+    #            - { entity: 'Tag', icon: 'tags', label: easyAdmin.tag.name.mm }
+            -
+              label: easyAdmin.menu.div.dicts
+            - { entity: 'Filetype', icon: 'file-code-o', label: easyAdmin.filetype.name.mm }
+            - { entity: 'Licence', icon: 'certificate', label: easyAdmin.licence.name.mm }
+            -
+              label: easyAdmin.menu.div.users
+            - { entity: 'User', icon: 'user', label: easyAdmin.user.name.mm }
+            - { entity: 'Group', icon: 'group', label: easyAdmin.group.name.mm }

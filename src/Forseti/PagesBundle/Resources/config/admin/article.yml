@@ -38,14 +38,14 @@ easy_admin:
                           class: Forseti\PagesBundle\Entity\Category
                           multiple: false
 
-                    -
-                      property: 'tags'
-                      label: 'easyAdmin.tag.name.mm'
-                      css_class: 'col-sm-6'
-                      type: entity
-                      type_options:
-                          class: Forseti\PagesBundle\Entity\Tag
-                          multiple: true
+#                    -
+#                      property: 'tags'
+#                      label: 'easyAdmin.tag.name.mm'
+#                      css_class: 'col-sm-6'
+#                      type: entity
+#                      type_options:
+#                          class: Forseti\PagesBundle\Entity\Tag
+#                          multiple: true
 
                     -  
                       property: 'images'
@@ -74,9 +74,9 @@ easy_admin:
                     - { property: 'metaTitle', label: 'easyAdmin.pages.meta_title', type: text }
                     - { property: 'metaKeywords', label: 'easyAdmin.pages.meta_keywords', type: text }
                     - { property: 'metaDesc', label: 'easyAdmin.pages.meta_desc', type: 'ckeditor' }
-                    - { property: 'pageOrder', label: 'easyAdmin.pages.page_order', type: integer, css_class: 'col-sm-6' }
-                    - { property: 'template', label: 'easyAdmin.pages.template', type: text, css_class: 'col-sm-6' }
-                    - { property: 'cssClass', label: 'easyAdmin.pages.css_class', type: text, css_class: 'col-sm-6' }
+                    - { property: 'pageOrder', label: 'easyAdmin.pages.page_order', type: integer, css_class: 'col-sm-2' }
+                    - { property: 'template', label: 'easyAdmin.pages.template', type: text, css_class: 'col-sm-2' }
+                    - { property: 'cssClass', label: 'easyAdmin.pages.css_class', type: text, css_class: 'col-sm-2' }
             new:
                 title: easyAdmin.article.title.new
             edit:
@@ -90,19 +90,20 @@ easy_admin:
                     - { property: 'lead', label: 'easyAdmin.articles.lead', type: raw }
                     - { property: 'content', label: 'easyAdmin.articles.content', type: raw }
                     - { property: 'category', label: 'easyAdmin.category.name.mp', css_class: 'col-sm-6' }
-                    - { property: 'tags', label: 'easyAdmin.tag.name.mm', css_class: 'col-sm-6' }
+#                    - { property: 'tags', label: 'easyAdmin.tag.name.mm', css_class: 'col-sm-6' }
                     - { property: 'images', label: 'easyAdmin.image.name.mm', css_class: 'col-sm-6' }
                     - { property: 'attachments', label: 'easyAdmin.attachment.name.mm', css_class: 'col-sm-6' }
                     - { property: 'comments', label: 'easyAdmin.comment.name.mm' }
                     - { property: 'author', label: 'easyAdmin.pages.author' }
                     - { property: 'metaTitle', label: 'easyAdmin.pages.meta_title' }
-                    - { property: 'metaKeywords', label: 'easyAdmin.pages.meta_keywords', type: 'ckeditor' }
-                    - { property: 'metaDesc', label: 'easyAdmin.pages.meta_desc', type: 'ckeditor' }
+                    - { property: 'metaKeywords', label: 'easyAdmin.pages.meta_keywords' }
+                    - { property: 'metaDesc', label: 'easyAdmin.pages.meta_desc', type: ckeditor }
                     - { property: 'pageOrder', label: 'easyAdmin.pages.page_order', css_class: 'col-sm-2' }
                     - { property: 'template', label: 'easyAdmin.pages.template', css_class: 'col-sm-2' }
-                    - { property: 'createdAt', label: 'easyAdmin.pages.css_class', css_class: 'col-sm-2' }
-                    - { property: 'modifiedAt', label: 'easyAdmin.pages.css_class', css_class: 'col-sm-2' }
-                    - { property: 'deletedAt', label: 'easyAdmin.pages.css_class', css_class: 'col-sm-2' }
+                    - { property: 'cssClass', label: 'easyAdmin.pages.css_class', css_class: 'col-sm-2' }
+                    - { property: 'createdAt', label: 'easyAdmin.pages.createdAt', css_class: 'col-sm-2' }
+                    - { property: 'modifiedAt', label: 'easyAdmin.pages.modifiedAt', css_class: 'col-sm-2' }
+                    - { property: 'deletedAt', label: 'easyAdmin.pages.deletedAt', css_class: 'col-sm-2' }
 #                    -
 #                      property: 'images'
 #                      label: 'easyAdmin.image.name.mm'
@@ -122,12 +123,13 @@ easy_admin:
                     - { property: 'name', label: 'easyAdmin.pages.name', template: '@ForsetiAdmin/easy_admin/field_linked_string.html.twig' }
                     - { property: 'title', label: 'easyAdmin.pages.title' }
                     - { property: 'category', label: 'easyAdmin.category.name.mp' }
-                    - { property: 'tags', label: 'easyAdmin.tag.name.icon' }
+#                    - { property: 'tags', label: 'easyAdmin.tag.name.icon' }
                     - { property: 'images', label: 'easyAdmin.image.name.icon' }
                     - { property: 'attachments', label: 'easyAdmin.attachment.name.icon' }
                     - { property: 'comments', label: 'easyAdmin.comment.name.icon' }
                     - { property: 'author', label: 'easyAdmin.pages.author' }
-                    - { property: 'pageOrder', label: 'easyAdmin.pages.page_order' }
+                    - { property: 'isdeleted', label: 'easyAdmin.pages.deletedAt' }
+                    - { property: 'pageOrder', label: 'easyAdmin.pages.page_order.icon' }
                     - { property: 'template', label: 'easyAdmin.pages.template' }
                     - { property: 'cssClass', label: 'easyAdmin.pages.css_class' }
                 

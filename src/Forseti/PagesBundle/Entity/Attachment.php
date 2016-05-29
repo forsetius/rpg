@@ -16,11 +16,6 @@ class Attachment extends Page implements Translatable
     use Licenced;
 
     /**
-     * @ORM\Column(type="text")
-     */
-    protected $description;
-
-    /**
      * @ORM\Column(type="string", length=255, unique=true)
      */
     protected $filename;
