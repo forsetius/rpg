@@ -14,7 +14,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="pages_comment")
+ * @ORM\Table(name="pages_comments")
  */
 class Comment
 {
@@ -153,4 +153,5 @@ class Comment
     {
         return $this->article;
     }
+
 }

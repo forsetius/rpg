@@ -46,6 +46,7 @@ easyAdmin.category.title.new: Dodawanie nowej Kategorii
 easyAdmin.category.breadcrumbs: Okruszki
 easyAdmin.category.parent: Rodzic
 easyAdmin.category.children: Podrzędne
+easyAdmin.category.image: Obrazek
 
 easyAdmin.tag.name.mp: Etykieta
 easyAdmin.tag.name.mm: Etykiety
@@ -64,6 +65,7 @@ easyAdmin.image.name.mm: Obrazy
 easyAdmin.image.name.icon: <b class="fa fa-lg fa-image"></b>
 easyAdmin.image.title.edit: Edycja Obrazu
 easyAdmin.image.title.new: Dodawanie nowego Obrazu
+easyAdmin.image.thumb: Miniaturka
 
 easyAdmin.filetype.name.mp: Typ pliku
 easyAdmin.filetype.name.mm: Typy plików

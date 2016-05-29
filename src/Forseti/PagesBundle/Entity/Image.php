@@ -13,7 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Image extends Page implements Translatable
 {
     use Licenced;
-    
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -23,6 +23,11 @@ class Image extends Page implements Translatable
      * @ORM\Column(type="string", length=255)
      */
     protected $filenameThumb;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $size;
 
     /**
      * @ORM\ManyToOne(targetEntity="Filetype")
@@ -143,5 +148,30 @@ class Image extends Page implements Translatable
     public function getArticles()
     {
         return $this->articles;
+    }
+
+
+    /**
+     * Set size
+     *
+     * @param \number $size
+     *
+     * @return Image
+     */
+    public function setSize(\number $size)
+    {
+        $this->size = $size;
+
+        return $this;
+    }
+
+    /**
+     * Get size
+     *
+     * @return \number
+     */
+    public function getSize()
+    {
+        return $this->size;
     }
 }

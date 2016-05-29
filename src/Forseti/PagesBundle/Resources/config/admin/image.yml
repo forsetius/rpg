@@ -23,12 +23,56 @@ easy_admin:
         Image:
             class: Forseti\PagesBundle\Entity\Image
             label: easyAdmin.image.name.mp
-            form: {}
+            form:
+                fields:
+                    - { property: 'name', label: 'easyAdmin.pages.name'}
+                    - { property: 'filenameMain', label: 'easyAdmin.attachment.filename', css_class: 'col-sm-6' }
+                    - { property: 'filenameThumb', label: 'easyAdmin.image.thumb', css_class: 'col-sm-6' }
+                    - { property: 'content', label: 'easyAdmin.attachment.description', css_class: 'col-sm-12', type: ckeditor }
+                    # FIXME size and type should be filled automatically
+                    - { property: 'size', label: 'easyAdmin.attachment.size', css_class: 'col-sm-6' }
+                    - { property: 'type', label: 'easyAdmin.attachment.type', css_class: 'col-sm-6' }
+                    - { property: 'licence', label: 'easyAdmin.licence.name.mp', css_class: 'col-sm-6' }
+                    - { property: 'attribution', label: 'easyAdmin.attachment.attribution', css_class: 'col-sm-6' }
+                    - { property: 'articles', label: 'easyAdmin.article.name.mm', type: entity, type_options: {class: 'Forseti\PagesBundle\Entity\Article', multiple: true} }
+                    - { property: 'metaTitle', label: 'easyAdmin.pages.meta_title', type: text }
+                    - { property: 'metaKeywords', label: 'easyAdmin.pages.meta_keywords', type: text }
+                    - { property: 'metaDesc', label: 'easyAdmin.pages.meta_desc', type: 'ckeditor' }
+                    - { property: 'pageOrder', label: 'easyAdmin.pages.page_order', type: integer, css_class: 'col-sm-2' }
+                    - { property: 'template', label: 'easyAdmin.pages.template', type: text, css_class: 'col-sm-2' }
+                    - { property: 'cssClass', label: 'easyAdmin.pages.css_class', type: text, css_class: 'col-sm-2' }
             new:
                 title: easyAdmin.image.title.new
             edit:
                 title: easyAdmin.image.title.edit    
             show:
-                title: easyAdmin.image.name.mp 
+                title: easyAdmin.image.name.mp
+                fields:
+                    - { property: 'name', label: 'easyAdmin.pages.name', css_class: 'col-sm-6' }
+                    - { property: 'filename', label: 'easyAdmin.attachment.filename', css_class: 'col-sm-6' }
+                    - { property: 'content', label: 'easyAdmin.attachment.description', css_class: 'col-sm-12' }
+                    - { property: 'size', label: 'easyAdmin.attachment.size', css_class: 'col-sm-6' }
+                    - { property: 'type', label: 'easyAdmin.attachment.type', css_class: 'col-sm-6' }
+                    - { property: 'licence', label: 'easyAdmin.licence.name.mp', css_class: 'col-sm-6' }
+                    - { property: 'attribution', label: 'easyAdmin.attachment.attribution', css_class: 'col-sm-6' }
+                    - { property: 'articles', label: 'easyAdmin.article.name.mm' }
+                    - { property: 'metaTitle', label: 'easyAdmin.pages.meta_title' }
+                    - { property: 'metaKeywords', label: 'easyAdmin.pages.meta_keywords' }
+                    - { property: 'metaDesc', label: 'easyAdmin.pages.meta_desc', type: ckeditor }
+                    - { property: 'pageOrder', label: 'easyAdmin.pages.page_order', css_class: 'col-sm-2' }
+                    - { property: 'template', label: 'easyAdmin.pages.template', css_class: 'col-sm-2' }
+                    - { property: 'cssClass', label: 'easyAdmin.pages.css_class', css_class: 'col-sm-2' }
             list:
                 title: easyAdmin.image.name.mm
+                fields:
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'name', label: 'easyAdmin.pages.name', template: '@ForsetiAdmin/easy_admin/field_linked_string.html.twig' }
+                    - { property: 'filenameThumb', label: 'easyAdmin.image.name.mp' }
+                    - { property: 'size', label: 'easyAdmin.attachment.size', css_class: 'col-sm-6' }
+                    - { property: 'type', label: 'easyAdmin.attachment.type' }
+                    - { property: 'licence', label: 'easyAdmin.licence.name.mp' }
+                    - { property: 'attribution', label: 'easyAdmin.attachment.attribution' }
+                    - { property: 'articles', label: 'easyAdmin.article.name.icon' }
+                    - { property: 'pageOrder', label: 'easyAdmin.pages.page_order.icon' }
+                    - { property: 'template', label: 'easyAdmin.pages.template' }
+                    - { property: 'cssClass', label: 'easyAdmin.pages.css_class' }

@@ -33,7 +33,7 @@ easy_admin:
                     - { property: 'type', label: 'easyAdmin.attachment.type', css_class: 'col-sm-6' }
                     - { property: 'licence', label: 'easyAdmin.licence.name.mp', css_class: 'col-sm-6' }
                     - { property: 'attribution', label: 'easyAdmin.attachment.attribution', css_class: 'col-sm-6' }
-                    - { property: 'articles', label: 'easyAdmin.attachment.articles' }
+                    - { property: 'articles', label: 'easyAdmin.article.name.mm', type: entity, type_options: {class: 'Forseti\PagesBundle\Entity\Article', multiple: true} }
                     - { property: 'metaTitle', label: 'easyAdmin.pages.meta_title', type: text }
                     - { property: 'metaKeywords', label: 'easyAdmin.pages.meta_keywords', type: text }
                     - { property: 'metaDesc', label: 'easyAdmin.pages.meta_desc', type: 'ckeditor' }
@@ -48,14 +48,14 @@ easy_admin:
             show:
                 title: easyAdmin.attachment.name.mp
                 fields:
-                    - { property: 'name', label: 'easyAdmin.pages.name', template: '@ForsetiAdmin/easy_admin/field_linked_string.html.twig', css_class: 'col-sm-6' }
+                    - { property: 'name', label: 'easyAdmin.pages.name', css_class: 'col-sm-6' }
                     - { property: 'filename', label: 'easyAdmin.attachment.filename', css_class: 'col-sm-6' }
                     - { property: 'content', label: 'easyAdmin.attachment.description', css_class: 'col-sm-12' }
                     - { property: 'size', label: 'easyAdmin.attachment.size', css_class: 'col-sm-6' }
                     - { property: 'type', label: 'easyAdmin.attachment.type', css_class: 'col-sm-6' }
                     - { property: 'licence', label: 'easyAdmin.licence.name.mp', css_class: 'col-sm-6' }
                     - { property: 'attribution', label: 'easyAdmin.attachment.attribution', css_class: 'col-sm-6' }
-                    - { property: 'articles', label: 'easyAdmin.attachment.articles' }
+                    - { property: 'articles', label: 'easyAdmin.article.name.mm' }
                     - { property: 'metaTitle', label: 'easyAdmin.pages.meta_title' }
                     - { property: 'metaKeywords', label: 'easyAdmin.pages.meta_keywords' }
                     - { property: 'metaDesc', label: 'easyAdmin.pages.meta_desc', type: ckeditor }
