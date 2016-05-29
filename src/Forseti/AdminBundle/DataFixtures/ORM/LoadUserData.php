@@ -28,19 +28,15 @@ class LoadUserData implements FixtureInterface
         
         $userSuperAdmin = new User();
         $userSuperAdmin->setUsername('root');
-        $userSuperAdmin->setPassword('daikomio');
+        $userSuperAdmin->setPlainPassword('daikomio');
+        $userSuperAdmin->setEmail('forseti.pl@gmail.com');
         $userSuperAdmin->addGroup($groupSuperAdmin);
         $manager->persist($userSuperAdmin);
 
-        $userCmsAdmin = new User();
-        $userCmsAdmin->setUsername('admin');
-        $userCmsAdmin->setPassword('daikomio');
-        // Groups added later - in other bundles
-        $manager->persist($userCmsAdmin);
-
         $userVisitor = new User();
         $userVisitor->setUsername('visitor');
-        $userVisitor->setPassword('password');
+        $userVisitor->setPlainPassword('password');
+        $userVisitor->setEmail('example@gmail.com');
         $userVisitor->addGroup($groupVisitor);
         $manager->persist($userVisitor);
 

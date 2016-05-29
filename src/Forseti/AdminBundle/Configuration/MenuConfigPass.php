@@ -101,6 +101,7 @@ class MenuConfigPass implements ConfigPassInterface
 
     private function processMenuConfig(array $menuConfig, $backendConfig, $parentItemIndex = -1)
     {
+        $lastProcessed = -1;
         foreach ($menuConfig as $i => $itemConfig) {
             // these options are needed to find the active menu/submenu item in the template
             $itemConfig['menu_index'] = ($parentItemIndex === -1) ? $i : $parentItemIndex;
@@ -154,9 +155,9 @@ class MenuConfigPass implements ConfigPassInterface
                 if (empty($itemConfig['children'])) {
                     // if the item doesn't define a submenu, this is a menu divider
                     $itemConfig['type'] = 'divider';
-                    if ($i > 0 &&
-                        array_key_exists('type', $menuConfig[$i - 1]) &&
-                        $menuConfig[$i - 1]['type'] == 'divider'
+                    if ($lastProcessed > -1 &&
+                        array_key_exists('type', $menuConfig[$lastProcessed]) &&
+                        $menuConfig[$lastProcessed]['type'] == 'divider'
                     )
                         unset($menuConfig[$i - 1]);
                 } else {
@@ -167,6 +168,7 @@ class MenuConfigPass implements ConfigPassInterface
                 throw new \RuntimeException(sprintf('The configuration of the menu item in the position %d (being 0 the first item) must define at least one of these options: entity, url, route, label.', $i));
             }
             $menuConfig[$i] = $itemConfig;
+            $lastProcessed = $i;
         }
 
         return $menuConfig;

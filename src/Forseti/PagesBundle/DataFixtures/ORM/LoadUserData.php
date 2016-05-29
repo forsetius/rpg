@@ -16,30 +16,30 @@ class LoadUserData implements FixtureInterface
         // load Filetypes
 
         $filetypes = [
-            'Archiwum ZIP'=>['file-archive-o', '#000', 'application/zip', 'zip'],
-            'Archiwum TAR.GZ'=>['file-archive-o', '#a00', 'application/gzip', 'tar.gz'],
-            'Audio MP3'=>['file-audio-o', '#000', 'audio/mpeg', 'mp3'],
+            'Archiwum ZIP'=>['file-archive-o', '#000', 'application/zip', ['zip']],
+            'Archiwum TAR.GZ'=>['file-archive-o', '#a00', 'application/gzip', ['tar.gz']],
+            'Audio MP3'=>['file-audio-o', '#000', 'audio/mpeg', ['mp3']],
             'Dokument HTML'=>['file-code-o', '#000', 'text/html', ['html', 'htm', 'mhtml']],
             'Dokument XML'=>['file-code-o', '#06a', 'text/xml', ['xml', 'xsl']],
             'Dokument YAML'=>['file-code-o', '#a06', '', ['yml', 'yaml']],
             'Dokument JSON'=>['file-code-o', '#60a', 'application/json', ['json', 'geojson']],
-            'Kod SQL'=>['file-text-o', '#a60', 'application/sql', 'sql'],
-            'Kod JS'=>['file-text-o', '#aa0', 'application/javascript', 'js'],
-            'Kod CSS'=>['file-text-o', '#0aa', 'text/css', 'css'],
-            'Kod PHP'=>['file-text-o', '#a0a', ' application/x-php', 'php', 'php4', 'php5', 'php7'],
-            'Kod Pythona'=>['file-text-o', '#00a', '', 'py', 'pyc'],
-            'Kod Ruby'=>['file-text-o', '#a00', '', 'rb'],
-            'Skrypt powłoki'=>['file-text-o', '#0a0', '', 'sh'],
-            'Dokument tekstowy'=>['file-text-o', '#000', 'text/plain', 'txt'],
+            'Kod SQL'=>['file-text-o', '#a60', 'application/sql', ['sql']],
+            'Kod JS'=>['file-text-o', '#aa0', 'application/javascript', ['js']],
+            'Kod CSS'=>['file-text-o', '#0aa', 'text/css', ['css']],
+            'Kod PHP'=>['file-text-o', '#a0a', ' application/x-php', ['php', 'php4', 'php5', 'php7']],
+            'Kod Pythona'=>['file-text-o', '#00a', '', ['py', 'pyc']],
+            'Kod Ruby'=>['file-text-o', '#a00', '', ['rb']],
+            'Skrypt powłoki'=>['file-text-o', '#0a0', '', ['sh']],
+            'Dokument tekstowy'=>['file-text-o', '#000', 'text/plain', ['txt']],
             'Dokument Worda'=>['file-code-o', '#000', 'application/vnd.ms-word.document.macroEnabled.12', ['doc, docx']],
-            'Dokument OpenOffice/LibreOffice'=>['file-code-o', '#000', 'pplication/vnd.oasis.opendocument.text', 'odf'],
-            'Arkusz OpenOffice/LibreOffice'=>['file-code-o', '#000', 'application/vnd.oasis.opendocument.spreadsheet', 'odf'],
+            'Dokument OpenOffice/LibreOffice'=>['file-code-o', '#000', 'pplication/vnd.oasis.opendocument.text', ['odf']],
+            'Arkusz OpenOffice/LibreOffice'=>['file-code-o', '#000', 'application/vnd.oasis.opendocument.spreadsheet', ['odf']],
             'Arkusz Excela'=>['file-code-o', '#0a0', 'application/vnd.ms-excel', ['xls', 'xlsx', 'xlsm', 'xlsb']],
             'Plik CSV'=>['file-excel-o', '#000', 'ext/csv', ['csv', 'tsv']],
-            'Dokument PDF'=>['file-pdf-o', '#a00', 'application/pdf', 'pdf'],
+            'Dokument PDF'=>['file-pdf-o', '#a00', 'application/pdf', ['pdf']],
             'Obraz JPG'=>['file-image-o', '#a0a', 'image/jpeg', ['jpg', 'jpeg']],
-            'Obraz GIF'=>['file-image-o', '#0aa', 'image/gif', 'gif'],
-            'Obraz PNG'=>['file-image-o', '#0a0', 'image/png', 'png'],
+            'Obraz GIF'=>['file-image-o', '#0aa', 'image/gif', ['gif']],
+            'Obraz PNG'=>['file-image-o', '#0a0', 'image/png', ['png']],
             'Sygnatura PGP'=>['certificate', '#00a', 'application/pgp-signature', ['asc', 'sig']]
         ];
         foreach ($filetypes as $key=>$data) {
@@ -57,40 +57,46 @@ class LoadUserData implements FixtureInterface
         $licMit->setName('MIT');
         $licMit->setLongname('The MIT License');
         $licMit->setUrl('https://opensource.org/licenses/MIT');
+        $manager->persist($licMit);
 
         $licCcByNcSa = new Licence();
         $licCcByNcSa->setName('CC-BY-NC-SA');
         $licCcByNcSa->setLongname('Creative Commons Uznanie Autorstwa – Użycie Niekomercyjne – Na Tych Samych Warunkach');
         $licCcByNcSa->setUrl('https://creativecommons.org/licenses/by-nc-sa/4.0');
+        $manager->persist($licCcByNcSa);
 
         $licCcByNc = new Licence();
         $licCcByNc->setName('CC-BY-NC');
         $licCcByNc->setLongname('Creative Commons Uznanie Autorstwa – Użycie Niekomercyjne');
         $licCcByNc->setUrl('https://creativecommons.org/licenses/by-nc/4.0');
+        $manager->persist($licCcByNc);
 
         $licCcBySa = new Licence();
         $licCcBySa->setName('CC-BY-SA');
         $licCcBySa->setLongname('Creative Commons Uznanie Autorstwa – Na Tych Samych Warunkach');
         $licCcBySa->setUrl('https://creativecommons.org/licenses/by-sa/4.0');
+        $manager->persist($licCcBySa);
 
         $licCcBy = new Licence();
         $licCcBy->setName('CC-BY');
         $licCcBy->setLongname('Creative Commons Uznanie Autorstwa');
         $licCcBy->setUrl('https://creativecommons.org/licenses/by/4.0');
+        $manager->persist($licCcBy);
 
         // load Categories
         $catRoot = new Category();
         $catRoot->setName('root');
         $catRoot->setTitle('Główna');
         $catRoot->setContent('');
-        $catRoot->setParent($catRoot);
-        $catRoot->setBreadcrumbs([]); // FIXME
-        $catRoot->setFrontImage('');
+        $catRoot->setParent();
+        $catRoot->setBreadcrumbs(['root']); // FIXME
+//        $catRoot->setFrontImage('');
         $catRoot->setMetaDesc('');
         $catRoot->setMetaKeywords('');
         $catRoot->setMetaTitle($catRoot->getTitle());
         $catRoot->setPageOrder(0); // FIXME
         $catRoot->setTemplate('category');
+        $manager->persist($catRoot);
 
         $catOm = new Category();
         $catOm->setName('oceany-mroku');
@@ -98,12 +104,13 @@ class LoadUserData implements FixtureInterface
         $catOm->setContent('<p>Ciemność widzę! Ciemność!</p>');
         $catOm->setParent($catRoot);
         $catOm->setBreadcrumbs(['root']); // FIXME
-        $catOm->setFrontImage('card-om.jpg');
+//        $catOm->setFrontImage('card-om.jpg');
         $catOm->setMetaDesc('Ciemność widzę! Ciemność!');
         $catOm->setMetaKeywords('');
         $catOm->setMetaTitle($catOm->getTitle());
         $catOm->setPageOrder(1); // FIXME
         $catOm->setTemplate('category');
+        $manager->persist($catOm);
 
         $catEp = new Category();
         $catEp->setName('eclipse-phase');
@@ -111,12 +118,13 @@ class LoadUserData implements FixtureInterface
         $catEp->setContent('<p>Transludzka przyszłość po upadku Ziemi</p>');
         $catEp->setParent($catRoot);
         $catEp->setBreadcrumbs(['root']); // FIXME
-        $catEp->setFrontImage('card-eg.jpg');
+//        $catEp->setFrontImage('card-eg.jpg');
         $catEp->setMetaDesc('Transludzka przyszłość po upadku Ziemi');
         $catEp->setMetaKeywords('');
         $catEp->setMetaTitle($catEp->getTitle());
         $catEp->setPageOrder(2); // FIXME
         $catEp->setTemplate('category');
+        $manager->persist($catEp);
 
         // load Tags
 
@@ -154,13 +162,15 @@ class LoadUserData implements FixtureInterface
 
         $userCmsAdmin = new User();
         $userCmsAdmin->setUsername('cmsadmin');
-        $userCmsAdmin->setPassword('daikomio');
+        $userCmsAdmin->setPlainPassword('daikomio');
+        $userCmsAdmin->setEmail('exe@gm.com');
         $userCmsAdmin->addGroup($groupAdmin);
         $manager->persist($userCmsAdmin);
 
         $userAuthor = new User();
         $userAuthor->setUsername('author');
-        $userAuthor->setPassword('daikomio');
+        $userAuthor->setPlainPassword('daikomio');
+        $userAuthor->setEmail('ex1e@gm.com');
         $userAuthor->addGroup($groupAuthor);
         $manager->persist($userAuthor);
 
