@@ -154,11 +154,11 @@ class Image extends Page implements Translatable
     /**
      * Set size
      *
-     * @param \number $size
+     * @param integer $size
      *
      * @return Image
      */
-    public function setSize(\number $size)
+    public function setSize($size)
     {
         $this->size = $size;
 
@@ -168,7 +168,7 @@ class Image extends Page implements Translatable
     /**
      * Get size
      *
-     * @return \number
+     * @return integer
      */
     public function getSize()
     {

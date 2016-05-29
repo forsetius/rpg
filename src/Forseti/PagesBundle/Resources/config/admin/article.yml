@@ -126,7 +126,7 @@ easy_admin:
 #                    - { property: 'tags', label: 'easyAdmin.tag.name.icon' }
                     - { property: 'images', label: 'easyAdmin.image.name.icon' }
                     - { property: 'attachments', label: 'easyAdmin.attachment.name.icon' }
-                    - { property: 'comments', label: 'easyAdmin.comment.name.icon' }
+#                    - { property: 'comments', label: 'easyAdmin.comment.name.icon' }
                     - { property: 'author', label: 'easyAdmin.pages.author' }
                     - { property: 'isdeleted', label: 'easyAdmin.pages.deletedAt' }
                     - { property: 'pageOrder', label: 'easyAdmin.pages.page_order.icon' }

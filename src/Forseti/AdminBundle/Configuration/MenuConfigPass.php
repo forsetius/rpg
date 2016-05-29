@@ -110,10 +110,10 @@ class MenuConfigPass implements ConfigPassInterface
             // 1st level priority: if 'entity' is defined, link to the given entity
             if (isset($itemConfig['entity'])) {
                 // FIXME strange: after cleaning the cache it can't find token
-                if (!$this->security->hasRole(strtoupper("ROLE_{$itemConfig['entity']}_LIST"))) {
-                    unset($menuConfig[$i]);
-                    continue;
-                }
+//                if (!$this->security->hasRole(strtoupper("ROLE_{$itemConfig['entity']}_LIST"))) {
+//                    unset($menuConfig[$i]);
+//                    continue;
+//                }
 
                 $itemConfig['type'] = 'entity';
                 $entityName = $itemConfig['entity'];

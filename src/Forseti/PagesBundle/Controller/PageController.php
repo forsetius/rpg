@@ -8,9 +8,12 @@ use Doctrine\ORM\NoResultException;
 
 class PageController extends Controller
 {
-    
+
     /**
      * @Route("/", name="homepage")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws NoResultException
      */
     public function indexAction(Request $request)
     {

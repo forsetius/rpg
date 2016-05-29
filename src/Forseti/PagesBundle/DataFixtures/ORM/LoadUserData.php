@@ -5,8 +5,11 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Forseti\AdminBundle\Entity\Group;
 use Forseti\AdminBundle\Entity\User;
+use Forseti\PagesBundle\Entity\Article;
+use Forseti\PagesBundle\Entity\Attachment;
 use Forseti\PagesBundle\Entity\Category;
 use Forseti\PagesBundle\Entity\Filetype;
+use Forseti\PagesBundle\Entity\Image;
 use Forseti\PagesBundle\Entity\Licence;
 
 class LoadUserData implements FixtureInterface
@@ -83,14 +86,76 @@ class LoadUserData implements FixtureInterface
         $licCcBy->setUrl('https://creativecommons.org/licenses/by/4.0');
         $manager->persist($licCcBy);
 
+        // load Images
+        $imgCatOm = new Image();
+        $imgCatOm->setTitle('Tunnel of light');
+        $imgCatOm->setName('oceany-mroku-card');
+        $imgCatOm->setTemplate('image-licenced');
+        $imgCatOm->setPageOrder(1);
+        $imgCatOm->setFilenameMain('card-om.jpg');
+        $imgCatOm->setFilenameThumb('card-om-th.jpg');
+        $imgCatOm->setSize(3000000);
+        $imgCatOm->setMetaTitle('Oceany Mroku');
+        $imgCatOm->setMetaDesc('Oceany Mroku - mroczne urban fantasy');
+        $imgCatOm->setMetaKeywords('oceany mroku mrok rpg urban fantasy');
+        $imgCatOm->setLicence($licCcByNcSa);
+        $imgCatOm->setAttribution('Ktoś z Wikipedii');
+        $manager->persist($imgCatOm);
+
+        $imgCatEp = new Image();
+        $imgCatEp->setTitle('Spacewalk');
+        $imgCatEp->setName('eclipse-phase-card');
+        $imgCatEp->setTemplate('image-licenced');
+        $imgCatEp->setPageOrder(2);
+        $imgCatEp->setFilenameMain('card-ep.jpg');
+        $imgCatEp->setFilenameThumb('card-ep-th.jpg');
+        $imgCatEp->setSize(2000000);
+        $imgCatEp->setMetaTitle('Eclipse Phase');
+        $imgCatEp->setMetaDesc('Eclipse Phase - transhumanizm po upadku Ziemi');
+        $imgCatEp->setMetaKeywords('eclipse phase rpg sci-fi horror konspiracja postapo');
+        $imgCatEp->setLicence($licCcByNc);
+        $imgCatEp->setAttribution('Posthuman Studios');
+        $manager->persist($imgCatEp);
+
+        $imgCatMta = new Image();
+        $imgCatMta->setTitle('Purple curtain');
+        $imgCatMta->setName('mage-the-ascansion-card');
+        $imgCatMta->setTemplate('image-licenced');
+        $imgCatMta->setPageOrder(3);
+        $imgCatMta->setFilenameMain('card-mta.jpg');
+        $imgCatMta->setFilenameThumb('card-mta-th.jpg');
+        $imgCatMta->setSize(2000000);
+        $imgCatMta->setMetaTitle('Mage: the Ascension');
+        $imgCatMta->setMetaDesc('Mage: the Ascension - magiczna wojna o życie, wszechświat i całą resztę');
+        $imgCatMta->setMetaKeywords('mage ascension mag wstąpienie rpg');
+        $imgCatMta->setLicence($licCcByNcSa);
+        $imgCatMta->setAttribution('Onyx Path');
+        $manager->persist($imgCatMta);
+
+        // load Attachments
+        $attchEpCelestia = new Attachment();
+        $attchEpCelestia->setName('eclipse-phase-celestia-locations');
+        $attchEpCelestia->setTitle('Eclipse Phase locations for Celestia');
+        $attchEpCelestia->setContent('Instrukcja');
+        $attchEpCelestia->setFilename('ep-celestia-loc-1.0.3.zip');
+        $attchEpCelestia->setSize(6000000);
+//        $attchEpCelestia->setType($manager->getRepository(User::class)->findOneBy(['name'=>'Archiwum ZIP']));
+        $attchEpCelestia->setLicence($licCcByNcSa);
+        $attchEpCelestia->setAttribution('Forseti');
+        $attchEpCelestia->setPageOrder(1);
+        $attchEpCelestia->setTemplate('attch');
+        $attchEpCelestia->setMetaTitle($attchEpCelestia->getTitle());
+        $attchEpCelestia->setMetaDesc($attchEpCelestia->getTitle());
+        $attchEpCelestia->setMetaKeywords('eclipse phase celestia');
+        $manager->persist($attchEpCelestia);
+
         // load Categories
         $catRoot = new Category();
         $catRoot->setName('root');
         $catRoot->setTitle('Główna');
         $catRoot->setContent('');
         $catRoot->setParent();
-        $catRoot->setBreadcrumbs(['root']); // FIXME
-//        $catRoot->setFrontImage('');
+        $catRoot->setBreadcrumbs(['']);
         $catRoot->setMetaDesc('');
         $catRoot->setMetaKeywords('');
         $catRoot->setMetaTitle($catRoot->getTitle());
@@ -104,7 +169,7 @@ class LoadUserData implements FixtureInterface
         $catOm->setContent('<p>Ciemność widzę! Ciemność!</p>');
         $catOm->setParent($catRoot);
         $catOm->setBreadcrumbs(['root']); // FIXME
-//        $catOm->setFrontImage('card-om.jpg');
+        $catOm->setFrontImage($imgCatOm);
         $catOm->setMetaDesc('Ciemność widzę! Ciemność!');
         $catOm->setMetaKeywords('');
         $catOm->setMetaTitle($catOm->getTitle());
@@ -118,7 +183,7 @@ class LoadUserData implements FixtureInterface
         $catEp->setContent('<p>Transludzka przyszłość po upadku Ziemi</p>');
         $catEp->setParent($catRoot);
         $catEp->setBreadcrumbs(['root']); // FIXME
-//        $catEp->setFrontImage('card-eg.jpg');
+        $catEp->setFrontImage($imgCatEp);
         $catEp->setMetaDesc('Transludzka przyszłość po upadku Ziemi');
         $catEp->setMetaKeywords('');
         $catEp->setMetaTitle($catEp->getTitle());
@@ -126,13 +191,27 @@ class LoadUserData implements FixtureInterface
         $catEp->setTemplate('category');
         $manager->persist($catEp);
 
-        // load Tags
-
-        // load Images
-
-        // load Attachments
-
         // load Articles
+        
+        $artHome = new Article();
+        $artHome->setName('homepage');
+        $artHome->setTitle('Forseti: abstract worlds');
+        $artHome->setLead('RPG - Gry fabularne');
+        $artHome->setContent(<<<EOT
+<p>Drogi Marszałku, Wysoka Izbo. PKB rośnie. Nie zapominajmy jednak, że dokończenie aktualnych projektów spełnia ważne z szerokim aktywem rozszerza nam efekt obecnej sytuacji. Wagi i określenia systemu finansowego zabezpiecza udział szerokiej grupie w tym zakresie ukazuje nam efekt obecnej sytuacji. Koleżanki i określenia systemu szkolenia kadr powoduje docenianie wag systemu powszechnego uczestnictwa. Wyższe założenie ideowe, a także konsultacja z dotychczasowymi zasadami systemu szkolenia kadr zmusza nas do tej sprawy spełnia ważne zadanie w przyszłościowe rozwiązania pomaga w określaniu dalszych kierunków postępowego wychowania. PKB rośnie. Różnorakie i określenia form działalności wymaga sprecyzowania i określenia systemu szkolenia kadry odpowiadającego potrzebom.</p>
+EOT
+);
+        $artHome->setPageOrder(0);
+        $artHome->setTemplate('homepage');
+        $artHome->setMetaTitle($artHome->getTitle() .' | '. $artHome->getLead());
+        $artHome->setAuthor($manager->getRepository(User::class)->findOneBy(['username'=>'root']));
+        $artHome->setMetaKeywords('Forseti');
+        $artHome->setMetaDesc('Opis');
+        $artHome->setCategory($catRoot);
+        $artHome->addImage($imgCatEp);
+        $artHome->addImage($imgCatMta);
+        $artHome->addAttachment($attchEpCelestia);
+        $manager->persist($artHome);
 
         // load Comments
 
