@@ -48,7 +48,7 @@ class PageController extends Controller
         if (is_null($page))
             throw new NoResultException('Homepage\'s record not found in the pages_articles DB table');
         
-        return $this->render($page->template .'.html.twig', [
+        return $this->render($page->getTemplate() .'.html.twig', [
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
             'page' => $page,
             'subs'=>$vars['subs'],

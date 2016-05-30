@@ -1,12 +1,12 @@
 {% extends "base.html.twig" %}
-{% import 'default/components/carousel.html.twig' as carousel %}
-{% import 'default/components/card.html.twig' as card %}
+{% import 'page/components/carousel.html.twig' as carousel %}
+{% import 'page/components/card.html.twig' as card %}
 
 {% block content %}
 <div class="container-fluid">
     <div id="most-important" class="row">
-        {% if mainSlides is defined %}
-            {{ carousel.carousel('main-carousel', mainSlides) }}
+        {% if slides is defined %}
+            {{ carousel.carousel('main-carousel', slides) }}
         {% endif %}
         <div id="whats-new" class="col-sm-4"></div>
     </div>
