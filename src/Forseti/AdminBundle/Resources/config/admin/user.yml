@@ -22,6 +22,7 @@ easy_admin:
     entities:
         User:
             class: Forseti\AdminBundle\Entity\User
+            controller: Forseti\AdminBundle\Controller\UserAdminController
             label: easyAdmin.user.name.mp
             initialPassword: password
             form:

@@ -1,12 +1,14 @@
 <?php
-namespace Forseti\AdminBundle\Controller\Traits;
+
+namespace Forseti\AdminBundle\Controller;
+
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-trait GroupAdminTrait {
-
-    public function createGroupEntityFormBuilder($entity, $view)
+class GroupAdminController extends AdminController
+{
+    public function createEntityFormBuilder($entity, $view)
     {
-        $choices = [];$preferred = [];
+        $choices = [];
         $vals = array_keys($this->container->getParameter('security.role_hierarchy.roles'));
         foreach ($vals as $val) {
             if ($val == 'ROLE_SUPER_ADMIN') {
@@ -22,5 +24,4 @@ trait GroupAdminTrait {
         $formBuilder->add('roles', ChoiceType::class, ['choices'=>array_combine($choices, $vals), 'multiple'=>true, 'expanded'=>false]);
         return $formBuilder;
     }
-
 }

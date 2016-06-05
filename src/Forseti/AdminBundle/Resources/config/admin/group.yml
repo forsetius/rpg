@@ -16,6 +16,7 @@ easy_admin:
     entities:
         Group:
             class: Forseti\AdminBundle\Entity\Group
+            controller: Forseti\AdminBundle\Controller\UserAdminController
             label: easyAdmin.group.name.mp
             form:
                 fields:
