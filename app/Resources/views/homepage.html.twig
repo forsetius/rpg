@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 {% import 'page/components/carousel.html.twig' as carousel %}
-{% import 'page/components/card.html.twig' as card %}
+{% import 'page/components/card.html.twig' as cards %}
 
 {% block content %}
 <div class="container-fluid">
@@ -25,22 +25,7 @@
 
     <!-- Sekcje -->
     <div id="main-sections" class="container-fluid">
-    {% set config = {parts: ["img","main","list"], link: ["img"], title: "img", text: "main", footer: "main"} %}
-    {% for sub in subs %}
-        {% if (loop.index0 == 0)  %}<div class="row">{% endif %}
-        <div class="col-xs-6 col-md-4 col-lg-3 card-box">
-        {% set cardContent =
-            {href: sub.name,
-             title: sub.title,
-             text: sub.lead,
-             img: sub.image_card,
-             footer: "<a href='" ~ sub.name ~ "'>" ~ ('site_more'|trans) ~ "</a>",
-             list: sub.links
-            } %}
-        {{ card.card('sub.name', config, cardContent) }}
-        </div>
-        {% if  (loop.last) %}</div>{% endif %}
-    {% endfor %}
+    {{ cards.deck(subs, 'topCatCard') }}
     </div>
 </div>
 {% endblock %}

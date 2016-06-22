@@ -67,6 +67,10 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        filters:
+            softdeleteable:
+                class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+                enabled: false
         mappings:
             gedmo_translatable:
                 type: annotation
@@ -85,9 +89,11 @@ stof_doctrine_extensions:
     default_locale: pl
     orm:
         default:
-            sluggable:    true  
-            translatable: true
-            timestampable: true
+            softdeleteable: true
+            sluggable:      true
+            timestampable:  true
+            translatable:   true
+            tree:           true
 
 # Swiftmailer Configuration
 swiftmailer:

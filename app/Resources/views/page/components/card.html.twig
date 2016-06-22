@@ -1,72 +1,116 @@
-{% macro card(id, config, content) %}
-{# Struktuta danych:
-config
-    parts: [head,img,main,list]
-    title: <head|img|main>
-    text: <head|img|main>
-    footer: <head|img|main>
-    link: [head,img,main]
-    class
-content
-    href
-    title
-    text
-    img
-    footer
-    list
-        item
-            icon
-            type
-            href
-            text
-            class
-#}
-<div id="{{ id }}" class="card{% if config.class is defined %} {{ config.class }}{% endif %}">
-    {% if "head" in config.parts %}
-    <div class="card-head row">
-        {% if "head" in config.link %}<a class="block" href="{{ content.href }}">{% endif %}
-            {% if config.title == "head" %}<h1>{{content.title}}</h1>{% endif %}
-            {% if config.text == "head" %}{{content.text|raw}}{% endif %}
-            {% if config.footer == "head" %}<span class="card-footer">{{content.footer|raw}}</span>{% endif %}
-        {% if "head" in config.link %}</a>{% endif %}
-    </div>
-    {% endif %}
-    {% if "img" in config.parts %}
-    <div class="card-img row" style="background-image: url({{ content.img }})">
-        {% if "img" in config.link %}<a class="block" href="{{ content.href }}">{% endif %}
-            {% if config.title == "img" %}<h1>{{content.title}}</h1>{% endif %}
-            {% if config.text == "img" %}{{content.text|raw}}{% endif %}
-            {% if config.footer == "img" %}<span class="card-footer">{{content.footer|raw}}</span>{% endif %}
-        {% if "img" in config.link %}</a>{% endif %}
-    </div>
-    {% endif %}
-    {% if "main" in config.parts %}
-    <div class="card-main row">
-        {% if "main" in config.link %}<a class="block" href="{{ content.href }}">{% endif %}
-            {% if config.title == "main" %}<h1>{{content.title}}</h1>{% endif %}
-            {% if config.text == "main" %}{{content.text|raw}}{% endif %}
-            {% if config.footer == "main" %}<span class="card-footer">{{content.footer|raw}}</span>{% endif %}
-        {% if "main" in config.link %}</a>{% endif %}
-    </div>
-    {% endif %}
-    {% if "list" in config.parts %}
-        {% for item in content.list %}
-        <div class="card-li row{% if item.class is defined %} {{ item.class }}"{% endif %}>
-            {% if item.icon is defined %}
-            <div class="col-xs-1 icon"><img src="{{item.icon}}" class="icon"></div>
-            <div class="col-xs-11 txt">
-            {% elseif item.type is defined%}
-            <div class="col-xs-3 type"><span>{{item.type}}</span></div>
-            <div class="col-xs-9 txt">
-            {% else %}
-            <div class="col-xs-12 txt">
-            {% endif %}
-                <span>{% if item.href is defined %}<a href="{{ item.href }}">{% endif %}
-                {{ item.text }}
-                {% if item.href is defined %}</a>{% endif %}</span>
-            </div>
-        </div>
+{% macro deck(elements, type) %}
+    {% import _self as cards %}
+<div class="card-deck-wrapper">
+    <div class="card-deck">
+        {% for element in elements %}
+            {{ attribute(cards, element.type|default(type), [element]) }}
         {% endfor %}
-    {% endif %}
+    </div>
 </div>
 {% endmacro %}
+
+{% macro group(elements, type) %}
+    {% import _self as cards %}
+    <div class="card-group">
+        {% for card in cards %}
+            {{ attribute(cards, card.type|default(type), [card]) }}
+        {% endfor %}
+    </div>
+{% endmacro %}
+
+{% macro columns(elements, type) %}
+    {% import _self as cards %}
+    <div class="card-columns">
+        {% for card in cards %}
+            {{ attribute(cards, card.type|default(type), [card]) }}
+        {% endfor %}
+    </div>
+{% endmacro %}
+
+{% macro topCatCard(c) %}
+    <div class="card">
+        <img class="card-img-top" data-src="{{ c.image_card }}">
+        <div class="card-img-overlay">
+            <h4 class="card-title"><a href="{{ c.href }}">{{ c.title }}</a></h4>
+        </div>
+        <p class="card-text">{{ c.text }}</p>
+        <p class="card-text text-xs-right"><a href="{{ c.href }}">{{ c.jumpline }}</a></p>
+        {% set columnDef = [{ width: 3, class: 'itemType'}, {}] %}
+        {{ cards.tableComponent(c.list, columnDef) }}
+    </div>
+{% endmacro %}
+
+{% macro listComponent(list, class) %}
+    {% import 'page/components/decorator.html.twig' as decor %}
+    <ul class="list-group list-group-flush">
+        {% for it in list %}
+        <li class="list-group-item {{ it.class ?? (class ?? '') }}">{{ decor.a(it.text, it.href) }}</li>
+        {% endfor %}
+    </ul>
+{% endmacro %}
+
+{% macro tableComponent(table, columns, class) %}
+    {% import 'page/components/decorator.html.twig' as decor %}
+    <ul class="list-group list-group-flush">
+        {% for row in table %}
+            <li class="list-group-item {{ row.class|default(class)|default('') }}">
+                {% set cc = 12 %}
+                {% for cell in row %}
+                    {% set width = cell.width|default(cell.width)|default(cc) %}
+                    {% set cc = cc - width %}
+                    <div class="col-sm-{{ width }} {{ cell.class|default('') }}">
+                        {{ decor.a(cell.text, cell.href|default('')) }}
+                    </div>
+                {% endfor %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endmacro %}
+
+
+{#{% macro card4(id, content, config) %}#}
+    {#{% import _self as cards %}#}
+{#<div id="card_{{ id }}" class="card {{ content.class ?? (config.class ?? '') }}">#}
+    {#{% for sectionName in config.parts %}#}
+        {#<div class="{{ class[sectionName] }} {{ content.class }}">#}
+        {#{% set part %}#}
+            {#{% for el in config.parts[sectionName]['elements'] %}#}
+                {#{{ cards[el](content, config) }}#}
+            {#{% endfor %}#}
+        {#{% endset %}#}
+
+        {#{% if config[sectionName]['linked'] ?? false %}#}
+            {#<a class="{{ config.parts.head.class ?? '' }}" href="{{ content.href }}">{{ part }}</a>#}
+        {#{% else %}#}
+            {#{{ part }}#}
+        {#{% endif %}#}
+        {#</div>#}
+        {#{% endif %}#}
+    {#{% endfor %}#}
+    {#<img class="card-img-top" data-src="..." alt="Card image cap">#}
+    {#{% endif %}#}
+{#</div>#}
+{#{% endmacro %}#}
+
+{#{% macro list(content, config) %}#}
+    {#{% set value = '' %}#}
+    {#<ul class="list-group list-group-flush {{ config.class }}">#}
+    {#{% for item in content %}#}
+        {#{% set icon = (item.icon is defined) ? " fa fa-li fa-"~item.icon : '' %}#}
+        {#{% if item.links is defined %}#}
+            {#{% for link in links %}#}
+                {#{% set value = value ~'<a class="card-link '~ link.class ~' href="'~ link.href ~'">'~ link.text ~'</a>' %}#}
+            {#{% endfor %}#}
+        {#{% else %}#}
+            {#{% set value = (item.href is defined) ? '<a href="'~item.href~'">'~item.text~'</a>' : item.text %}#}
+        {#{% endif %}#}
+        {#<li class="list-group-item {{ item.class ?? '' }}{{ icon }}">#}
+            {#{% if 'kicker' in config.parts.list.elements %}#}
+                {#<div class="col-xs-3 kicker">{{ item.kicker }}</div>#}
+                {#<div class="col-xs-9">{{ value }}</div>#}
+            {#{% else %}#}
+                {#{{ value }}#}
+            {#{% endif %}#}
+        {#</li>#}
+    {#</ul>#}
+{#{% endmacro %}#}

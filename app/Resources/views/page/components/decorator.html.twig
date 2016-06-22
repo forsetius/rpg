@@ -1,0 +1,23 @@
+{% import _self as decors %}
+
+{% macro a(content, href, class, name) %}
+    {% if href is empty %}
+        {{ content }}
+    {% else %}
+        <a href="{{ href }}"{{ decors.def('name', name) }}{{ decors.def('class', class) }}>{{ content }}</a>
+    {% endif %}
+{% endmacro %}
+
+{% macro div(content, class, id) %}
+    <div {{ decors.def('id', id) }}{{ decors.def('class', class) }}>{{ content }}</div>
+{% endmacro %}
+
+{% macro span(content, class) %}
+    <span {{ decors.def('class', class) }}>{{ content }}</span>
+{% endmacro %}
+
+{#====================================#}
+
+{% macro def(name, val) %}
+    {{ (val is empty) ? '' : ' '~ name ~'="'~ val ~'"' }}
+{% endmacro %}

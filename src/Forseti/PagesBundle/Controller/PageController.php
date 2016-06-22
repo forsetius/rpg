@@ -24,7 +24,7 @@ class PageController extends Controller
                 array('src'=>'/img/slide3.jpg','alt'=>'slide3','title'=>'Dungeons & Dragons 5e','text'=>'Piąta edycja Dungeons & Dragons jest najłatwiejszą i najbardziej epicką ever.')
             ),
             'subs'=>array(
-                array('name'=>'oceany_mroku','title'=>'Oceany Mroku','lead'=>'<p>Ciemność widzę! Ciemność!</p>', 'image_card'=>'/img/card-om.jpg', 'links'=>array(
+                array('id'=>2, 'name'=>'oceany_mroku','title'=>'Oceany Mroku','lead'=>'<p>Ciemność widzę! Ciemność!</p>', 'image_card'=>'/img/card-om.jpg', 'links'=>array(
                     array('href'=>'#', 'text'=>'UniMechanika', 'type'=>'mechanika', 'class'=>'colorful emphasis'),
                     array('href'=>'#', 'text'=>'Departament X', 'type'=>'setting', 'class'=>'colorful'),
                     array('href'=>'#', 'text'=>'Polska Nieumarła', 'type'=>'setting', 'class'=>'colorful'),

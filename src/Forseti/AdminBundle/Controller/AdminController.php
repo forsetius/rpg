@@ -2,7 +2,6 @@
 namespace Forseti\AdminBundle\Controller;
 
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,9 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AdminController extends BaseAdminController
 {
-    use Traits\UserAdminTrait;
-    use Traits\GroupAdminTrait;
-    
     /**
      * @Route("/", name="admin")
      * @Route("/", name="easyadmin")
@@ -33,8 +29,10 @@ class AdminController extends BaseAdminController
         if (! $this->hasNeededRole() )
             throw $this->createAccessDeniedException();
 
+        $twig = $this->container->get('twig');
         foreach (['site_icon'] as $twigGlobal)
-            $this->container->get('twig')->addGlobal("_$twigGlobal", $this->container->getParameter($twigGlobal));
+            if ($this->container->hasParameter($twigGlobal))
+                $twig->addGlobal("_$twigGlobal", $this->container->getParameter($twigGlobal));
 
         return parent::indexAction($request);
     }

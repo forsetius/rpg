@@ -88,7 +88,7 @@ class ConfigManager extends BaseCM
     protected function doProcessConfig($backendConfig)
     {
         $configPasses = array(
-            new NormalizerConfigPass(),
+            new NormalizerConfigPass($this->container),
             new DesignConfigPass($this->container->get('twig'), $this->container->getParameter('kernel.debug')),
             new MenuConfigPass($this->container->get('security')),
             new ActionConfigPass(),
