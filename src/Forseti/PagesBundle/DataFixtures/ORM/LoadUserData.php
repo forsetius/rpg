@@ -11,8 +11,9 @@ use Forseti\PagesBundle\Entity\Category;
 use Forseti\PagesBundle\Entity\Filetype;
 use Forseti\PagesBundle\Entity\Image;
 use Forseti\PagesBundle\Entity\Licence;
+use Forseti\AdminBundle\DataFixtures\ORM\AbstractLoadAccessData;
 
-class LoadUserData implements FixtureInterface
+class LoadUserData extends AbstractLoadAccessData implements FixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -46,48 +47,42 @@ class LoadUserData implements FixtureInterface
             'Sygnatura PGP'=>['certificate', '#00a', 'application/pgp-signature', ['asc', 'sig']]
         ];
         foreach ($filetypes as $key=>$data) {
-            $object = new Filetype();
+            $object = $this->register(new Filetype());
             $object->setName($key);
             $object->setIcon($data[0]);
             $object->setColor($data[1]);
             $object->setContentType($data[2]);
             $object->setExtensions($data[3]);
-            $manager->persist($object);
         }
 
         // load Licences
-        $licMit = new Licence();
+        $licMit = $this->register(new Licence());
         $licMit->setName('MIT');
         $licMit->setLongname('The MIT License');
         $licMit->setUrl('https://opensource.org/licenses/MIT');
-        $manager->persist($licMit);
 
-        $licCcByNcSa = new Licence();
+        $licCcByNcSa = $this->register(new Licence());
         $licCcByNcSa->setName('CC-BY-NC-SA');
         $licCcByNcSa->setLongname('Creative Commons Uznanie Autorstwa – Użycie Niekomercyjne – Na Tych Samych Warunkach');
         $licCcByNcSa->setUrl('https://creativecommons.org/licenses/by-nc-sa/4.0');
-        $manager->persist($licCcByNcSa);
 
-        $licCcByNc = new Licence();
+        $licCcByNc = $this->register(new Licence());
         $licCcByNc->setName('CC-BY-NC');
         $licCcByNc->setLongname('Creative Commons Uznanie Autorstwa – Użycie Niekomercyjne');
         $licCcByNc->setUrl('https://creativecommons.org/licenses/by-nc/4.0');
-        $manager->persist($licCcByNc);
 
-        $licCcBySa = new Licence();
+        $licCcBySa = $this->register(new Licence());
         $licCcBySa->setName('CC-BY-SA');
         $licCcBySa->setLongname('Creative Commons Uznanie Autorstwa – Na Tych Samych Warunkach');
         $licCcBySa->setUrl('https://creativecommons.org/licenses/by-sa/4.0');
-        $manager->persist($licCcBySa);
 
-        $licCcBy = new Licence();
+        $licCcBy = $this->register(new Licence());
         $licCcBy->setName('CC-BY');
         $licCcBy->setLongname('Creative Commons Uznanie Autorstwa');
         $licCcBy->setUrl('https://creativecommons.org/licenses/by/4.0');
-        $manager->persist($licCcBy);
 
         // load Images
-        $imgCatOm = new Image();
+        $imgCatOm = $this->register(new Image());
         $imgCatOm->setTitle('Tunnel of light');
         $imgCatOm->setName('oceany-mroku-card');
         $imgCatOm->setTemplate('image-licenced');
@@ -100,9 +95,8 @@ class LoadUserData implements FixtureInterface
         $imgCatOm->setMetaKeywords('oceany mroku mrok rpg urban fantasy');
         $imgCatOm->setLicence($licCcByNcSa);
         $imgCatOm->setAttribution('Ktoś z Wikipedii');
-        $manager->persist($imgCatOm);
 
-        $imgCatEp = new Image();
+        $imgCatEp = $this->register(new Image());
         $imgCatEp->setTitle('Spacewalk');
         $imgCatEp->setName('eclipse-phase-card');
         $imgCatEp->setTemplate('image-licenced');
@@ -115,9 +109,8 @@ class LoadUserData implements FixtureInterface
         $imgCatEp->setMetaKeywords('eclipse phase rpg sci-fi horror konspiracja postapo');
         $imgCatEp->setLicence($licCcByNc);
         $imgCatEp->setAttribution('Posthuman Studios');
-        $manager->persist($imgCatEp);
 
-        $imgCatMta = new Image();
+        $imgCatMta = $this->register(new Image());
         $imgCatMta->setTitle('Purple curtain');
         $imgCatMta->setName('mage-the-ascansion-card');
         $imgCatMta->setTemplate('image-licenced');
@@ -130,10 +123,9 @@ class LoadUserData implements FixtureInterface
         $imgCatMta->setMetaKeywords('mage ascension mag wstąpienie rpg');
         $imgCatMta->setLicence($licCcByNcSa);
         $imgCatMta->setAttribution('Onyx Path');
-        $manager->persist($imgCatMta);
 
         // load Attachments
-        $attchEpCelestia = new Attachment();
+        $attchEpCelestia = $this->register(new Attachment());
         $attchEpCelestia->setName('eclipse-phase-celestia-locations');
         $attchEpCelestia->setTitle('Eclipse Phase locations for Celestia');
         $attchEpCelestia->setContent('Instrukcja');
@@ -147,10 +139,9 @@ class LoadUserData implements FixtureInterface
         $attchEpCelestia->setMetaTitle($attchEpCelestia->getTitle());
         $attchEpCelestia->setMetaDesc($attchEpCelestia->getTitle());
         $attchEpCelestia->setMetaKeywords('eclipse phase celestia');
-        $manager->persist($attchEpCelestia);
 
         // load Categories
-        $catRoot = new Category();
+        $catRoot = $this->register(new Category());
         $catRoot->setName('root');
         $catRoot->setTitle('Główna');
         $catRoot->setContent('');
@@ -161,9 +152,8 @@ class LoadUserData implements FixtureInterface
         $catRoot->setMetaTitle($catRoot->getTitle());
         $catRoot->setPageOrder(0); // FIXME
         $catRoot->setTemplate('category');
-        $manager->persist($catRoot);
 
-        $catOm = new Category();
+        $catOm = $this->register(new Category());
         $catOm->setName('oceany-mroku');
         $catOm->setTitle('Oceany Mroku');
         $catOm->setContent('<p>Ciemność widzę! Ciemność!</p>');
@@ -175,9 +165,8 @@ class LoadUserData implements FixtureInterface
         $catOm->setMetaTitle($catOm->getTitle());
         $catOm->setPageOrder(1); // FIXME
         $catOm->setTemplate('category');
-        $manager->persist($catOm);
 
-        $catEp = new Category();
+        $catEp = $this->register(new Category());
         $catEp->setName('eclipse-phase');
         $catEp->setTitle('Eclipse Phase');
         $catEp->setContent('<p>Transludzka przyszłość po upadku Ziemi</p>');
@@ -189,11 +178,10 @@ class LoadUserData implements FixtureInterface
         $catEp->setMetaTitle($catEp->getTitle());
         $catEp->setPageOrder(2); // FIXME
         $catEp->setTemplate('category');
-        $manager->persist($catEp);
 
         // load Articles
         
-        $artHome = new Article();
+        $artHome = $this->register(new Article());
         $artHome->setName('homepage');
         $artHome->setTitle('Forseti: abstract worlds');
         $artHome->setLead('RPG - Gry fabularne');
@@ -211,48 +199,46 @@ EOT
         $artHome->addImage($imgCatEp);
         $artHome->addImage($imgCatMta);
         $artHome->addAttachment($attchEpCelestia);
-        $manager->persist($artHome);
 
         // load Comments
 
         // load Groups
 
-        $groupAdmin = new Group();
+        $groupAdmin = $this->register(new Group());
         $groupAdmin->setName('CMS Admin');
         $groupAdmin->setStyle('warning');
         $groupAdmin->setRoles(['ROLE_ARTICLE_ALL', 'ROLE_ATTACHMENT_ALL', 'ROLE_CATEGORY_ALL', 'ROLE_COMMENT_ALL', 'ROLE_FILETYPE_ALL', 'ROLE_IMAGE_ALL', 'ROLE_LICENCE_ALL', 'ROLE_TAG_ALL']);
-        $manager->persist($groupAdmin);
 
-        $groupAuthor = new Group();
+        $groupAuthor = $this->register(new Group());
         $groupAuthor->setName('Author');
         $groupAuthor->setStyle('success');
         $groupAuthor->setRoles(['ROLE_ARTICLE_OWN', 'ROLE_ATTACHMENT_OWN', 'ROLE_CATEGORY_SEE', 'ROLE_COMMENT_OWN', 'ROLE_FILETYPE_SEE', 'ROLE_IMAGE_OWN', 'ROLE_LICENCE_SEE', 'ROLE_TAG_SEE']);
-        $manager->persist($groupAuthor);
 
-        $groupVisitor = $manager->getRepository(Group::class)->findOneBy(['name'=>'Visitor']);
+        $groupVisitor = $this->register($manager->getRepository(Group::class)->findOneBy(['name'=>'Visitor']));
         $groupVisitor->addRole('ROLE_ARTICLE_SEE')->addRole('ROLE_ATTACHMENT_SEE')->addRole('ROLE_CATEGORY_SEE')->addRole('ROLE_COMMENT_SEE')->addRole('ROLE_FILETYPE_SEE')->addRole('ROLE_IMAGE_SEE')->addRole('ROLE_LICENCE_SEE')->addRole('ROLE_TAG_SEE');
-        $manager->persist($groupVisitor);
 
         // load Users
 
-        $userSuperAdmin = $manager->getRepository(User::class)->findOneBy(['username'=>'root']);
+        $userSuperAdmin = $this->register($manager->getRepository(User::class)->findOneBy(['username'=>'root']));
         $userSuperAdmin->addGroup($groupAdmin);
-        $manager->persist($userSuperAdmin);
 
-        $userCmsAdmin = new User();
+        $userCmsAdmin = $this->register(new User());
         $userCmsAdmin->setUsername('cmsadmin');
-        $userCmsAdmin->setPlainPassword('daikomio');
+        $userCmsAdmin->setPlainPassword('password');
         $userCmsAdmin->setEmail('exe@gm.com');
         $userCmsAdmin->addGroup($groupAdmin);
-        $manager->persist($userCmsAdmin);
 
-        $userAuthor = new User();
+        $userAuthor = $this->register(new User());
         $userAuthor->setUsername('author');
-        $userAuthor->setPlainPassword('daikomio');
+        $userAuthor->setPlainPassword('password');
         $userAuthor->setEmail('ex1e@gm.com');
         $userAuthor->addGroup($groupAuthor);
-        $manager->persist($userAuthor);
 
-        $manager->flush();
+        $this->flush($manager);
+    }
+    
+    public function getOrder()
+    {
+        return 10;
     }
 }

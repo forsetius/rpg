@@ -6,40 +6,41 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Forseti\AdminBundle\Entity\Group;
 use Forseti\AdminBundle\Entity\User;
 
-class LoadUserData implements FixtureInterface
+class LoadUserData extends AbstractLoadAccessData implements FixtureInterface
 {
     public function load(ObjectManager $manager)
     {
         // load Groups
         
-        $groupSuperAdmin = new Group();
+        $groupSuperAdmin = $this->register(new Group());
         $groupSuperAdmin->setName('SuperAdmin');
         $groupSuperAdmin->setStyle('danger');
         $groupSuperAdmin->setRoles(['ROLE_SUPER_ADMIN', 'ROLE_USER_ALL', 'ROLE_GROUP_ALL']);
-        $manager->persist($groupSuperAdmin);
 
-        $groupVisitor = new Group();
+        $groupVisitor = $this->register(new Group());
         $groupVisitor->setName('Visitor');
         $groupVisitor->setStyle('info');
         $groupVisitor->setRoles(['ROLE_USER_SEE', 'ROLE_GROUP_SEE']);
-        $manager->persist($groupVisitor);
     
         // load Users
         
-        $userSuperAdmin = new User();
+        $userSuperAdmin = $this->register(new User());
         $userSuperAdmin->setUsername('root');
         $userSuperAdmin->setPlainPassword('daikomio');
         $userSuperAdmin->setEmail('forseti.pl@gmail.com');
         $userSuperAdmin->addGroup($groupSuperAdmin);
-        $manager->persist($userSuperAdmin);
 
-        $userVisitor = new User();
+        $userVisitor = $this->register(new User());
         $userVisitor->setUsername('visitor');
         $userVisitor->setPlainPassword('password');
         $userVisitor->setEmail('example@gmail.com');
         $userVisitor->addGroup($groupVisitor);
-        $manager->persist($userVisitor);
 
-        $manager->flush();
+        $this->flush($manager);
+    }
+    
+    public function getOrder()
+    {
+        return 1;
     }
 }
