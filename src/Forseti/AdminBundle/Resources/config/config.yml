@@ -21,6 +21,12 @@ services:
         class: Forseti\AdminBundle\Configuration\ConfigManager
         arguments: ['@service_container']
         
+    forsadmin.color_convert.twig_extension:
+        class: Eg\AdminBundle\Twig\ColorConverterTwigExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+        
 ivory_ck_editor:
     input_sync: true
     default_config: advanced_config

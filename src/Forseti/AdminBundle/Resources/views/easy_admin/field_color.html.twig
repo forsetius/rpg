@@ -3,8 +3,10 @@
     {% for item in value %}
         {% if link_parameters is defined -%}
             {% set primary_key_value = attribute(item, link_parameters.primary_key_name) %}
+            {% set rgb = item.color|hexToRgb %}
+            {% set brightness = (0.299*rgb.r + 0.587*rgb.g + 0.114*rgb.b)  %}
             <a href="{{ path('easyadmin', link_parameters|merge({ id: primary_key_value, referer: '' })) }}">
-                	<span class="label color-swatch" style="background-color: {{ item.color }}">{{ item }}</span>
+                	<span class="label color-swatch" style="background-color: {{ item.color }}; color: {{ (brightness > 150) ? 'black':'white' }}">{{ item }}</span>
             </a>
         {%- else %}
             	<span class="label color-swatch" style="background-color: {{ item.color }}">{{ item }}</span>
@@ -15,5 +17,7 @@
 {% elseif link_parameters is defined %}
     <a href="{{ path('easyadmin', link_parameters|merge({ referer: '' })) }}">{{ value|easyadmin_truncate }}</a>
 {% else %}
-    <span class="label color-swatch" style="background-color: {{ value }}">{{ value }}</span>
+    {% set rgb = value|hexToRgb %}
+    {% set brightness = (0.299*rgb.r + 0.587*rgb.g + 0.114*rgb.b)  %}
+    <span class="label color-swatch" style="background-color: {{ value }}; color: {{ (brightness > 150) ? 'black':'white' }}">{{ value }}</span>
 {% endif %}
