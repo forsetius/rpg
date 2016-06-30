@@ -22,7 +22,7 @@ services:
         arguments: ['@service_container']
         
     forsadmin.color_convert.twig_extension:
-        class: Eg\AdminBundle\Twig\ColorConverterTwigExtension
+        class: Forseti\AdminBundle\Twig\ColorConverterTwigExtension
         public: false
         tags:
             - { name: twig.extension }

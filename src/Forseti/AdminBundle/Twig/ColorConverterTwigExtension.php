@@ -1,5 +1,5 @@
-<?php 
-namespace Eg\AdminBundle\Twig;
+<?php
+namespace Forseti\AdminBundle\Twig;
 
 use Twig_Extension;
 use Twig_Filter_Method;

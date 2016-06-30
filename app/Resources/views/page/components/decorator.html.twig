@@ -1,6 +1,5 @@
-{% import _self as decors %}
-
 {% macro a(content, href, class, name) %}
+{% import _self as decors %}
     {% if href is empty %}
         {{ content }}
     {% else %}
@@ -9,10 +8,12 @@
 {% endmacro %}
 
 {% macro div(content, class, id) %}
+{% import _self as decors %}
     <div {{ decors.def('id', id) }}{{ decors.def('class', class) }}>{{ content }}</div>
 {% endmacro %}
 
 {% macro span(content, class) %}
+{% import _self as decors %}
     <span {{ decors.def('class', class) }}>{{ content }}</span>
 {% endmacro %}
 

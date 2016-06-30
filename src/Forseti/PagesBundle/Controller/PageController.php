@@ -24,24 +24,24 @@ class PageController extends Controller
                 array('src'=>'/img/slide3.jpg','alt'=>'slide3','title'=>'Dungeons & Dragons 5e','text'=>'Piąta edycja Dungeons & Dragons jest najłatwiejszą i najbardziej epicką ever.')
             ),
             'subs'=>array(
-                array('id'=>2, 'name'=>'oceany_mroku','title'=>'Oceany Mroku','lead'=>'<p>Ciemność widzę! Ciemność!</p>', 'image_card'=>'/img/card-om.jpg', 'links'=>array(
-                    array('href'=>'#', 'text'=>'UniMechanika', 'type'=>'mechanika', 'class'=>'colorful emphasis'),
-                    array('href'=>'#', 'text'=>'Departament X', 'type'=>'setting', 'class'=>'colorful'),
-                    array('href'=>'#', 'text'=>'Polska Nieumarła', 'type'=>'setting', 'class'=>'colorful'),
+                array('id'=>2, 'name'=>'oceany_mroku', 'href'=>'#','title'=>'Oceany Mroku','text'=>'<p>Ciemność widzę! Ciemność!</p>', 'image_card'=>'/img/card-om.jpg', 'jumpline'=>'więcej...', 'list'=>array(
+                    [array('href'=>'#', 'text'=>'UniMechanika', 'type'=>'mechanika', 'class'=>'colorful emphasis')],
+                    [array('href'=>'#', 'text'=>'Departament X', 'type'=>'setting', 'class'=>'colorful')],
+                    [array('href'=>'#', 'text'=>'Polska Nieumarła', 'type'=>'setting', 'class'=>'colorful')],
                 )),
-                array('name'=>'eclipse_phase','title'=>'Eclipse Phase','lead'=>'<p>Transludzka przyszłość po upadku Ziemi</p>', 'image_card'=>'/img/card-ep.jpg', 'links'=>array(
-                    array('href'=>'#', 'text'=>'Encyklopedia', 'type'=>'dział', 'class'=>'colorful'),
-                    array('href'=>'#', 'text'=>'Generator scenariuszy', 'type'=>'generator', 'class'=>'colorful'),
+                array('name'=>'eclipse_phase', 'href'=>'#','title'=>'Eclipse Phase','text'=>'<p>Transludzka przyszłość po upadku Ziemi</p>', 'image_card'=>'/img/card-ep.jpg', 'jumpline'=>'więcej...', 'list'=>array(
+                    [array('href'=>'#', 'text'=>'Encyklopedia', 'type'=>'dział', 'class'=>'colorful')],
+                    [array('href'=>'#', 'text'=>'Generator scenariuszy', 'type'=>'generator', 'class'=>'colorful')],
                 )),
-                array('name'=>'mage_ascension','title'=>'Mag: Wstąpienie','lead'=>'<p>Metafizyczna walka o rząd dusz i kształt rzeczywistości</p>', 'image_card'=>'/img/card-mta.jpg', 'links'=>array(
-                    array('href'=>'#', 'text'=>'Tradycje', 'type'=>'dział', 'class'=>'colorful'),
-                    array('href'=>'#', 'text'=>'Wiedza', 'type'=>'dział', 'class'=>'colorful'),
+                array('name'=>'mage_ascension', 'href'=>'#','title'=>'Mag: Wstąpienie','text'=>'<p>Metafizyczna walka o rząd dusz i kształt rzeczywistości</p>', 'image_card'=>'/img/card-mta.jpg', 'jumpline'=>'więcej...', 'list'=>array(
+                    [array('href'=>'#', 'text'=>'Tradycje', 'type'=>'dział', 'class'=>'colorful')],
+                    [array('href'=>'#', 'text'=>'Wiedza', 'type'=>'dział', 'class'=>'colorful')],
                 )),
-                array('name'=>'dnd5','title'=>'Dungeons & Dragons 5e','lead'=>'<p>Klasyczne sword&sorcery w wersji epickiej</p>', 'image_card'=>'/img/card-dnd.jpg', 'links'=>array(
-                    array('href'=>'#', 'text'=>'Psionika', 'type'=>'dział', 'class'=>'colorful'),
-                    array('href'=>'#', 'text'=>'Archetypy', 'type'=>'dział', 'class'=>'colorful'),
-                    array('href'=>'#', 'text'=>'Pochodzenie', 'type'=>'dział', 'class'=>'colorful'),
-                )),
+                array('name'=>'dnd5', 'href'=>'#', 'title'=>'Dungeons & Dragons 5e','text'=>'<p>Klasyczne sword&sorcery w wersji epickiej</p>', 'image_card'=>'/img/card-dnd.jpg', 'jumpline'=>'więcej...', 'list'=>array(
+                    [['href'=>'#', 'text'=>'Psionika', 'type'=>'dział', 'class'=>'colorful']],
+                    [['href'=>'#', 'text'=>'Archetypy', 'type'=>'dział', 'class'=>'colorful']],
+                    [['href'=>'#', 'text'=>'Pochodzenie', 'type'=>'dział', 'class'=>'colorful']]
+                ))
             )
         );
         $page = $this->getDoctrine()->getRepository('Forseti\PagesBundle\Entity\Article')->findOneByName('homepage');

@@ -28,6 +28,7 @@
 {% endmacro %}
 
 {% macro topCatCard(c) %}
+	{% import _self as cards %}
     <div class="card">
         <img class="card-img-top" data-src="{{ c.image_card }}">
         <div class="card-img-overlay">
@@ -56,7 +57,7 @@
             <li class="list-group-item {{ row.class|default(class)|default('') }}">
                 {% set cc = 12 %}
                 {% for cell in row %}
-                    {% set width = cell.width|default(cell.width)|default(cc) %}
+                    {% set width = cell.width|default(cc) %}
                     {% set cc = cc - width %}
                     <div class="col-sm-{{ width }} {{ cell.class|default('') }}">
                         {{ decor.a(cell.text, cell.href|default('')) }}
