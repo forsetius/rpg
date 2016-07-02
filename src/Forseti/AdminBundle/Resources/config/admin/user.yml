@@ -1,5 +1,5 @@
 security:
-    role_hierarchy: &srh
+    role_hierarchy: 
         ROLE_USER_SHOW: ~
         ROLE_USER_LIST: ROLE_USER_SEARCH
         ROLE_USER_NEW: ~
@@ -7,15 +7,16 @@ security:
         ROLE_USER_EDIT: ROLE_USER_EDIT_OWN
         ROLE_USER_SOFTDELETE_OWN: ~
         ROLE_USER_SOFTDELETE: ROLE_USER_SOFTDELETE_OWN
-        ROLE_USER_DELETE: ~
+        ROLE_USER_DELETE: ROLE_USER_SOFTDELETE
         ROLE_USER_FLAG: ~
-        ROLE_USER_ALL:
+        ROLE_USER_SEE: 
             - ROLE_USER_SHOW
             - ROLE_USER_LIST
+        ROLE_USER_ALL:
+            - ROLE_USER_SEE
             - ROLE_USER_NEW
             - ROLE_USER_EDIT
             - ROLE_USER_DELETE
-            - ROLE_USER_SOFTDELETE
             - ROLE_USER_FLAG
 
 easy_admin:
@@ -29,12 +30,16 @@ easy_admin:
                 fields:
                     - { property: 'username', label: 'easyAdmin.users.username', type: text }
                     - { property: 'email', label: 'easyAdmin.users.email', type: email }
+                    -
+                      property: 'color'
+                      label: 'trait.color'
+                      css_class: col-sm-3
+                      type: '\Forseti\AdminBundle\Form\Type\ColorType'
                     - 
                       property: 'groups'
                       label: 'easyAdmin.group.name.mm'
                       type: entity
                       type_options: 
-                          expanded: false
                           multiple: true
                           class: Forseti\AdminBundle\Entity\Group
                     - { property: 'locked', label: 'easyAdmin.users.locked', type: 'checkbox' }
@@ -47,10 +52,14 @@ easy_admin:
                 fields:
                     - { property: 'username', label: 'easyAdmin.users.username' }
                     - { property: 'email', label: 'easyAdmin.users.email' }
+                    -
+                      property: 'color'
+                      label: 'trait.color'
+                      template: '@ForsetiAdmin/easy_admin/field_color.html.twig'
                     - 
                       property: 'groups'
                       label: 'easyAdmin.group.name.mm' 
-                      template: '@ForsetiAdmin/easy_admin/field_label.html.twig'
+                      template: '@ForsetiAdmin/easy_admin/field_color.html.twig'
                     - { property: 'locked', label: 'easyAdmin.users.locked' }
                     - { property: 'expires_at', label: 'easyAdmin.users.expires_at' }
             list:
@@ -58,9 +67,13 @@ easy_admin:
                 fields:
                     - { property: 'username', label: 'easyAdmin.users.username' }
                     - { property: 'email', label: 'easyAdmin.users.email', type: email }
+                    -
+                      property: 'color'
+                      label: 'trait.color'
+                      template: '@ForsetiAdmin/easy_admin/field_color.html.twig'
                     - 
                       property: 'groups'
                       label: 'easyAdmin.group.name.mm' 
-                      template: '@ForsetiAdmin/easy_admin/field_label.html.twig'
+                      template: '@ForsetiAdmin/easy_admin/field_color.html.twig'
                     - { property: 'locked', label: 'easyAdmin.users.locked', type: toggle }
 

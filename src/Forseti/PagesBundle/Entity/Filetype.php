@@ -11,8 +11,6 @@ use Gedmo\Translatable\Translatable;
  */
 class Filetype implements Translatable
 {
-    const ENTITY_ACTIONS = ['list', 'show', 'new', 'edit', 'delete'];
-    
     /**
      * @ORM\Column(type="smallint")
      * @ORM\Id

@@ -12,8 +12,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Licence implements Translatable
 {
-    const ENTITY_ACTIONS = ['list', 'show', 'new', 'edit', 'delete'];
-    
     /**
      * @ORM\Column(type="smallint")
      * @ORM\Id
@@ -37,16 +35,6 @@ class Licence implements Translatable
      * @ORM\Column(type="string", length=255)
      */
     protected $url;
-    
-    /**
-     * @ORM\OneToMany(targetEntity="Image", mappedBy="licence")
-     */
-    protected $images;
-    
-    /**
-     * @ORM\OneToMany(targetEntity="Attachment", mappedBy="licence")
-     */
-    protected $attachments;
     
     public function __construct() {
         $this->attachments = new ArrayCollection();
@@ -118,74 +106,6 @@ class Licence implements Translatable
     public function getUrl()
     {
         return $this->url;
-    }
-
-    /**
-     * Add image
-     *
-     * @param \Forseti\PagesBundle\Entity\Image $image
-     *
-     * @return Licence
-     */
-    public function addImage(\Forseti\PagesBundle\Entity\Image $image)
-    {
-        $this->images[] = $image;
-
-        return $this;
-    }
-
-    /**
-     * Remove image
-     *
-     * @param \Forseti\PagesBundle\Entity\Image $image
-     */
-    public function removeImage(\Forseti\PagesBundle\Entity\Image $image)
-    {
-        $this->images->removeElement($image);
-    }
-
-    /**
-     * Get images
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getImages()
-    {
-        return $this->images;
-    }
-
-    /**
-     * Add attachment
-     *
-     * @param \Forseti\PagesBundle\Entity\Attachment $attachment
-     *
-     * @return Licence
-     */
-    public function addAttachment(\Forseti\PagesBundle\Entity\Attachment $attachment)
-    {
-        $this->attachments[] = $attachment;
-
-        return $this;
-    }
-
-    /**
-     * Remove attachment
-     *
-     * @param \Forseti\PagesBundle\Entity\Attachment $attachment
-     */
-    public function removeAttachment(\Forseti\PagesBundle\Entity\Attachment $attachment)
-    {
-        $this->attachments->removeElement($attachment);
-    }
-
-    /**
-     * Get attachments
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAttachments()
-    {
-        return $this->attachments;
     }
 
     /**

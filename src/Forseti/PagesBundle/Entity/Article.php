@@ -15,8 +15,6 @@ use \Doctrine\Common\Collections\ArrayCollection;
  */
 class Article extends Page implements Translatable
 {
-    const ENTITY_ACTIONS = ['list', 'show', 'new', 'edit', 'delete', 'softdelete', 'flag', 'comment'];
-
     use Author;
     use SoftDeleteableEntity;
     use TimestampableEntity;

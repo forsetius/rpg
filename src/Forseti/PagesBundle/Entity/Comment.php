@@ -29,7 +29,7 @@ class Comment
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Forseti\PagesBundle\Entity\Article", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="Article", inversedBy="comments")
      */
     protected $article;
 
@@ -137,7 +137,7 @@ class Comment
      *
      * @return Comment
      */
-    public function setArticle(\Forseti\PagesBundle\Entity\Article $article = null)
+    public function setArticle(Article $article = null)
     {
         $this->article = $article;
 

@@ -11,8 +11,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Group extends BaseGroup
 {
-    const ENTITY_ACTIONS = ['list', 'show', 'new', 'edit', 'delete'];
-    
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -21,15 +19,15 @@ class Group extends BaseGroup
     protected $id;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Forseti\AdminBundle\Entity\User", mappedBy="groups")
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="groups")
      */
     protected $users;
     
     /**
      *
-     * @ORM\Column(name="style", type="string", length=255)
+     * @ORM\Column(type="string", length=7)
      */
-    protected $style;
+    protected $color;
     
     public function __construct()
     {
@@ -44,27 +42,27 @@ class Group extends BaseGroup
     }
 
     /**
-     * Set style
+     * Set color
      *
-     * @param string $style
+     * @param string $color
      *
      * @return Group
      */
-    public function setStyle($style)
+    public function setColor($color)
     {
-        $this->style = $style;
+        $this->color = $color;
 
         return $this;
     }
 
     /**
-     * Get style
+     * Get color
      *
      * @return string
      */
-    public function getStyle()
+    public function getColor()
     {
-        return $this->style;
+        return $this->color;
     }
 
     /**
@@ -74,10 +72,10 @@ class Group extends BaseGroup
      *
      * @return Group
      */
-    public function addUser(\Forseti\AdminBundle\Entity\User $user)
+    public function addUser(User $user)
     {
         $this->users[] = $user;
-
+        $user->addGroup($this);
         return $this;
     }
 
@@ -86,10 +84,12 @@ class Group extends BaseGroup
      *
      * @param \Forseti\AdminBundle\Entity\User $user
      */
-    public function removeUser(\Forseti\AdminBundle\Entity\User $user)
+    public function removeUser(User $user)
     {
         $this->users->removeElement($user);
+        $user->removeGroup($this);
     }
+    
 
     /**
      * Get users
@@ -99,5 +99,19 @@ class Group extends BaseGroup
     public function getUsers()
     {
         return $this->users;
+    }
+    
+    /**
+     * Add the array of roles
+     * @param string[] $roles
+     * @return Group
+     */
+    public function addRoles(array $roles)
+    {
+        foreach ($roles as $role) {
+            $this->addRole($role);
+        }
+    
+        return $this;
     }
 }

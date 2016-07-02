@@ -5,8 +5,11 @@ security:
         ROLE_GROUP_NEW: ~
         ROLE_GROUP_EDIT: ~
         ROLE_GROUP_DELETE: ~
-        ROLE_GROUP_ALL:
-            - ROLE_GROUP_SHOW
+        ROLE_USER_SEE: 
+            - ROLE_USER_SHOW
+            - ROLE_USER_LIST
+        ROLE_USER_ALL:
+            - ROLE_USER_SEE
             - ROLE_GROUP_LIST
             - ROLE_GROUP_NEW
             - ROLE_GROUP_EDIT
@@ -22,25 +25,26 @@ easy_admin:
                 fields:
                     - { property: 'name', label: 'easyAdmin.groups.name', type: text }
                     -
+                      property: 'color'
+                      label: 'trait.color'
+                      css_class: col-sm-3
+                      type: '\Forseti\AdminBundle\Form\Type\ColorType'
+                    -
                       property: 'roles'
                       label: 'easyAdmin.groups.roles'
                       type: choice
                       type_options:
                           expanded: false
                           multiple: true
-                    -
-                      property: 'style'
-                      label: 'easyAdmin.groups.style'
-                      type: choice
-                      type_options:
-                          choices:
-                              app.label.nolabel: nolabel
-                              app.label.danger: danger
-                              app.label.warning: warning
-                              app.label.info: info
-                              app.label.success: success
-                              app.label.primary: primary
-                              app.label.default: default
+                    - 
+                      property: 'users' 
+                      label: 'admin.group.users'
+                      css_class: col-sm-5
+                      type: entity
+                      type_options: 
+                          class: Forseti\AdminBundle\Entity\User
+                          by_reference: false
+                          multiple: true
             new:
                 title: easyAdmin.group.title.new
             edit:
@@ -51,39 +55,25 @@ easy_admin:
                     - { property: 'id', label: 'ID' }
                     - { property: 'name', label: 'easyAdmin.groups.name' }
                     -
+                      property: 'color'
+                      label: 'trait.color'
+                      template: '@ForsetiAdmin/easy_admin/field_color.html.twig'
+                    -
                       property: 'roles'
                       label: 'easyAdmin.users.roles'
                       template: '@ForsetiAdmin/easy_admin/field_roles.html.twig'
-                    -
-                      property: 'style'
-                      label: 'easyAdmin.groups.style'
-                      template: '@ForsetiAdmin/easy_admin/field_label.html.twig'
-                      styles:
-                          nolabel: { label: 'app.label.nolabel' }
-                          danger: { label: 'app.label.red', class: 'danger' }
-                          warning: { label: 'app.label.yellow', class: 'warning' }
-                          info: { label: 'app.label.info', class: 'info' }
-                          success: { label: 'app.label.green', class: 'success' }
-                          primary: { label: 'app.label.blue', class: 'primary' }
-                          default: { label: 'app.label.hope', class: 'default' }
+
             list:
                 title: easyAdmin.group.name.mm
                 fields:
                     - { property: 'id', label: 'ID' }
                     - { property: 'name', label: 'easyAdmin.groups.name' }
                     -
+                      property: 'color'
+                      label: 'trait.color'
+                      template: '@ForsetiAdmin/easy_admin/field_color.html.twig'
+                    -
                       property: 'roles'
                       label: 'easyAdmin.users.roles'
                       template: '@ForsetiAdmin/easy_admin/field_roles.html.twig'
-                    -
-                      property: 'style'
-                      label: 'easyAdmin.groups.style'
-                      template: '@ForsetiAdmin/easy_admin/field_label.html.twig'
-                      styles:
-                          nolabel: { label: 'app.label.nolabel' }
-                          danger: { label: 'app.label.red', class: 'danger' }
-                          warning: { label: 'app.label.yellow', class: 'warning' }
-                          info: { label: 'app.label.info', class: 'info' }
-                          success: { label: 'app.label.green', class: 'success' }
-                          primary: { label: 'app.label.blue', class: 'primary' }
-                          default: { label: 'app.label.hope', class: 'default' }
+

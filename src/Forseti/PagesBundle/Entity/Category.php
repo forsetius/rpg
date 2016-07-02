@@ -13,8 +13,6 @@ use \Doctrine\Common\Collections\ArrayCollection;
  */
 class Category extends Page implements Translatable
 {
-    const ENTITY_ACTIONS = ['list', 'show', 'new', 'edit', 'delete', 'softdelete', 'flag'];
-
     use SoftDeleteableEntity;
     
     /**
@@ -107,9 +105,10 @@ class Category extends Page implements Translatable
      *
      * @return Category
      */
-    public function addChild(\Forseti\PagesBundle\Entity\Category $child)
+    public function addChild(Category $child)
     {
         $this->children[] = $child;
+        $child->setParent($this);
 
         return $this;
     }
@@ -122,6 +121,7 @@ class Category extends Page implements Translatable
     public function removeChild(\Forseti\PagesBundle\Entity\Category $child)
     {
         $this->children->removeElement($child);
+        $child->setParent();
     }
 
     /**
@@ -168,6 +168,7 @@ class Category extends Page implements Translatable
     public function addArticle(\Forseti\PagesBundle\Entity\Article $article)
     {
         $this->articles[] = $article;
+        $article->setCategory($this);
 
         return $this;
     }
@@ -180,6 +181,7 @@ class Category extends Page implements Translatable
     public function removeArticle(\Forseti\PagesBundle\Entity\Article $article)
     {
         $this->articles->removeElement($article);
+        $article->setCategory();
     }
 
     /**

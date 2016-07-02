@@ -126,6 +126,7 @@ class Image extends Page implements Translatable
     public function addArticle(\Forseti\PagesBundle\Entity\Article $article)
     {
         $this->articles[] = $article;
+        $article->addImage($this);
 
         return $this;
     }
@@ -138,6 +139,7 @@ class Image extends Page implements Translatable
     public function removeArticle(\Forseti\PagesBundle\Entity\Article $article)
     {
         $this->articles->removeElement($article);
+        $article->removeImage($this);
     }
 
     /**

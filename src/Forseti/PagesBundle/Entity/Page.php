@@ -8,8 +8,6 @@ use Gedmo\Translatable\Translatable;
 /** @ORM\MappedSuperclass */
 abstract class Page implements Translatable
 {
-    const ENTITY_ACTIONS = ['list', 'show', 'new', 'edit', 'delete', 'flag'];
-
     /**
      * @return string
      */
@@ -55,7 +53,7 @@ abstract class Page implements Translatable
     protected $template;
     
     /**
-     * @ORM\Column(type="string", length=30, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $cssClass;
     

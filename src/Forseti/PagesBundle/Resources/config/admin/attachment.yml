@@ -33,7 +33,7 @@ easy_admin:
                     - { property: 'type', label: 'easyAdmin.attachment.type', css_class: 'col-sm-6' }
                     - { property: 'licence', label: 'easyAdmin.licence.name.mp', css_class: 'col-sm-6' }
                     - { property: 'attribution', label: 'easyAdmin.attachment.attribution', css_class: 'col-sm-6' }
-                    - { property: 'articles', label: 'easyAdmin.article.name.mm', type: entity, type_options: {class: 'Forseti\PagesBundle\Entity\Article', multiple: true} }
+                    - { property: 'articles', label: 'easyAdmin.article.name.mm', type: entity, type_options: {class: 'Forseti\PagesBundle\Entity\Article', multiple: true, by_reference: false} }
                     - { property: 'metaTitle', label: 'easyAdmin.pages.meta_title', type: text }
                     - { property: 'metaKeywords', label: 'easyAdmin.pages.meta_keywords', type: text }
                     - { property: 'metaDesc', label: 'easyAdmin.pages.meta_desc', type: 'ckeditor' }

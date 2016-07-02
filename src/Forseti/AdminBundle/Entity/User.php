@@ -14,8 +14,6 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
  */
 class User extends BaseUser
 {
-    const ENTITY_ACTIONS =  ['list', 'show', 'new', 'edit', 'softDelete', 'enable', 'disable', 'flag'];
-
     use TimestampableEntity;
     use SoftDeleteableEntity;
 

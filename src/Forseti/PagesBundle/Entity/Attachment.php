@@ -97,7 +97,7 @@ class Attachment extends Page implements Translatable
      *
      * @return Attachment
      */
-    public function setType(\Forseti\PagesBundle\Entity\Filetype $type = null)
+    public function setType(Filetype $type = null)
     {
         $this->type = $type;
 
@@ -124,6 +124,7 @@ class Attachment extends Page implements Translatable
     public function addArticle(\Forseti\PagesBundle\Entity\Article $article)
     {
         $this->articles[] = $article;
+        $article->addAttachment($this);
 
         return $this;
     }
@@ -136,6 +137,7 @@ class Attachment extends Page implements Translatable
     public function removeArticle(\Forseti\PagesBundle\Entity\Article $article)
     {
         $this->articles->removeElement($article);
+        $article->removeAttachment($this);
     }
 
     /**
