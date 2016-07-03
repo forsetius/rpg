@@ -109,13 +109,6 @@ easyAdmin.groups.roles: Uprawnienia
 
 toggle_navigation: Przełącz nawigację
 user.unnamed: Niezalogowany
-app.label.danger: Czerwony
-app.label.warning: Żółty 
-app.label.info: Błękitny 
-app.label.success: Zielony 
-app.label.primary: Niebieski
-app.label.default: Szary
-app.label.nolabel: Biały
 
 easyAdmin.sol.text.noItemsAvailable: Brak pozycji do wyświetlenia
 easyAdmin.sol.text.selectAll: Zaznacz wszystko
@@ -136,3 +129,5 @@ easyAdmin.datetimepicker2.text.prevDecade: Poprzednia
 easyAdmin.datetimepicker2.text.nextDecade: Następna
 easyAdmin.datetimepicker2.text.prevCentury: Poprzednie
 easyAdmin.datetimepicker2.text.nextCentury: Następne
+
+trait.color: Kolor

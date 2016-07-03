@@ -206,12 +206,12 @@ EOT
 
         $groupAdmin = $this->register(new Group());
         $groupAdmin->setName('CMS Admin');
-        $groupAdmin->setStyle('warning');
+        $groupAdmin->setColor('#dddd00');
         $groupAdmin->setRoles(['ROLE_ARTICLE_ALL', 'ROLE_ATTACHMENT_ALL', 'ROLE_CATEGORY_ALL', 'ROLE_COMMENT_ALL', 'ROLE_FILETYPE_ALL', 'ROLE_IMAGE_ALL', 'ROLE_LICENCE_ALL', 'ROLE_TAG_ALL']);
 
         $groupAuthor = $this->register(new Group());
         $groupAuthor->setName('Author');
-        $groupAuthor->setStyle('success');
+        $groupAuthor->setColor('#009900');
         $groupAuthor->setRoles(['ROLE_ARTICLE_OWN', 'ROLE_ATTACHMENT_OWN', 'ROLE_CATEGORY_SEE', 'ROLE_COMMENT_OWN', 'ROLE_FILETYPE_SEE', 'ROLE_IMAGE_OWN', 'ROLE_LICENCE_SEE', 'ROLE_TAG_SEE']);
 
         $groupVisitor = $this->register($manager->getRepository(Group::class)->findOneBy(['name'=>'Visitor']));
@@ -226,12 +226,14 @@ EOT
         $userCmsAdmin->setUsername('cmsadmin');
         $userCmsAdmin->setPlainPassword('password');
         $userCmsAdmin->setEmail('exe@gm.com');
+        $userCmsAdmin->setColor('#999900');
         $userCmsAdmin->addGroup($groupAdmin);
 
         $userAuthor = $this->register(new User());
         $userAuthor->setUsername('author');
         $userAuthor->setPlainPassword('password');
         $userAuthor->setEmail('ex1e@gm.com');
+        $userAuthor->setColor('#009900');
         $userAuthor->addGroup($groupAuthor);
 
         $this->flush($manager);

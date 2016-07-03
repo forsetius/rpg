@@ -7,6 +7,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Forseti\AdminBundle\Entity\Traits\ColorTrait;
 
 /**
  * @ORM\Entity
@@ -16,6 +17,7 @@ class User extends BaseUser
 {
     use TimestampableEntity;
     use SoftDeleteableEntity;
+    use ColorTrait;
 
     /**
      * @var int

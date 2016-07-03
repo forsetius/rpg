@@ -25,8 +25,16 @@ easy_admin:
                     - { property: 'name', label: 'easyAdmin.pages.name', type: text, css_class: 'col-sm-2' }
                     - { property: 'title', label: 'easyAdmin.pages.title', type: text, css_class: 'col-sm-10' }
                     - { property: 'content', label: 'easyAdmin.articles.content', type: 'ckeditor' }
-                    - { property: 'frontimage', label: 'easyAdmin.category.image', type: text } # FIXME Vich uploader
-                    - { property: 'children', label: 'easyAdmin.category.name.mm', type: entity, type_options: {class: 'Forseti\PagesBundle\Entity\Category', multiple: true, by_reference: false} }
+                    - { property: 'frontimage', label: 'easyAdmin.category.image', type: text }
+                    - 
+                      property: 'children'
+                      label: 'easyAdmin.category.name.mm'
+                      type: entity
+                      type_options: 
+                          class: 'Forseti\PagesBundle\Entity\Category'
+                          multiple: true
+                          by_reference: false
+                    
                     - { property: 'articles', label: 'easyAdmin.article.name.mm', type: entity, type_options: {class: 'Forseti\PagesBundle\Entity\Article', multiple: true, by_reference: false} }
                     - { property: 'metaTitle', label: 'easyAdmin.pages.meta_title', type: text }
                     - { property: 'metaKeywords', label: 'easyAdmin.pages.meta_keywords', type: text }

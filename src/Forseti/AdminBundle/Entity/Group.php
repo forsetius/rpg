@@ -4,6 +4,7 @@ namespace Forseti\AdminBundle\Entity;
 use FOS\UserBundle\Model\Group as BaseGroup;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Forseti\AdminBundle\Entity\Traits\ColorTrait;
 
 /**
  * @ORM\Entity
@@ -11,6 +12,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Group extends BaseGroup
 {
+    use ColorTrait;
+    
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -23,12 +26,6 @@ class Group extends BaseGroup
      */
     protected $users;
     
-    /**
-     *
-     * @ORM\Column(type="string", length=7)
-     */
-    protected $color;
-    
     public function __construct()
     {
         parent::__construct('');
@@ -39,30 +36,6 @@ class Group extends BaseGroup
     public function __toString()
     {
         return (string) $this->getName();
-    }
-
-    /**
-     * Set color
-     *
-     * @param string $color
-     *
-     * @return Group
-     */
-    public function setColor($color)
-    {
-        $this->color = $color;
-
-        return $this;
-    }
-
-    /**
-     * Get color
-     *
-     * @return string
-     */
-    public function getColor()
-    {
-        return $this->color;
     }
 
     /**

@@ -14,12 +14,12 @@ class LoadUserData extends AbstractLoadAccessData implements FixtureInterface
         
         $groupSuperAdmin = $this->register(new Group());
         $groupSuperAdmin->setName('SuperAdmin');
-        $groupSuperAdmin->setStyle('danger');
+        $groupSuperAdmin->setColor('#ff0000');
         $groupSuperAdmin->setRoles(['ROLE_SUPER_ADMIN', 'ROLE_USER_ALL', 'ROLE_GROUP_ALL']);
 
         $groupVisitor = $this->register(new Group());
         $groupVisitor->setName('Visitor');
-        $groupVisitor->setStyle('info');
+        $groupVisitor->setColor('#999999');
         $groupVisitor->setRoles(['ROLE_USER_SEE', 'ROLE_GROUP_SEE']);
     
         // load Users
@@ -28,12 +28,14 @@ class LoadUserData extends AbstractLoadAccessData implements FixtureInterface
         $userSuperAdmin->setUsername('root');
         $userSuperAdmin->setPlainPassword('daikomio');
         $userSuperAdmin->setEmail('forseti.pl@gmail.com');
+        $userSuperAdmin->setColor('#ff0000');
         $userSuperAdmin->addGroup($groupSuperAdmin);
 
         $userVisitor = $this->register(new User());
         $userVisitor->setUsername('visitor');
         $userVisitor->setPlainPassword('password');
         $userVisitor->setEmail('example@gmail.com');
+        $userVisitor->setColor('#992299');
         $userVisitor->addGroup($groupVisitor);
 
         $this->flush($manager);
