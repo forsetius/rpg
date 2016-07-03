@@ -1,6 +1,3 @@
-imports:
-    - { resource: '@ForsetiPagesBundle/Resources/config/admin.yml' }
-
 easy_admin:
     design:
         menu:

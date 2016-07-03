@@ -40,8 +40,6 @@ easy_admin:
                       label: 'easyAdmin.pages.name'
                     - { property: 'longname', label: 'easyAdmin.licences.name'}
                     - { property: 'url', label: 'easyAdmin.licences.url', type: url}
-                    - { property: 'images', label: 'easyAdmin.image.name.mm' }
-                    - { property: 'attachments', label: 'easyAdmin.attachment.name.mm' }
             list:
                 title: easyAdmin.licence.name.mm
                 fields:
@@ -52,5 +50,3 @@ easy_admin:
                       template: '@ForsetiAdmin/easy_admin/field_linked_string.html.twig'
                     - { property: 'longname', label: 'easyAdmin.licences.name'}
                     - { property: 'url', label: 'easyAdmin.licences.url', type: url}
-                    - { property: 'images', label: 'easyAdmin.image.name.icon' }
-                    - { property: 'attachments', label: 'easyAdmin.attachment.name.icon' }
