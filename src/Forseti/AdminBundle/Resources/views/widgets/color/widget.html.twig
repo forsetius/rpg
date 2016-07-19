@@ -1,0 +1,11 @@
+{% block color_widget %}
+<div id="{{ id }}" class="input-group colorpicker-component">
+	<span class="input-group-addon"><i></i></span>
+	<input type="text" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %} class="form-control" /> 
+</div>
+<script> 
+	$(function() { 
+		$('#{{ id }}').colorpicker(); 
+	});
+</script>
+{% endblock %}
